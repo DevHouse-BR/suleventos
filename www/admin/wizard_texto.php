@@ -62,12 +62,16 @@ function constroi_passo0($texto){
 				<tr>
 					<td class="label"><input type="button" onClick="valida_form();" value="Salva"></td>
 				</tr>
-				<textarea name="texto" id="texto" style="visibility: hidden; position: absolute; z-index: -1;" cols="1" rows="1"><?=$text[0]?></textarea>
+				<input type="hidden" name="texto" id="texto">
 				<input type="hidden" name="passo" value="1">
 				<input type="hidden" name="nome" value="<?=$texto?>">
 				</form>
 			</table>
 	</body>
+		<script language="javascript" type="text/javascript">
+			var txt = '<?=addslashes(str_replace(chr(13), "", str_replace(chr(10), "", $text[0])))?>';
+			document.forms[0].texto.value = txt;
+		</script>
 	</html>
 	<? 
 }

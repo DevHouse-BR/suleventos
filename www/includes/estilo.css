@@ -1,9 +1,9 @@
 body {
-	background-image: url(../imagens/bg.gif);
+	background-color: #000000;
 	scrollbar-3dlight-color:#001237;
-	scrollbar-arrow-color:#FE9800;
+	scrollbar-arrow-color:#E6E6E6;
 	scrollbar-base-color:#000000;
-	scrollbar-track-color:#FE9800;
+	scrollbar-track-color:#222222;
 	scrollbar-face-color:#2B5E91;
 	scrollbar-shadow-color:#001237;
 	scrollbar-highlight-color:#66AEFF;
@@ -12,6 +12,44 @@ body {
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
+}
+.menuesquerdo {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 10px;
+	color: #001237;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menuesquerdo:link {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 10px;
+	color: #001237;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menuesquerdo:visited {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 10px;
+	color: #001237;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menuesquerdo:hover {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 10px;
+	color: #001237;
+	text-decoration: underline;
+	font-weight:bold;
+}
+.menuesquerdo:active {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 10px;
+	color: #CCCCCC;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menufadein {
+	filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=88);
 }
 .menu {
 	font-family: "Lucida Sans Unicode", Verdana, Arial;
@@ -148,4 +186,10 @@ select{
 	color: #CCCCCC;
 	text-decoration: none;
 	font-weight:bold;
+}
+.label{
+	text-align: right;
+	color: #5383B3;
+	font-weight: bold;
+	font-size: 12px;
 }

@@ -29,7 +29,7 @@ function constroi_passo0(){
 	if($modo == "update"){
 		$update = true;
 		require("../includes/conectar_mysql.php");
-		$query = "SELECT cd, nomes, data, local, descricao, email, tipo from eventos where cd=" . $codigo;
+		$query = "SELECT cd, nomes, data, local, descricao, email, tipo, status, listadecasamento from eventos where cd=" . $codigo;
 		$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 		$evento = mysql_fetch_array($result, MYSQL_ASSOC);
 		require("../includes/conectar_mysql.php");
@@ -70,6 +70,17 @@ function constroi_passo0(){
 					</td>
 				</tr>
 				<tr>
+					<td class="label">Status:</td>
+					<td>
+						<select name="status">
+							<option value="0"<? if(($update) && ($evento["status"] == 0)) echo(" selected"); ?>>Evento Realizado</option>
+							<option value="1"<? if(($update) && ($evento["status"] == 1)) echo(" selected"); ?>>Agenda</option>
+							<option value="2"<? if(($update) && ($evento["status"] == 2)) echo(" selected"); ?>>Desativado</option>
+							<option value="3"<? if(($update) && ($evento["status"] == 3)) echo(" selected"); ?>>Em Aprovação</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<td class="label">Nomes:</td>
 					<td><input type="text" name="nomes" maxlength="255" size="40"<? if($update) echo(' value="' . $evento["nomes"] . '"');?>></td>
 				</tr>
@@ -80,6 +91,10 @@ function constroi_passo0(){
 				<tr>
 					<td class="label">Local:</td>
 					<td><input type="text" name="local" maxlength="255" size="40"<? if($update) echo(' value="' . $evento["local"] . '"');?>></td>
+				</tr>
+				<tr>
+					<td class="label">Lista de Presentes:</td>
+					<td><input type="text" name="listadecasamento" maxlength="255" size="40"<? if($update) echo(' value="' . $evento["listadecasamento"] . '"');?>></td>
 				</tr>
 				<tr>
 					<td class="label">Descricao:</td>
@@ -133,6 +148,7 @@ function constroi_passo1(){
 	$modo = $_REQUEST["modo"];
 	$cd = $_REQUEST["codigo_evento"];
 	$email = $_POST["email"];
+	$status = $_POST["status"];
 	
 	if ($restrito == "sim"){
 		$senha = str_replace("=", "", base64_encode(rand(100000, 999999)));
@@ -146,14 +162,15 @@ function constroi_passo1(){
 	$data = mktime( 0, 0, 0, $tmp[1], $tmp[0], $tmp[2]);
 	
 	if ($modo == "add")	{
-		$query = "INSERT INTO eventos (nomes, data, local, descricao, email, senha, tipo) VALUES ('";
+		$query = "INSERT INTO eventos (nomes, data, local, descricao, email, senha, tipo, status) VALUES ('";
 		$query .= $nomes ."','";
 		$query .= $data ."','";
 		$query .= $local ."','";
 		$query .= $descricao ."','";
 		$query .= $email ."','";
 		$query .= $senha . "', ";
-		$query .= $tipo . ")";
+		$query .= $tipo . ", ";
+		$query .= $status . ")";
 	}
 	if (($modo == "update") && (strlen($email) != 0)){
 		$consulta = "SELECT email FROM eventos WHERE cd=" . $cd;
@@ -169,7 +186,8 @@ function constroi_passo1(){
 		$query .= "local='" . $local ."', ";
 		$query .= "descricao='" . $descricao ."', ";
 		$query .= "email='" . $email ."', ";
-		$query .= "senha='" . $senha ."' ";
+		$query .= "senha='" . $senha ."', ";
+		$query .= "status='" . $status ."' ";
 		$query .= " WHERE cd=" . $cd;
 	}
 	if (($modo == "update") || ($modo == "add")){
@@ -183,10 +201,10 @@ function constroi_passo1(){
 		require("../includes/desconectar_mysql.php");
 	}
 	if (($modo == "add") && (strlen($email) != 0)){
-		mail($email, "Informações Cadastrais centuryeventos.com.br", "Caro(a) amigo(a), \n\nSeu evento foi incluido no site centuryeventos.com.br!\nPara acessá-la aponte seu navegador para:\n\nhttp://www.centuryeventos.com.br/ver_evento.php?cd=" . $cd . "\n\nUsuário: " . $email . "\nSenha: " . $senha, "From: <century@centuryeventos.com.br>");
+		mail($email, "Informações Cadastrais suleventos.com.br", "Caro(a) amigo(a), \n\nSeu evento foi incluido no site suleventos.com.br!\nPara acessá-la aponte seu navegador para:\n\nhttp://www.suleventos.com.br/ver_evento.php?cd=" . $cd . "\n\nUsuário: " . $email . "\nSenha: " . $senha, "From: <suleventos@suleventos.com.br>");
 	}
 	elseif (($modo == "update") && ($envia)) {
-		mail($email, "Informações Cadastrais centuryeventos.com.br", "Caro(a) amigo(a), \n\nSeu evento foi incluido no site centuryeventos.com.br!\nPara acessá-la aponte seu navegador para:\n\nhttp://www.centuryeventos.com.br/ver_evento.php?cd=" . $cd . "\n\nUsuário: " . $email . "\nSenha: " . $senha, "From: <century@centuryeventos.com.br>");
+		mail($email, "Informações Cadastrais suleventos.com.br", "Caro(a) amigo(a), \n\nSeu evento foi incluido no site suleventos.com.br!\nPara acessá-la aponte seu navegador para:\n\nhttp://www.suleventos.com.br/ver_evento.php?cd=" . $cd . "\n\nUsuário: " . $email . "\nSenha: " . $senha, "From: <suleventos@suleventos.com.br>");
 	}
 	if ($modo == "update") die('<html><script language="javascript">parent.location = parent.location;</script></html>');
 	?>
@@ -238,17 +256,19 @@ function constroi_passo2(){
 	$pasta = "../fotos";
 	$arquivo = $_FILES["image"];
 	$nome_arquivo = $_POST["codigo_evento"] . "_" . $_POST["numero_imagem"] . ".jpg";
-	$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 640, 480, 90, 90, true);
+	$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 320, 240, 120, 90, true);
 	
-	$query = "INSERT INTO fotos (path, path_thumb, cd_evento, bytes) VALUES ('";
+	$query = "INSERT INTO fotos (path, path_thumb, cd_evento, bytes, largura, altura) VALUES ('";
 	$query .= $info_imagem[0] ."','";
 	$query .= $info_imagem[1] . "',";
 	$query .= $codigo_evento . ","; 
-	$query .= $_FILES['image']['size'] . ")";
+	$query .= $_FILES['image']['size'] . ","; 
+	$query .= $info_imagem[3] . ",";
+	$query .= $info_imagem[4] . ")";
 	
 	if (!mysql_query($query)){
-		unlink($info_imagem[0]);
-		unlink($info_imagem[1]);
+		unlink("../" . $info_imagem[0]);
+		unlink("../" . $info_imagem[1]);
 		die("<html>\n<head>\n<title>Erro no Upoload de Imagem</title>\n<script language='Javascript'>\nfunction retorna(){\n window.history.back();\n}\n</script>\n</head>\n<body>\n<center><h3>Problemas para gravar o registro da imagem no banco de dados. Erro: " . mysql_error() . "</h3></center><br>\n<a href='Javascript: retorna()'>Voltar</a>\n</body>\n</html>");
 	}
 	

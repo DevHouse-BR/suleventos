@@ -1,11 +1,11 @@
 <?php
-require("permissao_documento.php");
+//require("permissao_documento.php");
 	function upload_imagem($IMG_ROOT, $imagem_array, $nome, $LARGURA_IMG_FINAL, $ALTURA_IMG_FINAL, $LARGURA_THUMB, $ALTURA_THUMB, $cria_thumb){
 		#####################     Constantes     ###################################################
 		
 		$THUMB_ROOT = "thumb/";	# Diretório onde os thumbnails serão transmitidos
 		
-		$JPG_QUALITY	=	80;  # Qualidade do JPG criado.
+		$JPG_QUALITY	=	90;  # Qualidade do JPG criado.
 		
 		$HTML_RETORNO1 = "<html><head><title>Erro no Upload de Imagem</title><script language='Javascript'>function retorna(){ window.history.back();}</script></head><body><center><h3>Já existe uma imagem com este nome. Mude-o e tente novamente.</h3></center><br><a href='Javascript: retorna()'>Voltar</a></body></html>";
 		$HTML_RETORNO2 = "<html><head><title>Erro no Upload de Imagem</title><script language='Javascript'>alert('São permitidos uploads de imagens apenas do tipo jpg.'); function retorna(){ window.history.back();}</script></head><body><a href='Javascript: retorna()'>Voltar</a></body></html>";
@@ -27,7 +27,14 @@ require("permissao_documento.php");
 		
 		if ($imagem_tipo != "1"){
 			if($imagem_tipo != 2) die($HTML_RETORNO2);
-			if(file_exists( $IMG_ROOT . "/" . $nome_da_imagem)) die($HTML_RETORNO1);
+			
+			if(file_exists( $IMG_ROOT . "/" . $nome_da_imagem)){
+				if(file_exists($IMG_ROOT . "/" . str_replace(".jpg", "_b.jpg", $nome_da_imagem))){
+					if(file_exists( $IMG_ROOT . "/" . str_replace(".jpg", "_c.jpg", $nome_da_imagem))) die($HTML_RETORNO1);
+					else $nome_da_imagem = str_replace(".jpg", "_c.jpg", $nome_da_imagem);
+				}
+				else $nome_da_imagem = str_replace(".jpg", "_b.jpg", $nome_da_imagem);
+			}
 			
 			$imagem_original = imagecreatefromjpeg($imagem_arquivo);
 			
@@ -42,7 +49,7 @@ require("permissao_documento.php");
 			
 			if (gd_version() >= 2){
 				$nova_imagem = imagecreatetruecolor($nova_largura_img,$nova_altura_img) or die($HTML_RETORNO3); 
-				imagecopyresized($nova_imagem, $imagem_original, 0, 0, 0, 0, $nova_largura_img, $nova_altura_img, $imagem_largura, $imagem_altura) or die($HTML_RETORNO4); 
+				imagecopyresampled($nova_imagem, $imagem_original, 0, 0, 0, 0, $nova_largura_img, $nova_altura_img, $imagem_largura, $imagem_altura) or die($HTML_RETORNO4); 
 			}
 			else {
 				$nova_imagem = imagecreate($nova_largura_img,$nova_altura_img) or die("Problem In Creating image"); 
@@ -66,7 +73,7 @@ require("permissao_documento.php");
 				
 				if (gd_version() >= 2){
 					$nova_imagem = imagecreatetruecolor($nova_largura_thumb,$nova_altura_thumb) or die($HTML_RETORNO3); 
-					imagecopyresized($nova_imagem, $imagem_original, 0, 0, 0, 0, $nova_largura_thumb, $nova_altura_thumb, $imagem_largura, $imagem_altura) or die($HTML_RETORNO4); 
+					imagecopyresampled($nova_imagem, $imagem_original, 0, 0, 0, 0, $nova_largura_thumb, $nova_altura_thumb, $imagem_largura, $imagem_altura) or die($HTML_RETORNO4); 
 				}
 				else {
 					$nova_imagem = imagecreate($nova_largura_thumb,$nova_altura_thumb) or die("Problem In Creating image"); 
@@ -92,7 +99,7 @@ require("permissao_documento.php");
 		$nova_imagem_grande = str_replace( "../", "",$nova_imagem_grande);
 		$nova_imagem_thumb = str_replace( "../", "",$nova_imagem_thumb);
 		
-		return array($nova_imagem_grande, $nova_imagem_thumb, $tamanhoarquivo);
+		return array($nova_imagem_grande, $nova_imagem_thumb, $tamanhoarquivo, $nova_largura_img, $nova_altura_img);
 	}
 	function gd_version() { 
 	   static $gd_version_number = null; 

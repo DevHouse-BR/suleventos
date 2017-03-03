@@ -24,7 +24,7 @@ function constroi_passo0(){
 		$codigo = $_REQUEST["cd"];
 		$update = true;
 		require("../includes/conectar_mysql.php");
-		$query = "SELECT cd, imagem, nome, descricao, site, email, telefone, endereco, tipo FROM parceiros where cd=" . $codigo;
+		$query = "SELECT cd,  nome, descricao, site, email, telefone, endereco, tipo FROM parceiros where cd=" . $codigo;
 		$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 		$parceiro = mysql_fetch_array($result, MYSQL_ASSOC);
 		require("../includes/conectar_mysql.php");
@@ -43,6 +43,18 @@ function constroi_passo0(){
 					vertical-align:top;				
 				}
 			</style>
+			<script language="javascript" type="text/javascript">
+				function valida_form(){
+					if(sendform.altera_imagem){
+						if ((sendform.altera_imagem[0].checked) && (sendform.image.value == "")) alert("Imagens são obrigatórias");
+						else sendform.submit();
+					}
+					else{
+						if (sendform.image.value == "") alert("Imagens são obrigatórias");
+						else sendform.submit();
+					}
+				}
+			</script>
 		</head>
 		<body>
 			<table>
@@ -105,7 +117,7 @@ function constroi_passo0(){
 				</tr>
 				<tr>
 					<td></td>
-					<td class="label"><input type="submit" value="Salva"></td>
+					<td class="label"><input type="button" value="Salva" onClick="valida_form();"></td>
 				</tr>
 				<input type="hidden" name="passo" value="1">
 				<input type="hidden" name="modo"<? if($update) echo(' value="update"'); else echo(' value="add"'); ?>>
@@ -147,11 +159,11 @@ function constroi_passo1(){
 		$pasta = "../parceiros";
 		$arquivo = $_FILES["image"];
 		$nome_arquivo = $nome . ".jpg";
-		$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 640, 480, 90, 90, true);
+		$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 320, 240, 120, 90, true);
 	}
 	
 	if ($modo == "add")	{
-		$query = "INSERT INTO parceiros (nome, descricao, site, email, telefone, endereco, tipo, path, path_thumb) VALUES ('";
+		$query = "INSERT INTO parceiros (nome, descricao, site, email, telefone, endereco, tipo, path, path_thumb, largura, altura) VALUES ('";
 		$query .= $nome ."', '";
 		$query .= $descricao ."', '";
 		$query .= $site ."', '";
@@ -160,13 +172,17 @@ function constroi_passo1(){
 		$query .= $endereco ."', '";
 		$query .= $tipo ."', '";
 		$query .= $info_imagem[0] ."', '";
-		$query .= $info_imagem[1] ."')";
+		$query .= $info_imagem[1] ."', '";
+		$query .= $info_imagem[3] ."', '";
+		$query .= $info_imagem[4] ."')";
 	}
 	if ($modo == "update") {
 		$query = "UPDATE parceiros SET ";
 		if($altera_imagem == "sim"){
 			$query .= "path='" . $info_imagem[0] ."', ";
 			$query .= "path_thumb='" . $info_imagem[1] ."', ";
+			$query .= "largura='" . $info_imagem[3] ."', ";
+			$query .= "altura='" . $info_imagem[4] ."', ";
 		}
 		$query .= "nome='" . $nome ."', ";
 		$query .= "descricao='" . $descricao ."', ";

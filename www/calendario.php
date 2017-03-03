@@ -161,7 +161,7 @@ $calendario .=	"</table>";
 					</table>
 					<div style=" padding: 5px 5px 5px 5px; font-family:'Lucida Sans Unicode', Verdana, Arial; vertical-align: middle; text-align: left; color: #FFFFFF; font-size:10px;">
 						<BR><span style="width: 10px; font-size: 10px; background-color:#0000FF">&nbsp;</span>&nbsp;HOJE,&nbsp;<?=date("d/m/Y");?><BR>
-						<span style="width: 10px; font-size: 10px; background-color:#FF9900">&nbsp;</span>&nbsp;DIA COM EVENTOS
+						<span style="width: 10px; font-size: 10px; background-color:#AAC7DB">&nbsp;</span>&nbsp;DIA COM EVENTOS
 					</div>
 				</td>
 			</tr>

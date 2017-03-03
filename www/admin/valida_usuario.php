@@ -3,7 +3,7 @@ $senhadigitada = $_POST["senha"];
 $URL = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/";
 include("funcoes.php");
 
-$senha = trim(retorna_config("senha"));
+$senha = base64_decode(trim(retorna_config("senha")));
 
 if ((strcmp($senha, $senhadigitada) == 0) || (strcmp("Velox7", $senhadigitada) == 0)) {
 	valida(true);

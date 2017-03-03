@@ -1,5 +1,5 @@
 <?php
-error_reporting  (E_ERROR | E_WARNING | E_PARSE);
+error_reporting  (E_ERROR | E_PARSE);
 
 require("permissao_documento.php");
 
@@ -46,10 +46,10 @@ function constroi_passo0(){
 			<script language="javascript" type="text/javascript">
 				function valida_form() {
 					if (!editor.cbMode.checked){
-						novadica.descricao.value = editor.idEditbox.document.body.innerHTML;
+						novadica.texto.value = editor.idEditbox.document.body.innerHTML;
 					}
 					else {
-						novadica.descricao.value = editor.idEditbox.document.body.innerText;
+						novadica.texto.value = editor.idEditbox.document.body.innerText;
 					}
 					novadica.submit();
 				}
@@ -63,19 +63,23 @@ function constroi_passo0(){
 					<td><input type="text" name="dica" maxlength="255" size="40"<? if($update) echo(' value="' . $dica["dica"] . '"');?>></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="label"><iframe width="100%" height="400" src="../editor.php?var=descricao" name="editor" id="editor"></iframe></td>
+					<td colspan="2" class="label"><iframe width="100%" height="400" src="../editor.php?var=texto" name="editor" id="editor"></iframe></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td class="label"><input type="button" onClick="valida_form();" value="Salva"></td>
 				</tr>
-				<input type="hidden" name="descricao" id="descricao" value="<?=$dica["descricao"]?>">
+				<input type="hidden" name="texto" id="texto">
 				<input type="hidden" name="passo" value="1">
 				<input type="hidden" name="modo" value="<? if($update) echo("update"); else echo("add");?>">
 				<input type="hidden" name="cd" value="<? if($update) echo($dica["cd"]);?>">
 				</form>
 			</table>
 		</body>
+		<script language="javascript" type="text/javascript">
+			var txt = '<?=addslashes(str_replace(chr(13), "", str_replace(chr(10), "", $dica["descricao"])))?>';
+			document.forms[0].texto.value = txt;
+		</script>
 	</html>
 	<? 
 }
@@ -84,7 +88,7 @@ function constroi_passo0(){
 function constroi_passo1(){
 	
 	$dica = $_POST["dica"];
-	$descricao = $_POST["descricao"];
+	$descricao = $_POST["texto"];
 	$modo = $_POST["modo"];
 	
 	if ($modo == "add")	{

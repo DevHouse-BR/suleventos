@@ -1,0 +1,5 @@
+<head>
+<script language="Javascript">
+window.location="D:\Sul%20Eventos\index.htm"
+</script>
+</head>

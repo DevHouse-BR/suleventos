@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisioDocument>
+	<DocumentProperties>
+		<Title></Title>
+		<HyperlinkBase href=""></HyperlinkBase>
+	</DocumentProperties>
+	<Pages>
+		<Page ID="0" Name="Page-1" NameU="Page-1">
+			<Layer IX="0">
+				<Name>Entities</Name>
+				<NameUniv>Entities</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Layer IX="1">
+				<Name>Relationships</Name>
+				<NameUniv>Relationships</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Layer IX="2">
+				<Name>Categories</Name>
+				<NameUniv>Categories</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Layer IX="3">
+				<Name>Table Inheritance</Name>
+				<NameUniv>Table Inheritance</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Layer IX="4">
+				<Name>Composite Types</Name>
+				<NameUniv>Composite Types</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Layer IX="5">
+				<Name>Type Inheritance</Name>
+				<NameUniv>Type Inheritance</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="1" UniqueID="{501488D0-4099-403F-B8F0-6F39CAA37ADD}" Name="Entity" NameU="Entity" Master="7">
+					<XForm>
+						<PinX Unit="MM">1.337263899657534</PinX>
+						<PinY Unit="MM">4.207620092842857</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="4" UniqueID="{838F1E36-A6F4-48E5-AF2F-4817BD414E92}" Name="Entity.4" NameU="Entity.4" Master="7">
+					<XForm>
+						<PinX Unit="MM">4.892368620642664</PinX>
+						<PinY Unit="MM">6.889763779527560</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="7" UniqueID="{852138F0-3F48-4442-8AD0-7AD1995D830A}" Name="Entity.7" NameU="Entity.7" Master="7">
+					<XForm>
+						<PinX Unit="MM">3.726334312637157</PinX>
+						<PinY Unit="MM">2.559055118110236</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="10" UniqueID="{9ADD5FA2-997B-4AF5-A888-D84423DE8B1B}" Name="Entity.10" NameU="Entity.10" Master="7">
+					<XForm>
+						<PinX Unit="MM">7.874015748031498</PinX>
+						<PinY Unit="MM">6.496062992125985</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="13" UniqueID="{4878FF41-D1C6-4E73-A079-D5AE6141035D}" Name="Entity.13" NameU="Entity.13" Master="7">
+					<XForm>
+						<PinX Unit="MM">7.480314960629923</PinX>
+						<PinY Unit="MM">4.724409448818898</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="16" UniqueID="{C38DAF8D-5A4B-4732-A4F5-6CE2CC3876BB}" Name="Entity.16" NameU="Entity.16" Master="7">
+					<XForm>
+						<PinX Unit="MM">7.874015748031496</PinX>
+						<PinY Unit="MM">2.348809336098765</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="21" UniqueID="{ED75F56D-85BD-4923-93C3-2E136F24F439}" Name="Relationship.21" NameU="Relationship.21" Master="8">
+					<XForm>
+						<PinX Unit="MM">2.789470058660407</PinX>
+						<PinY Unit="MM">5.979273636149944</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>1</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="25" UniqueID="{BD68739B-7EF2-427C-AC37-5A80C8B59275}" Name="Entity.25" NameU="Entity.25" Master="7">
+					<XForm>
+						<PinX Unit="MM">5.638292308999660</PinX>
+						<PinY Unit="MM">3.543307086614174</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="28" UniqueID="{21153940-FEEF-4905-969E-64982EA658A7}" Name="Relationship.28" NameU="Relationship.28" Master="8">
+					<XForm>
+						<PinX Unit="MM">4.724409448818898</PinX>
+						<PinY Unit="MM">3.384515452948143</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>1</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="19" UniqueID="{C151332A-3BDD-4A32-901B-C530EBDB78C2}" Name="Relationship" NameU="Relationship" Master="8">
+					<XForm>
+						<PinX Unit="MM">2.504543094184455</PinX>
+						<PinY Unit="MM">3.508337986946273</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>1</LayerMember>
+					</LayerMem>
+				</Shape>
+			</Shapes>
+		</Page>
+	</Pages>
+</VisioDocument>

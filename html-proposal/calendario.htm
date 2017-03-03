@@ -1,0 +1,67 @@
+<html>
+<head>
+<style type="text/css">
+@import url("includes/estilo.css");
+@import url("includes/calendario.css");
+</style>
+<script language="JavaScript">
+	var corantiga;				//Duas variáveis utilizadas para a mudança de cores quando o mouse passa por cima do nome dos meses.
+	var novacor = "#0000FF";
+	function muda_mes(mes){		//Função que faz com que o próprio calendário seja carregado para o mês selecionado e também mostrando a tabela de atividades para o mês selecionado.
+		self.location = "calendario.php?mes=" + mes;
+		parent.viz.location = "atividades_mes.php?mes=" + mes;
+	}
+	function ver_dia(data){		//Função que mostra a tabela de atividades para um dia selecionado.
+		var parametros = data.split("/");
+		parent.viz.location = "atividades_dia.php?dia=" + parametros[0] + "&mes=" + parametros[1] + "&ano=" + parametros[2];
+	}
+	function ver_semana(intervalo){	//Função que mostra a tabela de atividades para uma semana selecionada.
+		parent.viz.location = "atividades_semana.php?intervalo=" + intervalo;
+	}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body leftmargin="0" topmargin="0" bottommargin="0" rightmargin="0" marginwidth="0" marginheight="0" bgcolor="#666666">
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="100%" align="center" valign="middle">
+			<table width="90%" border="0" cellspacing="0" cellpadding="0" class="tabelacalendario">
+			  <tr> 
+				<td class="titulo">Novembro/2003</td>
+			  </tr>
+			  <tr> 
+				<td align="left" valign="top">
+				  <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td class="calendario" width="14%">dom</td><td class="calendario" width="14%">seg</td><td class="calendario" width="14%">ter</td><td class="calendario" width="14%">qua</td><td class="calendario" width="14%">qui</td><td class="calendario" width="14%">sex</td><td class="calendario" width="14%">sab</td></tr><tr><td class="outromes">26</td><td class="outromes">27</td><td class="outromes">28</td><td class="outromes">29</td><td class="outromes">30</td><td class="outromes">31</td><td class="interior">1</td></tr><tr><td class="interior">2</td><td class="hoje">3</td><td class="interior">4</td><td class="interior">5</td><td class="interior">6</td><td class="interior">7</td><td class="interior">8</td></tr><tr><td class="interior">9</td><td class="interior">10</td><td class="interior">11</td><td class="interior">12</td><td class="interior">13</td><td class="interior">14</td><td class="interior">15</td></tr><tr><td class="interior">16</td><td class="interior">17</td><td class="interior">18</td><td class="interior">19</td><td class="interior">20</td><td class="interior">21</td><td class="interior">22</td></tr><tr><td class="interior">23</td><td class="interior">24</td><td class="interior">25</td><td class="interior">26</td><td class="interior">27</td><td class="interior">28</td><td class="interior">29</td></tr><tr><td class="interior">30</td><td class="outromes">1</td><td class="outromes">2</td><td class="outromes">3</td><td class="outromes">4</td><td class="outromes">5</td><td class="outromes">6</td></tr></table><!-- Monta a tabela do calendário -->
+				</td>
+			  </tr>
+			  <tr> 
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr> 
+					  <td class="mes" onClick="muda_mes(1);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">jan</td>
+					  <td class="mes" onClick="muda_mes(2);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">fev</td>
+					  <td class="mes" onClick="muda_mes(3);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">mar</td>
+					  <td class="mes" onClick="muda_mes(4);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">abr</td>
+					  <td class="mes" onClick="muda_mes(5);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">mai</td>
+					  <td class="mes" onClick="muda_mes(6);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">jun</td>
+					</tr>
+					<tr> 
+					  <td class="mes" onClick="muda_mes(7);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">jul</td>
+					  <td class="mes" onClick="muda_mes(8);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">ago</td>
+					  <td class="mes" onClick="muda_mes(9);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">set</td>
+					  <td class="mes" onClick="muda_mes(10);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">out</td>
+					  <td class="mes" onClick="muda_mes(11);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">nov</td>
+					  <td class="mes" onClick="muda_mes(12);" onMouseOver="corantiga = this.style.color; this.style.color = novacor;" onMouseOut="this.style.color = corantiga;">dez</td>
+					</tr>
+				  </table></td>
+			  </tr>
+			</table>
+			<div style=" padding: 5px 5px 5px 5px; font-family:'Lucida Sans Unicode', Verdana, Arial; vertical-align: middle; text-align: left; color: #FFFFFF; font-size:10px;">
+				<BR><span style="width: 10px; font-size: 10px; background-color:#0000FF">&nbsp;</span>&nbsp;HOJE, 13/01/1978<BR>
+				<span style="width: 10px; font-size: 10px; background-color:#FF9900">&nbsp;</span>&nbsp;DIA COM EVENTOS
+			</div>
+</td>
+</tr>
+</table>
+</body></html>
+

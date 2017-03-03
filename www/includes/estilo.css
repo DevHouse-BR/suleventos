@@ -1,0 +1,151 @@
+body {
+	background-image: url(../imagens/bg.gif);
+	scrollbar-3dlight-color:#001237;
+	scrollbar-arrow-color:#FE9800;
+	scrollbar-base-color:#000000;
+	scrollbar-track-color:#FE9800;
+	scrollbar-face-color:#2B5E91;
+	scrollbar-shadow-color:#001237;
+	scrollbar-highlight-color:#66AEFF;
+	scrollbar-darkshadow-color:#000000;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.menu {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menu:link {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menu:visited {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menu:hover {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: underline;
+	font-weight:bold;
+}
+.menu:active {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #CCCCCC;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menurodape {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #001237;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menurodape:link {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #001237;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menurodape:visited {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #001237;
+	text-decoration: none;
+	font-weight:bold;
+}
+.menurodape:hover {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #001237;
+	text-decoration: underline;
+	font-weight:bold;
+}
+.menurodape:active {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #0037AA;
+	text-decoration: none;
+	font-weight:bold;
+}
+.conteudo{
+	padding: 20px 20px 20px 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #001238;
+}
+.celula{
+	padding: 5px 5px 5px 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #001238;
+	text-align:justify;
+}
+input{
+	font-size:10px;
+}
+select{
+	font-size:10px;
+}
+.titulosecao{
+	font-size: 12px;
+	font-weight: bold;
+	vertical-align: middle;
+	text-align:left;
+}
+.textonoazul{
+	font-size:10px; font-family:'Lucida Sans Unicode', Verdana, Arial;
+	vertical-align:top;
+	text-align: left;
+	color: #FFFFFF;
+}
+.fichaparceiro {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #999999;
+	text-decoration: none;
+	font-weight:bold;
+}
+.fichaparceiro:link {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #999999;
+	text-decoration: none;
+	font-weight:bold;
+}
+.fichaparceiro:visited {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #999999;
+	text-decoration: none;
+	font-weight:bold;
+}
+.fichaparceiro:hover {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #999999;
+	text-decoration: underline;
+	font-weight:bold;
+}
+.fichaparceiro:active {
+	font-family: "Lucida Sans Unicode", Verdana, Arial;
+	font-size: 12px;
+	color: #CCCCCC;
+	text-decoration: none;
+	font-weight:bold;
+}

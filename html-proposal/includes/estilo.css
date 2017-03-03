@@ -1,0 +1,89 @@
+.botao {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-color: #6699CC;
+	font-weight: bold;
+	border-top: 1px solid #99CCFF;
+	border-right: 1px solid #003366;
+	border-bottom: 1px solid #003366;
+	border-left: 1px solid #99CCFF;
+}
+.nomecampo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #003399;
+}
+.janela {
+	border-top-width: thin;
+	border-right-width: thin;
+	border-bottom-width: thin;
+	border-left-width: thin;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #99CCFF;
+	border-right-color: #0033CC;
+	border-bottom-color: #0033CC;
+	border-left-color: #99CCFF;
+}
+.menu {
+	border-top-width: thin;
+	border-right-width: thin;
+	border-bottom-width: thin;
+	border-left-width: thin;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #99CCFF;
+	border-right-color: #0033CC;
+	border-bottom-color: #0033CC;
+	border-left-color: #99CCFF;
+ 	background-image: url(../img/novo-3.gif);
+}
+.campotxt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	width: 100%;
+	border: 1px solid #0099FF;
+	color: #000099;
+	scrollbar-Track-Color: white;
+	scrollbar-Face-Color: #99CCFF;
+	scrollbar-Arrow-Color: #5555FF;
+	scrollbar-3dLight-Color: white;
+	scrollbar-Highlight-Color: white;
+	scrollbar-Shadow-Color: white;
+	scrollbar-DarkShadow-Color: white;
+}
+.menu2 {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #99CCFF;
+	border-right-color: #0033CC;
+	border-bottom-color: #0033CC;
+	border-left-color: #99CCFF;
+	filter: Alpha(Opacity=85);
+}
+body {
+	scrollbar-Track-Color: white;
+	scrollbar-Face-Color: #99CCFF;
+	scrollbar-Arrow-Color: #5555FF;
+	scrollbar-3dLight-Color: white;
+	scrollbar-Highlight-Color: white;
+	scrollbar-Shadow-Color: white;
+	scrollbar-DarkShadow-Color: white;
+}
+.campotxt2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	width: 100%;
+}

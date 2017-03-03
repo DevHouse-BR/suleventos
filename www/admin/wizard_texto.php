@@ -57,7 +57,7 @@ function constroi_passo0($texto){
 			<table width="100%" cellpadding="0" cellspacing="0" border="0">
 				<form action="wizard_texto.php" method="post" name="novadica">
 				<tr>
-					<td class="label"><iframe width="100%" height="300" src="../editor.php?var=texto" name="editor" id="editor"></iframe></td>
+					<td class="label"><iframe width="100%" height="472" src="../editor.php?var=texto" name="editor" id="editor"></iframe></td>
 				</tr>
 				<tr>
 					<td class="label"><input type="button" onClick="valida_form();" value="Salva"></td>

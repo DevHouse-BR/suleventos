@@ -1,5 +1,5 @@
 <?php
-error_reporting  (E_ERROR | E_WARNING | E_PARSE);
+error_reporting  (E_ERROR | E_PARSE);
 
 $pagina_inicial = "home.php";
 $eventos = "eventos.php";
@@ -362,10 +362,10 @@ function constroi_parceiro_em_destaque(){
 	$query = "SELECT count( * ) FROM parceiros";
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$registros = mysql_fetch_row($result);
-	echo($registros[0]);
 	if($registros[0] == 0) echo('<table width="100%" bgcolor="#E6E6E6" border="0" class="menurodape" height="100"><tr><td valign="top"><img src="../imagens/bullet_red.gif">Não Há Parceiros Cadastrados</td></tr></table>');
 	else {
-		$query = "SELECT cd, path_thumb, nome from parceiros LIMIT " . mt_rand(1, $registros[0]-1) . ",1";
+		if($registros[0] == 1) $query = "SELECT cd, path_thumb, nome from parceiros LIMIT 1";
+		else $query = "SELECT cd, path_thumb, nome from parceiros LIMIT " . mt_rand(1, $registros[0]-1) . ",1";
 		$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 		$parceiro = mysql_fetch_array($result, MYSQL_ASSOC);
 		require("../includes/desconectar_mysql.php");
@@ -556,7 +556,7 @@ function constroi_tabela_parceiros(){
 				<td colspan="2"><?=$parceiro["descricao"]?></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="right"><font size="-2"><?=$parceiro["telefone"] . " - " . $parceiro["email"] . " - " . $parceiro["endereco"]?></font></td>
+				<td colspan="2" align="right"><font size="-2"><? if(strlen($parceiro["telefone"]) != 0) echo($parceiro["telefone"]); if(strlen($parceiro["email"]) != 0) echo("&nbsp;-&nbsp;" . $parceiro["email"]); if(strlen($parceiro["endereco"]) != 0) echo("&nbsp;-&nbsp;" . $parceiro["endereco"]); ?></font></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><a href="javascript: apagar(<?=$parceiro["cd"]?>);">[Apagar Parceiro]</a>&nbsp;&nbsp;<a href="javascript: void window.open('wizard_novo_parceiro.php?modo=update&cd=<?=$parceiro["cd"]?>', 'PARCEIRO', 'width=400,height=480,status=no,resizable=no,top=20,left=100,dependent=yes,alwaysRaised=yes');">[Edita Parceiro]</a></td>
@@ -610,21 +610,28 @@ function constroi_tabela_dicas(){
 #################################################################################################################
 
 function constroi_dicas_destaque(){
-	require("../includes/conectar_mysql.php");
+	require("includes/conectar_mysql.php");
 	$query = "SELECT count( * ) FROM dicas";
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$registros = mysql_fetch_row($result);
-
-	$query = "SELECT * FROM dicas LIMIT " . mt_rand(1, $registros[0]-1) . ",1";
+	$qtd = $registros[0];
+	if(($qtd == 0) || ($qtd == 1)){
+		$query = "SELECT * FROM dicas";
+	}
+	else $query = "SELECT * FROM dicas LIMIT " . mt_rand(1, $qtd-1) . ",1";
+	
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$dica = mysql_fetch_array($result, MYSQL_ASSOC);
-	require("../includes/desconectar_mysql.php");
+	require("includes/desconectar_mysql.php");
+	if($registros[0] == 0) echo('<div width="100%" class="conteudo">Não há dicas cadastradas</div>');
+	else {
 		?>
-		<div class="titulosecao"><img align="bottom" src="../imagens/bullet_red.gif">&nbsp;Dicas</div><br>
+		<div class="titulosecao"><img align="bottom" src="imagens/bullet_red.gif">&nbsp;Dicas</div><br>
 		<p><?=$dica["dica"]?></p>
 		<p><?=$dica["descricao"]?></p>
-		<p align="right"><a href="dicas.php"><img border="0" src="../imagens/veja.gif"></a></p>
+		<p align="right"><a href="dicas.php"><img border="0" src="imagens/veja.gif"></a></p>
 		<?
+	}
 }
 #################################################################################################################
 

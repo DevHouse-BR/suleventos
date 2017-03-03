@@ -34,6 +34,7 @@ function constroi_passo0(){
 		$evento = mysql_fetch_array($result, MYSQL_ASSOC);
 		require("../includes/conectar_mysql.php");
 	}
+	strlen($evento["email"]);
 	?>
 	<html>
 		<head>
@@ -58,7 +59,7 @@ function constroi_passo0(){
 					<?php
 						$query = "SELECT * FROM tipodeevento ORDER BY tipo";
 						require("../includes/conectar_mysql.php");
-						$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+						$result = mysql_query($query) or die("Erro na consulta ao Banco de dados: " . mysql_error());
 						while($tipo = mysql_fetch_array($result, MYSQL_ASSOC)){
 							echo('<option value="' . $tipo["cd"] . '"');
 							if(($update) && ($tipo["cd"] == $evento["tipo"])) echo(" selected");
@@ -86,11 +87,11 @@ function constroi_passo0(){
 				</tr>
 				<tr>
 					<td class="label">Requer Senha?</td>
-					<td class="label" style="text-align:left;"><input type="radio" name="restrito" value="sim" onClick="passo0.email.disabled=false;" <? if(($update) && (strlen($evento["email"]) != 0)) echo(" checked"); ?>>Sim<br><input type="radio" name="restrito" value="nao" onClick="passo0.email.disabled=true;" <? if(($update) && (strlen($evento["email"]) == 0)) echo(" checked"); else echo(" checked");?>>Não</td>
+					<td class="label" style="text-align:left;"><input type="radio" name="restrito" value="sim" onClick="passo0.email.disabled=false;" <? if(($update) && (strlen($evento["email"]) > 0)) echo(" checked"); ?>>Sim<br><input type="radio" name="restrito" value="nao" onClick="passo0.email.disabled=true; passo0.email.value='';" <? if(($update) && (strlen(trim($evento["email"])) == 0)) echo(" checked"); ?>>Não</td>
 				</tr>
 				<tr>
 					<td class="label">Email:</td>
-					<td><input type="text" name="email" maxlength="255" size="40" disabled></td>
+					<td><input type="text" name="email" maxlength="255" size="40" <? if($update) echo(' value="' . $evento["email"] . '"');  if(($update) && (strlen($evento["email"]) == 0)) echo(" disabled"); ?>></td>
 				</tr>
 				<?
 				if ($update) { ?>
@@ -124,7 +125,6 @@ function constroi_passo0(){
 
 ##############################################################################################
 function constroi_passo1(){
-	
 	$nomes = $_POST["nomes"];
 	$local = $_POST["local"];
 	$descricao = $_POST["descricao"];
@@ -132,10 +132,9 @@ function constroi_passo1(){
 	$tipo = $_POST["tipo"];
 	$modo = $_REQUEST["modo"];
 	$cd = $_REQUEST["codigo_evento"];
-	
+	$email = $_POST["email"];
 	
 	if ($restrito == "sim"){
-		$email = $_POST["email"];
 		$senha = str_replace("=", "", base64_encode(rand(100000, 999999)));
 	}
 	else {
@@ -156,6 +155,13 @@ function constroi_passo1(){
 		$query .= $senha . "', ";
 		$query .= $tipo . ")";
 	}
+	if (($modo == "update") && (strlen($email) != 0)){
+		$consulta = "SELECT email FROM eventos WHERE cd=" . $cd;
+		$resultado = mysql_query($consulta);
+		$temp = mysql_fetch_row($resultado);
+		if ($temp[0] != $email) $envia = true;
+		else $envia = false;
+	}
 	if ($modo == "update") {
 		$query = "UPDATE eventos SET ";
 		$query .= "nomes='" . $nomes ."', ";
@@ -168,16 +174,21 @@ function constroi_passo1(){
 	}
 	if (($modo == "update") || ($modo == "add")){
 		require("../includes/conectar_mysql.php");
-			$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+			$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
 			if (($result) && ($modo == "add")) {
-				$result = mysql_query("SELECT LAST_INSERT_ID();") or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+				$result = mysql_query("SELECT LAST_INSERT_ID();") or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
 				$registro = mysql_fetch_row($result);
 				$cd = $registro[0];
 			}
 		require("../includes/desconectar_mysql.php");
 	}
+	if (($modo == "add") && (strlen($email) != 0)){
+		mail($email, "Informações Cadastrais centuryeventos.com.br", "Caro(a) amigo(a), \n\nSeu evento foi incluido no site centuryeventos.com.br!\nPara acessá-la aponte seu navegador para:\n\nhttp://www.centuryeventos.com.br/ver_evento.php?cd=" . $cd . "\n\nUsuário: " . $email . "\nSenha: " . $senha, "From: <century@centuryeventos.com.br>");
+	}
+	elseif (($modo == "update") && ($envia)) {
+		mail($email, "Informações Cadastrais centuryeventos.com.br", "Caro(a) amigo(a), \n\nSeu evento foi incluido no site centuryeventos.com.br!\nPara acessá-la aponte seu navegador para:\n\nhttp://www.centuryeventos.com.br/ver_evento.php?cd=" . $cd . "\n\nUsuário: " . $email . "\nSenha: " . $senha, "From: <century@centuryeventos.com.br>");
+	}
 	if ($modo == "update") die('<html><script language="javascript">parent.location = parent.location;</script></html>');
-	if (($modo == "add") && (strlen($email) != 0)) mail($email, "Informações Cadastrais centuryeventos.com.br", "Caro(a) amigo(a), \n\nSeu evento foi incluido no site centuryeventos.com.br!\nPara acessá-la aponte seu navegador para:\n\nhttp://www.centuryeventos.com.br/ver_evento.php?cd=" . $cd . "\n\nUsuário: " . $email . "\nSenha: " . $senha, "From: CENTURYEVENTOS.COM.BR <century@centuryeventos.com.br>");
 	?>
 	<html>
 		<head>
@@ -205,7 +216,6 @@ function constroi_passo1(){
 		</body>
 	</html>
 	<? 
-
 }
 
 ##############################################################################################
@@ -243,7 +253,7 @@ function constroi_passo2(){
 	}
 	
 	if ($_POST["destaque"] == "sim") {
-		$result = mysql_query("SELECT LAST_INSERT_ID();") or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+		$result = mysql_query("SELECT LAST_INSERT_ID();") or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
 		$cd = mysql_fetch_row($result);
 		$query = "UPDATE eventos SET ";
 		$query .= "imagem_destaque=" . $cd[0];
@@ -304,7 +314,7 @@ function constroi_passo3(){
 	if($_POST["numero_imagem"] == ""){
 		require("../includes/conectar_mysql.php");
 		$query = "SELECT cd FROM fotos WHERE cd_evento=" . $codigo_evento . " ORDER BY cd DESC";
-		$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+		$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query .  mysql_error());
 		$cd = mysql_fetch_row($result);
 		$numero_imagem = $cd[0] + 1;
 		require("../includes/desconectar_mysql.php");
@@ -372,16 +382,16 @@ function constroi_passo4(){ ?>
 				<?php
 					require("../includes/conectar_mysql.php");
 					$query = "SELECT parceiro FROM parceiro_evento WHERE evento='" . $_REQUEST["codigo_evento"] . "'";
-					$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+					$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
 					if(mysql_num_rows($result) == 0){
 						echo("<tr><td>Nenhum Parceiro Cadastrado</td></tr>");
 					}
 					while($registros = mysql_fetch_row($result)){
 						$query = "SELECT cd, nome, tipo FROM parceiros WHERE cd=" . $registros[0];
-						$result2 = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+						$result2 = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
 						while($parceiro = mysql_fetch_array($result2, MYSQL_ASSOC)){
 							$query = "SELECT tipo from tipodeparceiro where cd=" . $parceiro["tipo"];
-							$result3 = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+							$result3 = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
 							$tipodoparceiro = mysql_fetch_row($result3);
 							?>
 							<tr>
@@ -405,7 +415,7 @@ function constroi_passo4(){ ?>
 						<?php
 							$query = "SELECT cd, nome FROM parceiros ORDER BY tipo";
 							require("../includes/conectar_mysql.php");
-							$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+							$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
 							while($tipo = mysql_fetch_array($result, MYSQL_ASSOC)) echo('<option value="' . $tipo["cd"] . '">' . $tipo["nome"] . '</option>');
 							require("../includes/desconectar_mysql.php");
 						?>
@@ -438,7 +448,7 @@ function constroi_passo5(){
 			$query .= $parceiro .",";
 			$query .= $codigo_evento .")";
 			require("../includes/conectar_mysql.php");
-			$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+			$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
 			require("../includes/desconectar_mysql.php");
 			constroi_passo4();
 		}
@@ -458,7 +468,7 @@ function constroi_passo5(){
 function verifica_parceiro_existente($codigo_evento, $codigo_parceiro){
 	require("../includes/conectar_mysql.php");
 	$query = "SELECT parceiro FROM parceiro_evento WHERE evento=$codigo_evento AND parceiro=$codigo_parceiro";
-	$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+	$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
 	$registro = mysql_fetch_row($result);
 	require("../includes/desconectar_mysql.php");
 	if(strlen($registro[0]) == 0) return true;

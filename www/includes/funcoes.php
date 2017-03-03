@@ -1,5 +1,5 @@
 <?php
-error_reporting  (E_ERROR | E_WARNING | E_PARSE);
+error_reporting  (E_ERROR | E_PARSE);
 
 $pagina_inicial = "index.php";
 $eventos = "eventos.php";
@@ -145,12 +145,13 @@ function constroi_destaque_eventos($numerodedestaques, $colunas){
 			$result2 = mysql_query($query);
 			$imagem = mysql_fetch_row($result2);
 			if($contador_de_colunas == $colunas-1) $style = "";
+			elseif (mysql_num_rows($result) == 1) $style = "";
 			else $style = 'style="border-right: 1px solid #001238;"';
 			?>
 			<td width="33%" align="center" valign="top" <?=$style?>>
-				<table width="100%" border="0" height="300">
+				<table width="100%" border="0">
 					<tr>
-						<td height="35%" align="center" valign="top"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" src="<?=$imagem[0]?>"></a></td>
+						<td height="93" align="center" valign="top"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" src="<?=$imagem[0]?>"></a></td>
 					</tr>
 					<tr>
 						<td class="celula" valign="top"><?=substr($evento["descricao"], 0, 150) . "...";?></td>
@@ -348,7 +349,8 @@ function constroi_parceiro_em_destaque(){
 	$registros = mysql_fetch_row($result);
 	if($registros[0] == 0) echo('<table width="100%" bgcolor="#E6E6E6" border="0" class="menurodape" height="100"><tr><td valign="top"><img src="imagens/bullet_red.gif">Não Há Parceiros Cadastrados</td></tr></table>');
 	else {
-		$query = "SELECT cd, path_thumb, nome from parceiros LIMIT " . mt_rand(1, $registros[0]-1) . ",1";
+		if($registros[0] == 1) $query = "SELECT cd, path_thumb, nome from parceiros LIMIT 1";
+		else $query = "SELECT cd, path_thumb, nome from parceiros LIMIT " . mt_rand(1, $registros[0]-1) . ",1";
 		$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 		$parceiro = mysql_fetch_array($result, MYSQL_ASSOC);
 		require("includes/desconectar_mysql.php");
@@ -385,8 +387,8 @@ function constroi_outros_eventos(){
 	?>
 	<table width="100%" style="border: 1px solid #8A91A1;" cellpadding="0" cellspacing="0">
 		<tr>
-			<td>
-				<table cellpadding="2" cellspacing="0" border="0">
+			<td align="center">
+				<table width="100%" cellpadding="2" cellspacing="0" border="0" style="width: 100%;">
 					<tr>
 						<td colspan="2">
 							<table width="100%" cellpadding="0" cellspacing="0">
@@ -533,7 +535,7 @@ function constroi_tabela_parceiros(){
 				<td colspan="2"><?=$parceiro["descricao"]?></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="right"><font size="-2"><?=$parceiro["telefone"] . " - " . $parceiro["email"] . " - " . $parceiro["endereco"]?></font></td>
+				<td colspan="2" align="right"><font size="-2"><? if(strlen($parceiro["telefone"]) != 0) echo($parceiro["telefone"]); if(strlen($parceiro["email"]) != 0) echo("&nbsp;-&nbsp;" . $parceiro["email"]); if(strlen($parceiro["endereco"]) != 0) echo("&nbsp;-&nbsp;" . $parceiro["endereco"]); ?></font></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">&nbsp;</td>
@@ -576,12 +578,16 @@ function constroi_dicas_destaque(){
 	$query = "SELECT count( * ) FROM dicas";
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$registros = mysql_fetch_row($result);
-
-	$query = "SELECT * FROM dicas LIMIT " . mt_rand(1, $registros[0]-1) . ",1";
+	$qtd = $registros[0];
+	if(($qtd == 0) || ($qtd == 1)){
+		$query = "SELECT * FROM dicas";
+	}
+	else $query = "SELECT * FROM dicas LIMIT " . mt_rand(1, $qtd-1) . ",1";
+	
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$dica = mysql_fetch_array($result, MYSQL_ASSOC);
 	require("includes/desconectar_mysql.php");
-	if(mysql_num_rows($result) == 0) echo('<div width="100%" class="conteudo">Não há dicas cadastradas</div>');
+	if($registros[0] == 0) echo('<div width="100%" class="conteudo">Não há dicas cadastradas</div>');
 	else {
 		?>
 		<div class="titulosecao"><img align="bottom" src="imagens/bullet_red.gif">&nbsp;Dicas</div><br>
@@ -634,13 +640,13 @@ function envia_mensagem(){
 	?>
 	<div class="titulosecao"><img align="bottom" src="imagens/bullet_red.gif">&nbsp;Fale Conosco!</div><br>
 	<?
-	if(mail($destino, "Formulário Fale Conosco - Ferr-eventos.com", $mensagem . "\n\n\nNome: " . $nome . "\nTelefone: " . $telefone, "From: " . $nome . " <" . $email . ">")){ ?>
+	if(mail($destino, "Formulário Fale Conosco - Centuryeventos.com.br", $mensagem . "\n\n\nNome: " . $nome . "\nTelefone: " . $telefone, "From: " . $nome . " <" . $email . ">")){ ?>
 		<table width="100%" class="conteudo">
 			<tr>
 				<td>A mensagem foi enviada com sucesso!</td>
 			</tr>
 			<tr>
-				<td><br><br><br><br><br><a href="fale_concosco.php">[Nova Mensagem]</a></td>
+				<td><br><br><br><br><br><a href="fale_conosco.php">[Nova Mensagem]</a></td>
 			</tr>
 		</table>
 <?	}

@@ -6,7 +6,7 @@ include("funcoes.php");
 ?>
 <html>
 	<head>
-		<title>fer_eventos.com</title>
+		<title>centuryeventos.com.br</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="../includes/estilo.css" rel="stylesheet" rev="stylesheet">
 	</head>

@@ -4,7 +4,7 @@ require("permissao_documento.php");
 ?>
 <html>
 	<head>
-		<title>fer_eventos.com</title>
+		<title>centuryeventos.com.br</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="../includes/estilo.css" rel="stylesheet" rev="stylesheet">
 	</head>
@@ -28,7 +28,7 @@ require("permissao_documento.php");
 								<hr>
 								<?php constroi_form_busca(); ?>
 								<hr color="#001238" size="1">
-								<iframe height="325" width="100%" src="wizard_texto.php?texto=home" scrolling="no" allowtransparency="yes"></iframe>
+								<iframe height="500" width="100%" src="wizard_texto.php?texto=home" scrolling="no" allowtransparency="yes"></iframe>
 								<hr size="8" align="center" color="#FD9800">
 								<div class="titulosecao"><img align="bottom" src="../imagens/bullet_red.gif">&nbsp;Eventos Recentes</div><br>
 								<? constroi_destaque_eventos(6, 3); ?>

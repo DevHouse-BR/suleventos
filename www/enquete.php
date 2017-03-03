@@ -119,9 +119,9 @@ function constroi_passo2(){
 								</tr>
 								<?
 								if (strlen($enquete["opcao1"]) != 0) echo('<tr><td colspan="2" class="menu" style="font-weight: normal;">' . $enquete["opcao1"] . '</td></tr><tr><td width="80%" valign="bottom"><div style="width: 100%; border: 1px solid white; background-color: #A6A6A6;"><div style="font-size: 8px; background-color: blue; width: ' . $percentagem_opcao1 . '%;"></div></div></td><td class="menu" style="font-size: 10px; vertical-align: bottom;">' . $percentagem_opcao1 . '%</td></tr>');
-								if (strlen($enquete["opcao1"]) != 0) echo('<tr><td colspan="2" class="menu" style="font-weight: normal;">' . $enquete["opcao2"] . '</td></tr><tr><td valign="bottom"><div style="width: 100%; border: 1px solid white; background-color: #A6A6A6;"><div style="font-size: 8px; background-color: green; width: ' . $percentagem_opcao2 . '%;">&nbsp;</div></div></td><td class="menu" style="font-size: 10px; vertical-align: bottom;">' . $percentagem_opcao2 . '%</td></tr>');
-								if (strlen($enquete["opcao1"]) != 0) echo('<tr><td colspan="2" class="menu" style="font-weight: normal;">' . $enquete["opcao3"] . '</td></tr><tr><td valign="bottom"><div style="width: 100%; border: 1px solid white; background-color: #A6A6A6;"><div style="font-size: 8px; background-color: yellow; width: ' . $percentagem_opcao3 . '%;">&nbsp;</div></div></td><td class="menu" style="font-size: 10px; vertical-align: bottom;">' . $percentagem_opcao3 . '%</td></tr>');
-								if (strlen($enquete["opcao1"]) != 0) echo('<tr><td colspan="2" class="menu" style="font-weight: normal;">' . $enquete["opcao4"] . '</td></tr><tr><td valign="bottom"><div style="width: 100%; border: 1px solid white; background-color: #A6A6A6;"><div style="font-size: 8px; background-color: red; width: ' . $percentagem_opcao4 . '%;">&nbsp;</div></div></td><td class="menu" style="font-size: 10px; vertical-align: bottom;">' . $percentagem_opcao4 . '%</td></tr>');
+								if (strlen($enquete["opcao2"]) != 0) echo('<tr><td colspan="2" class="menu" style="font-weight: normal;">' . $enquete["opcao2"] . '</td></tr><tr><td valign="bottom"><div style="width: 100%; border: 1px solid white; background-color: #A6A6A6;"><div style="font-size: 8px; background-color: green; width: ' . $percentagem_opcao2 . '%;">&nbsp;</div></div></td><td class="menu" style="font-size: 10px; vertical-align: bottom;">' . $percentagem_opcao2 . '%</td></tr>');
+								if (strlen($enquete["opcao3"]) != 0) echo('<tr><td colspan="2" class="menu" style="font-weight: normal;">' . $enquete["opcao3"] . '</td></tr><tr><td valign="bottom"><div style="width: 100%; border: 1px solid white; background-color: #A6A6A6;"><div style="font-size: 8px; background-color: yellow; width: ' . $percentagem_opcao3 . '%;">&nbsp;</div></div></td><td class="menu" style="font-size: 10px; vertical-align: bottom;">' . $percentagem_opcao3 . '%</td></tr>');
+								if (strlen($enquete["opcao4"]) != 0) echo('<tr><td colspan="2" class="menu" style="font-weight: normal;">' . $enquete["opcao4"] . '</td></tr><tr><td valign="bottom"><div style="width: 100%; border: 1px solid white; background-color: #A6A6A6;"><div style="font-size: 8px; background-color: red; width: ' . $percentagem_opcao4 . '%;">&nbsp;</div></div></td><td class="menu" style="font-size: 10px; vertical-align: bottom;">' . $percentagem_opcao4 . '%</td></tr>');
 								?>
 							</table>
 						</td>
@@ -132,3 +132,4 @@ function constroi_passo2(){
 		<?
 	require("includes/desconectar_mysql.php");
 }
+?>

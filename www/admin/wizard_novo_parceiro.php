@@ -58,6 +58,24 @@ function constroi_passo0(){
 				</tr>
 				<? } ?>
 				<tr>
+					<td class="label">Tipo:</td>
+					<td>
+						<select name="tipo">
+						<?php
+							$query = "SELECT * FROM tipodeparceiro ORDER BY tipo";
+							require("../includes/conectar_mysql.php");
+							$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
+							while($tipo = mysql_fetch_array($result, MYSQL_ASSOC)){
+								echo('<option value="' . $tipo["cd"] . '"');
+								if(($update) && ($tipo["cd"] == $parceiro["tipo"])) echo(" selected");
+								echo('>' . $tipo["tipo"] . '</option>');
+							}
+							require("../includes/desconectar_mysql.php");
+						?>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<td class="label">Imagem:</td>
 					<td colspan="2"><input name="image" type="file" accept="image/jpeg, image/jpg" style="width: 100%;"></td>
 				</tr>
@@ -80,24 +98,6 @@ function constroi_passo0(){
 				<tr>
 					<td class="label">Telefone:</td>
 					<td><input type="text" name="telefone" maxlength="255" size="40"<? if($update) echo(' value="' . $parceiro["telefone"] . '"');?>></td>
-				</tr>
-				<tr>
-					<td class="label">Tipo:</td>
-					<td>
-						<select name="tipo">
-						<?php
-							$query = "SELECT * FROM tipodeparceiro ORDER BY tipo";
-							require("../includes/conectar_mysql.php");
-							$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . mysql_error());
-							while($tipo = mysql_fetch_array($result, MYSQL_ASSOC)){
-								echo('<option value="' . $tipo["cd"] . '"');
-								if(($update) && ($tipo["cd"] == $parceiro["tipo"])) echo(" selected");
-								echo('>' . $tipo["tipo"] . '</option>');
-							}
-							require("../includes/desconectar_mysql.php");
-						?>
-						</select>
-					</td>
 				</tr>
 				<tr>
 					<td class="label">Descricao:</td>

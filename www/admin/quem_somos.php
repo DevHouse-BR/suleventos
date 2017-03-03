@@ -6,7 +6,7 @@ include("funcoes.php");
 ?>
 <html>
 	<head>
-		<title>fer_eventos.com</title>
+		<title>centuryeventos.com.br</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="../includes/estilo.css" rel="stylesheet" rev="stylesheet">
 	</head>
@@ -26,7 +26,7 @@ include("funcoes.php");
 								<?php constroi_tabela_esq(-1); ?>
 							</td>
 							<td align="left" valign="top" bgcolor="#E6E6E6" class="conteudo" width="470">
-								<iframe height="350" width="100%" src="wizard_texto.php?texto=quemsomos" scrolling="no" allowtransparency="yes"></iframe>
+								<iframe height="500" width="100%" src="wizard_texto.php?texto=quemsomos" scrolling="no" allowtransparency="yes"></iframe>
 							</td>
 							<td width="140" align="right" valign="top" bgcolor="#001238">
 								<? constroi_parceiro_em_destaque(); ?>

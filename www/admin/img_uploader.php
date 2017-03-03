@@ -40,9 +40,15 @@ require("permissao_documento.php");
 			$nova_largura_img = $imagem_largura * $fator_proporcao;
 			$nova_altura_img = $imagem_altura * $fator_proporcao;
 			
-			$nova_imagem = imagecreatetruecolor($nova_largura_img,$nova_altura_img) or die($HTML_RETORNO3); 
-			imagecopyresized($nova_imagem, $imagem_original, 0, 0, 0, 0, $nova_largura_img, $nova_altura_img, $imagem_largura, $imagem_altura) or die($HTML_RETORNO4); 
-			
+			if (gd_version() >= 2){
+				$nova_imagem = imagecreatetruecolor($nova_largura_img,$nova_altura_img) or die($HTML_RETORNO3); 
+				imagecopyresized($nova_imagem, $imagem_original, 0, 0, 0, 0, $nova_largura_img, $nova_altura_img, $imagem_largura, $imagem_altura) or die($HTML_RETORNO4); 
+			}
+			else {
+				$nova_imagem = imagecreate($nova_largura_img,$nova_altura_img) or die("Problem In Creating image"); 
+				imagecopyresized($nova_imagem,$imagem_original,0,0,0,0,$nova_largura_img,$nova_altura_img,$imagem_largura,$imagem_altura) or die("Problem In resizing"); 
+			}
+						
 			$nova_imagem_grande = $IMG_ROOT . "/" . $nome_da_imagem;
 			
 			imagejpeg($nova_imagem, $nova_imagem_grande, $JPG_QUALITY);
@@ -58,8 +64,14 @@ require("permissao_documento.php");
 				$nova_largura_thumb = $imagem_largura * $fator_proporcao;
 				$nova_altura_thumb = $imagem_altura * $fator_proporcao;
 				
-				$nova_imagem = imagecreatetruecolor($nova_largura_thumb,$nova_altura_thumb) or die($HTML_RETORNO3); 
-				imagecopyresized($nova_imagem, $imagem_original, 0, 0, 0, 0, $nova_largura_thumb, $nova_altura_thumb, $imagem_largura, $imagem_altura) or die($HTML_RETORNO4); 
+				if (gd_version() >= 2){
+					$nova_imagem = imagecreatetruecolor($nova_largura_thumb,$nova_altura_thumb) or die($HTML_RETORNO3); 
+					imagecopyresized($nova_imagem, $imagem_original, 0, 0, 0, 0, $nova_largura_thumb, $nova_altura_thumb, $imagem_largura, $imagem_altura) or die($HTML_RETORNO4); 
+				}
+				else {
+					$nova_imagem = imagecreate($nova_largura_thumb,$nova_altura_thumb) or die("Problem In Creating image"); 
+					imagecopyresized($nova_imagem,$imagem_original,0,0,0,0,$nova_largura_thumb,$nova_altura_thumb,$imagem_largura,$imagem_altura) or die("Problem In resizing"); 
+				}
 				
 				$nova_imagem_thumb = $IMG_ROOT . "/" . $THUMB_ROOT . "thumb_" . $nome_da_imagem;
 				
@@ -81,5 +93,25 @@ require("permissao_documento.php");
 		$nova_imagem_thumb = str_replace( "../", "",$nova_imagem_thumb);
 		
 		return array($nova_imagem_grande, $nova_imagem_thumb, $tamanhoarquivo);
+	}
+	function gd_version() { 
+	   static $gd_version_number = null; 
+	   if ($gd_version_number === null) { 
+		   // Use output buffering to get results from phpinfo() 
+		   // without disturbing the page we're in.  Output 
+		   // buffering is "stackable" so we don't even have to 
+		   // worry about previous or encompassing buffering. 
+		   ob_start(); 
+		   phpinfo(8); 
+		   $module_info = ob_get_contents(); 
+		   ob_end_clean(); 
+		   if (preg_match("/\bgd\s+version\b[^\d\n\r]+?([\d\.]+)/i", 
+				   $module_info,$matches)) { 
+			   $gd_version_number = $matches[1]; 
+		   } else { 
+			   $gd_version_number = 0; 
+		   } 
+	   } 
+	   return $gd_version_number; 
 	}
 ?>

@@ -24,7 +24,7 @@ $restrito = checa_permissoes_evento($cd_evento);
 						<tr>
 							<td align="left" valign="top" height="100%">
 								<?php 
-								if(!$restrito) constroi_tabela_esq(-1);
+								if(!$restrito) constroi_tabela_esq($cd_evento);
 								else decisao1($cd_evento, $restrito); ?>
 							</td>
 							<td width="460" align="left" valign="top" bgcolor="#E6E6E6" class="conteudo" width="470">

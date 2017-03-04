@@ -36,7 +36,7 @@ $tipo = $_GET["tipo"];
 							</td>
 							<td align="left" valign="top" bgcolor="#E6E6E6" class="conteudo" width="470">
 								<? 
-								if (strlen($tipo) == 0)	constroi_tabela_tipo_parceiros(); 
+								if (strlen($tipo) == 0)	constroi_tabela_tipo_parceiros_nova(); 
 								else constroi_tabela_parceiros($tipo);
 								?>
 							</td>
@@ -57,5 +57,56 @@ $tipo = $_GET["tipo"];
 				</td>
 			</tr>
 		</table>
+		
 	</body>
 </html>
+<?
+function tabela_edita_tipo_parceiro(){
+	include("../includes/conectar_mysql.php");
+	$query = "SELECT * FROM tipodeparceiro";
+	$result = mysql_query($query);
+	echo('<hr><div style="background-color: #001238; color: #FFFFFF; font-size: 14px; text-align: center; font-weight: bold;">Edição de Tipos de Parceiros</div><table width="100%"><tr><td></td><td class="menurodape">Tipo</td></tr>');
+	while($tipo = mysql_fetch_assoc($result)){
+		?>
+		<tr>
+			<td><img src="../<?=$tipo["path"]?>"></td>
+			<td><li><a href="form_tipodeparceiro.php?cd=<?=$tipo["cd"]?>&modo=update" target="_blank"><?=$tipo["tipo"]?></a></li></td>
+		</tr>
+		<?
+	}
+	echo('</table>');
+	include("../includes/desconectar_mysql.php");
+}
+function constroi_tabela_tipo_parceiros_nova(){
+	//global $pagina_inicial, $parceiros;
+	require("../includes/conectar_mysql.php");
+	$query = "SELECT DISTINCT parceiros.tipo as tipo1, tipodeparceiro.tipo as tipo2, tipodeparceiro.cd, tipodeparceiro.path, tipodeparceiro.path_thumb FROM parceiros, tipodeparceiro WHERE parceiros.tipo=tipodeparceiro.cd ORDER BY tipodeparceiro.tipo";
+	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+	?>
+	<hr>
+		<?
+		$contador = 0;
+		while($parceiro = mysql_fetch_array($result, MYSQL_ASSOC)){
+			$query = "SELECT COUNT(*) FROM parceiros WHERE tipo = " . $parceiro["tipo1"];
+			$result2 = mysql_query($query);
+			$resposta = mysql_fetch_row($result2);
+			$qtd = $resposta[0];
+			$query = "SELECT path_thumb FROM parceiros  WHERE tipo=" . $parceiro["tipo1"] . " order by rand() Limit 1";
+			$result3 = mysql_query($query);
+			$resposta = mysql_fetch_row($result3);
+			$imagem = $resposta[0];
+			?>
+			<div style="vertical-align:bottom; border-top: solid 1px #E6E6E6; border-left: solid 1px #E6E6E6; border-bottom: solid 1px #666666; border-right: solid 1px #666666; height: 50px; filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#E6E6E6,endColorStr=#999999);">
+				<table>
+					<tr>
+						<td width="65"><a href="parceiros.php?tipo=<?=$parceiro["tipo1"]?>"><img border="0" width="56" height="41" src="../<? if(strlen($parceiro["path"]) != 0) echo($parceiro["path"]); else echo($imagem); ?>"></a></td>
+						<td width="300"><a class="menuparceiros" href="parceiros.php?tipo=<?=$parceiro["tipo1"]?>"><?=$parceiro["tipo2"]?>&nbsp;(<?=$qtd?>)</a></td>
+						<td><a href="form_tipodeparceiro.php?cd=<?=$parceiro["cd"]?>&modo=update" target="_blank"><font face="wingdings" size="+2"><</font></a></td>
+					</tr>
+				</table>
+			</div>
+			<?
+		}
+	require("../includes/desconectar_mysql.php");
+}
+?>

@@ -149,7 +149,12 @@ function constroi_destaque_eventos($numerodedestaques, $colunas){
 						<td height="35%" align="center" valign="top"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" src="../<?=$imagem[0]?>"></a></td>
 					</tr>
 					<tr>
-						<td class="celula" valign="top"><?=substr($evento["descricao"], 0, 150) . "...";?></td>
+						<td class="celula" valign="top">
+							<?
+							if(strlen($evento["pginicial"] == 0)) echo(substr($evento["descricao"], 0, 150) . "...");
+							else echo(substr($evento["pginicial"], 0, 150) . "...");
+							?>
+						</td>
 					</tr>
 					<tr>
 						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="../imagens/veja.gif"></a></td>
@@ -200,7 +205,7 @@ function constroi_fotos_evento($codigo_evento, $colunas){
 	<div class="titulosecao"><img align="bottom" src="../imagens/bullet_red.gif">&nbsp;Clique na foto para ampliar</div><br>
 	<table width="100%" cellspacing="5" cellpadding="0" border="0"><tr>
 	<?
-	$query = "SELECT cd, path, path_thumb FROM fotos WHERE cd_evento=" . $codigo_evento;
+	$query = "SELECT cd, path, path_thumb FROM fotos WHERE cd_evento=" . $codigo_evento . " ORDER BY cd";
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	while($foto = mysql_fetch_array($result, MYSQL_ASSOC)){
 		?>
@@ -533,7 +538,7 @@ function constroi_menu_esq(){
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
 						<td width="30">&nbsp;</td>
-						<td onMouseOver="mostramenu1();"><a class="menuesquerdo" href="<?=$parceiros?>">Parceiros</a></td>
+						<td onMouseOver="mostramenu1();"><a class="menuesquerdo" href="<?=$parceiros?>">Profissionais</a></td>
 						<td width="10"><div id="menu_1" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
 					</tr>
 				</table>
@@ -544,7 +549,7 @@ function constroi_menu_esq(){
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
 						<td width="30">&nbsp;</td>
-						<td onMouseOver="mostramenu3();"><a class="menuesquerdo" href="<?=$anunciantes?>">Anunciantes</a></td>
+						<td onMouseOver="mostramenu3();"><a class="menuesquerdo" href="<?=$anunciantes?>">Serviços Especiais</a></td>
 						<td width="10"><div id="menu_3" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
 					</tr>
 				</table>
@@ -813,7 +818,7 @@ function constroi_tabela_eventos($numerodedestaques, $colunas, $pagina){
 		$data = $_GET["data"];
 		$filtro = "AND eventos.data=" . $data;
 	}
-	?><a href="javascript: void window.open('wizard_novo_evento.php', 'EVENTO', 'width=450,height=470,status=no,resizable=no,top=20,left=100,dependent=no,alwaysRaised=yes');">[Novo Evento]</a><hr><?
+	?><a href="javascript: void window.open('wizard_novo_evento.php', 'EVENTO', 'width=450,height=500,status=no,resizable=yes,top=20,left=100,dependent=no,alwaysRaised=yes');">[Novo Evento]</a><hr><?
 
 	$query = "SELECT eventos.cd, eventos.nomes, eventos.data, eventos.imagem_destaque, eventos.status, tipodeevento.tipo FROM eventos, tipodeevento WHERE eventos.tipo=tipodeevento.cd " . $filtro . " ORDER BY data DESC" . $query_limit;
 	require("../includes/conectar_mysql.php");
@@ -942,7 +947,7 @@ function constroi_tabela_parceiros($tipo){
 			<tr>
 				<td colspan="2" align="right">
 					<a href="javascript: apagar(<?=$parceiro["cd"]?>);">[Apagar Parceiro]</a>&nbsp;&nbsp;
-					<a href="javascript: void window.open('wizard_novo_parceiro.php?modo=update&cd=<?=$parceiro["cd"]?>', 'PARCEIRO', 'width=400,height=480,status=no,resizable=no,top=20,left=100,dependent=yes,alwaysRaised=yes');">[Edita Parceiro]</a>&nbsp;&nbsp;
+					<a href="javascript: void window.open('wizard_novo_parceiro.php?modo=update&cd=<?=$parceiro["cd"]?>', 'PARCEIRO', 'width=400,height=510,status=no,resizable=no,top=20,left=100,dependent=yes,alwaysRaised=yes');">[Edita Parceiro]</a>&nbsp;&nbsp;
 					<?
 					if (verifica_pagina_parceiro($parceiro["cd"])) echo('<a href="ver_pagina_parceiro.php?cd=' . $parceiro["cd"] . '" class="menurodape">Veja&nbsp;+&nbsp;<img border="0" src="../imagens/bullet_green.gif" align="bottom"></a>');
 					else echo('<a href="javascript: void window.open(\'wizard_pagina_parceiro.php?cd_parceiro=' . $parceiro["cd"] . '\', \'PARCEIRO\', \'width=500,height=480,status=no,resizable=no,top=20,left=100,dependent=yes,alwaysRaised=yes\');">[Cria Pagina do Parceiro]</a>');
@@ -1616,12 +1621,15 @@ function constroi_admin_secoes(){	?>
 				require("../includes/conectar_mysql.php");
 				$query = "SELECT * FROM nomedesecao ORDER BY nome";
 				$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
-				while($nomedesecao = mysql_fetch_assoc($result)){ ?>
+				while($nomedesecao = mysql_fetch_assoc($result)){ 
+					if ($nomedesecao["pgseparadas"] == "s") $checked = " checked";
+					else $checked = "";
+				?>
 					<table width="100%" border="0" cellpadding="0" cellspacing="0">
 						<tr>
 							<form action="secoes.php" method="post">
 							<td height="30" valign="bottom" width="35"><a href="javascript: mostra_conteudo_<?=$nomedesecao["cd"]?>();"><img border="0" src="../imagens/pastadocumento.gif"></a></td>
-							<td align="left" valign="middle" class="menurodape"><input type="text" name="nomedesecao" value="<?=$nomedesecao["nome"]?>" style="width: 116px; font-family:'Lucida Sans Unicode', Verdana, Arial; font-weight: bold;">&nbsp;&nbsp;<input type="submit" value="OK">&nbsp;&nbsp;<a href="javascript: apagar_secao(<?=$nomedesecao["cd"]?>);"><img border="0" src="../imagens/button_drop.png"></a></td>
+							<td align="left" valign="middle" class="menurodape"><input type="text" name="nomedesecao" value="<?=$nomedesecao["nome"]?>" style="width: 116px; font-family:'Lucida Sans Unicode', Verdana, Arial; font-weight: bold;">&nbsp;&nbsp;<input type="checkbox" name="pgseparadas"<?=$checked?>>&nbsp;Paginas Separadas&nbsp;&nbsp;<input type="submit" value="OK">&nbsp;&nbsp;<a href="javascript: apagar_secao(<?=$nomedesecao["cd"]?>);"><img border="0" src="../imagens/button_drop.png"></a></td>
 							<input type="hidden" name="cd" value="<?=$nomedesecao["cd"]?>">
 							<input type="hidden" name="modo" value="mudanomesecao">
 							</form>
@@ -1639,7 +1647,7 @@ function constroi_admin_secoes(){	?>
 								$query = "SELECT * FROM secoes WHERE nomedesecao = " . $nomedesecao["cd"] . " ORDER BY titulo";
 								$result2 = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 								while($secao = mysql_fetch_assoc($result2)){
-									echo('<tr><td width="10">&nbsp;</td><td width="50"><img src="../imagens/arquivo.gif"></td><td class="celula"><a href="javascript: edita_texto(' . $nomedesecao["cd"] . ', ' . $secao["cd"] . ', true)">' . $secao["titulo"] . '&nbsp;&nbsp;<a href="javascript: apagar(' . $secao["cd"] . ');"><img border="0" src="../imagens/button_drop.png"></a></td></tr>');
+									echo('<tr><td width="10">&nbsp;</td><td width="50"><img src="../imagens/arquivo.gif"></td><td class="celula"><a href="javascript: edita_texto(' . $nomedesecao["cd"] . ', ' . $secao["cd"] . ', true)">' . $secao["titulo"] . '&nbsp;&nbsp;<a href="javascript: apagar(' . $secao["cd"] . ');"><img border="0" src="../imagens/button_drop.png"></a></tr>');
 								}
 								?><tr><td>&nbsp;</td><td><img src="../imagens/arquivo2.gif"></td><td><input type="button" value="Novo Texto da Seção" onClick="Javascript: edita_texto(<?=$nomedesecao["cd"]?>, 0, false);"></td></tr></table>';
 							</script>
@@ -1692,7 +1700,13 @@ function constroi_destaque_agenda($numerodedestaques, $colunas){
 						<td height="93" align="center" valign="top"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" src="../<?=$imagem[0]?>"></a></td>
 					</tr>
 					<tr>
-						<td class="celula" valign="top"><b><?=date("d/m/Y", $evento["data"])?></b><br><?=substr($evento["descricao"], 0, 150) . "...";?></td>
+						<td class="celula" valign="top">
+							<b><?=date("d/m/Y", $evento["data"])?></b><br>
+							<?
+							if(strlen($evento["pginicial"] == 0)) echo(substr($evento["descricao"], 0, 150) . "...");
+							else echo(substr($evento["pginicial"], 0, 150) . "...");
+							?>
+						</td>
 					</tr>
 					<tr>
 						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="../imagens/veja.gif"></a></td>

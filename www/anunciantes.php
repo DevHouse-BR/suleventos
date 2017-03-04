@@ -9,6 +9,12 @@ $tipo = $_GET["tipo"];
 	<head>
 		<title>suleventos.com.br</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="content-language" content="pt-BR" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta name="robots" content="index,follow" />
+		<meta name="keywords" content="eventos,Joinville,Santa Catarina,noivas,noiva,evento,bodas,carros antigos,casamento,aniversário,15 anos,bodas,lua de mel,nupcias,matrimonio,festa,noivado" /> 
+		<meta name="author" content="Leonardo llv@brturbo.com" /> 
+		<meta name="description" content="Página de Eventos de Joinville Santa Catarina" /> 
 		<link href="includes/estilo.css" rel="stylesheet" rev="stylesheet">
 	</head>
 	<body>

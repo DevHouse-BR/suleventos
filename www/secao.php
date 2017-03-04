@@ -7,6 +7,12 @@ include("includes/funcoes.php");
 	<head>
 		<title>suleventos.com.br</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="content-language" content="pt-BR" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta name="robots" content="index,follow" />
+		<meta name="keywords" content="eventos,Joinville,Santa Catarina,noivas,noiva,evento,bodas,carros antigos,casamento,aniversário,15 anos,bodas,lua de mel,nupcias,matrimonio,festa,noivado" /> 
+		<meta name="author" content="Leonardo llv@brturbo.com" /> 
+		<meta name="description" content="Página de Eventos de Joinville Santa Catarina" /> 
 		<link href="includes/estilo.css" rel="stylesheet" rev="stylesheet">
 	</head>
 	<body>
@@ -34,7 +40,13 @@ include("includes/funcoes.php");
 								<?php constroi_tabela_esq(-1); ?>
 							</td>
 							<td align="left" valign="top" bgcolor="#E6E6E6" class="conteudo" width="470">
-								<? constroi_tabela_secao($_GET["secao"]); ?>
+								<? 
+									$secao = $_GET["secao"];
+									$subsecao = $_GET["subsecao"];
+									if(strlen($secao) == 0) $secao = 1;
+									if(strlen($subsecao) == 0) $subsecao = 0;
+									constroi_tabela_secao($secao, $subsecao); 
+								?>
 							</td>
 							<td width="140" align="right" valign="top" bgcolor="#001238">
 								<? constroi_parceiro_em_destaque(); ?>

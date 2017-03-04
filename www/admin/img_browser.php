@@ -84,7 +84,7 @@ $eof = $tmp[0];
 							var nome = tmp[tmp.length - 1];
 							var chaminho_thumb = tmp.join("/")
 							chaminho_thumb = chaminho_thumb.replace(nome, "thumb/thumb_" + nome);
-							rng.pasteHTML("<IMG border=\"0\" src=\"" + chaminho_thumb + "\" align=\"" + alinhamento + "\" style=\"cursor: hand;\" onclick=\"window.open('" + caminho + "', 'Imagem', 'width=" + (parseInt(width) + 10) + ",height=" + (parseInt(height) + 10) + ",status=no,resizable=yes,top=20,left=20,dependent=yes,alwaysRaised=yes, scrollbars=yes');\">");
+							rng.pasteHTML("<a href=\"" + caminho + "\" target=\"_blank\"><IMG border=\"0\" src=\"" + chaminho_thumb + "\" align=\"" + alinhamento + "\"></a>");
 						}
 						else rng.pasteHTML("<IMG src=\"" + caminho + "\" align=\"" + alinhamento + "\">");
 				}

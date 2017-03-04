@@ -160,7 +160,7 @@ function constroi_passo2(){
 	$pasta = "../parceiros";
 	$arquivo = $_FILES["image"];
 	$nome_arquivo = $_POST["cd_pagina"] . "_" . $_POST["numero_imagem"] . ".jpg";
-	$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 320, 240, 120, 90, true);
+	$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 640, 480, 120, 90, true);
 	
 	$query = "INSERT INTO pagina_parceiro_fotos (cd_pagina, path, path_thumb) VALUES (";
 	$query .= $cd_pagina . ", '";

@@ -22,8 +22,8 @@ switch ($oque){
 		$query = "SELECT path, path_thumb FROM pagina_parceiro_fotos WHERE cd=" . $cd;
 		$result = mysql_query($query) or die("Erro ao acessar registros do Banco de dados: " . mysql_error());;
 		$arquivo = mysql_fetch_row($result);
-		if(!unlink("../" . $arquivo[0])) die("Erro ao apagar o arquivo!");
-		if(!unlink("../" . $arquivo[1])) die("Erro ao apagar o arquivo!");
+		unlink("../" . $arquivo[0]);
+		unlink("../" . $arquivo[1]);
 		break;
 		
 	case "pagina_anunciante_fotos":

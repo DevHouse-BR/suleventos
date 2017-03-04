@@ -14,8 +14,10 @@ if (strlen($_POST["modo"]) != 0){
 	}
 	elseif ($_POST["modo"] == "mudanomesecao"){
 		if (strlen($_POST["nomedesecao"]) != 0){
+			if($_POST["pgseparadas"] == true) $pgseparadas = "s";
+			else $pgseparadas = "n";
 			require("../includes/conectar_mysql.php");
-			$query = "UPDATE nomedesecao SET nome='" . $_POST["nomedesecao"] . "' WHERE cd=" . $_POST["cd"];
+			$query = "UPDATE nomedesecao SET nome='" . $_POST["nomedesecao"] . "', pgseparadas='" . $pgseparadas . "' WHERE cd=" . $_POST["cd"];
 			$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 			require("../includes/desconectar_mysql.php");
 		}

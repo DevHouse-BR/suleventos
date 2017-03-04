@@ -1,7 +1,7 @@
 <?php
 	function verifica_nome_arquivo($teste){
-		$CARACTERES_SEM_PERMISSAO = "ãõñÃÕÑáéíóúÁÉÍÓÚüÜçÇ@#$%&*ªº°?§' "; //caracteres que deverão ser substituidos
-		$TRADUZIDOS_PARA = "aonaonaeiouaeiouuucc_____________"; //por estes caracteres.
+		$CARACTERES_SEM_PERMISSAO = "ãõñÃÕÑáéíóúÁÉÍÓÚüÜçÇ@#$%&*ªº°?§/' "; //caracteres que deverão ser substituidos
+		$TRADUZIDOS_PARA = "aonaonaeiouaeiouuucc______________"; //por estes caracteres.
 		
 		return strtolower(strtr($teste,$CARACTERES_SEM_PERMISSAO, $TRADUZIDOS_PARA));
 	}

@@ -98,7 +98,11 @@ function constroi_passo0(){
 				</tr>
 				<tr>
 					<td class="label">Descricao:</td>
-					<td><textarea name="descricao" rows="5" cols="30" onKeyUp="contador.innerHTML = 'Quantidade de Caracteres: ' + this.value.length;" onKeyDown="if ((this.value.length > 254) && (event.keyCode != 8) && (event.keyCode != 46)  && (event.keyCode != 37)  && (event.keyCode != 38)  && (event.keyCode != 39)  && (event.keyCode != 40)) return false;"><? if($update) echo($evento["descricao"]);?></textarea><div class="label" id="contador">Quantidade de Caracteres: 0</div></td>
+					<td><textarea name="descricao" rows="3" cols="30" onKeyUp="contador.innerHTML = 'Quantidade de Caracteres: ' + this.value.length;" onKeyDown="if ((this.value.length > 254) && (event.keyCode != 8) && (event.keyCode != 46)  && (event.keyCode != 37)  && (event.keyCode != 38)  && (event.keyCode != 39)  && (event.keyCode != 40)) return false;"><? if($update) echo($evento["descricao"]);?></textarea><div class="label" id="contador">Quantidade de Caracteres: 0</div></td>
+				</tr>
+				<tr>
+					<td class="label">Pagina Inicial:</td>
+					<td><textarea name="pginicial" rows="3" cols="30" onKeyUp="contador.innerHTML = 'Quantidade de Caracteres: ' + this.value.length;" onKeyDown="if ((this.value.length > 254) && (event.keyCode != 8) && (event.keyCode != 46)  && (event.keyCode != 37)  && (event.keyCode != 38)  && (event.keyCode != 39)  && (event.keyCode != 40)) return false;"><? if($update) echo($evento["pginicial"]);?></textarea><div class="label" id="contador">Quantidade de Caracteres: 0</div></td>
 				</tr>
 				<tr>
 					<td class="label">Requer Senha?</td>
@@ -149,6 +153,7 @@ function constroi_passo1(){
 	$cd = $_REQUEST["codigo_evento"];
 	$email = $_POST["email"];
 	$status = $_POST["status"];
+	$pginicial = $_POST["pginicial"];
 	
 	if ($restrito == "sim"){
 		$senha = str_replace("=", "", base64_encode(rand(100000, 999999)));
@@ -162,7 +167,7 @@ function constroi_passo1(){
 	$data = mktime( 0, 0, 0, $tmp[1], $tmp[0], $tmp[2]);
 	
 	if ($modo == "add")	{
-		$query = "INSERT INTO eventos (nomes, data, local, descricao, email, senha, tipo, status) VALUES ('";
+		$query = "INSERT INTO eventos (nomes, data, local, descricao, email, senha, tipo, status, pginicial) VALUES ('";
 		$query .= $nomes ."','";
 		$query .= $data ."','";
 		$query .= $local ."','";
@@ -170,7 +175,8 @@ function constroi_passo1(){
 		$query .= $email ."','";
 		$query .= $senha . "', ";
 		$query .= $tipo . ", ";
-		$query .= $status . ")";
+		$query .= $status . ", '";
+		$query .= $pginicial . "')";
 	}
 	if (($modo == "update") && (strlen($email) != 0)){
 		$consulta = "SELECT email FROM eventos WHERE cd=" . $cd;
@@ -187,7 +193,8 @@ function constroi_passo1(){
 		$query .= "descricao='" . $descricao ."', ";
 		$query .= "email='" . $email ."', ";
 		$query .= "senha='" . $senha ."', ";
-		$query .= "status='" . $status ."' ";
+		$query .= "status='" . $status ."', ";
+		$query .= "pginicial='" . $pginicial ."' ";
 		$query .= " WHERE cd=" . $cd;
 	}
 	if (($modo == "update") || ($modo == "add")){

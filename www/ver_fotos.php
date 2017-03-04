@@ -15,7 +15,7 @@
 						$query = "SELECT path from fotos WHERE cd=" . $cd;
 						$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 						$fotos = mysql_fetch_assoc($result);
-						echo('<img id="moldura" width="320" height="240" src="' . $fotos["path"] . '">');
+						echo('<img id="moldura" src="' . $fotos["path"] . '">');
 						require("includes/desconectar_mysql.php");
 						?>		
 					</td>

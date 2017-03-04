@@ -125,7 +125,7 @@ function constroi_passo0(){
 				<input type="hidden" name="img" value="<? if($update) echo($parceiro["imagem"]); ?>">
 				</form>
 			</table>
-			<iframe width="100%" src="form_tipodeparceiro.php" height="70" scrolling="no"></iframe>
+			<iframe width="100%" src="form_tipodeparceiro.php" height="100" scrolling="no"></iframe>
 		</body>
 	</html>
 	<? 
@@ -159,7 +159,7 @@ function constroi_passo1(){
 		$pasta = "../parceiros";
 		$arquivo = $_FILES["image"];
 		$nome_arquivo = $nome . ".jpg";
-		$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 320, 240, 120, 90, true);
+		$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 320, 240, 120, 90, true);		
 	}
 	
 	if ($modo == "add")	{

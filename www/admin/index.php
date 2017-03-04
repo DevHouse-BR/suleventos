@@ -13,7 +13,7 @@ if(strlen($pagina) == 0) $pagina = 1;
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="../includes/estilo.css" rel="stylesheet" rev="stylesheet">
 	</head>
-	<body>
+	<body onLoad="squirrelmail_loginpage_onload();">
 		<table width="100%" height="100%" border="0">
 			<tr>
 				<td align="center" valign="top">

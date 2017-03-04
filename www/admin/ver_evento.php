@@ -48,7 +48,7 @@ $cd_evento = $_GET["cd"];
 								<a href="javascript: apagar_evento(<?=$cd_evento?>);">[Apagar Evento]</a>
 								<? constroi_ficha_tecnica($cd_evento); ?>
 								<hr>
-								<iframe width="100%" height="460" src="wizard_novo_evento.php?modo=update&codigo_evento=<?=$cd_evento?>"></iframe>
+								<iframe width="100%" height="500" src="wizard_novo_evento.php?modo=update&codigo_evento=<?=$cd_evento?>"></iframe>
 							</td>
 							<td width="140" align="right" valign="top" bgcolor="#001238">
 								<? constroi_parceiro_em_destaque(); ?>

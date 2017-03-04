@@ -13,19 +13,20 @@ require("includes/desconectar_mysql.php");
 echo('<p>' . $text[0] . '</p>'); 
 ?>
 </div>
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="440" height="73" id="banner" align="middle">
+<object style="background-color:#000000;" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="440" height="73" id="banner" align="middle">
 	<param name="allowScriptAccess" value="sameDomain" />
 	<param name="movie" value="imagens/bannercolombo.swf" />
 	<param name="quality" value="high" />
 	<param name="bgcolor" value="#000000" />
+	<param name="wmode" value="transparent" />
 	<embed src="imagens/bannercolombo.swf" quality="high" bgcolor="#ffffff" width="440" height="73" name="banner" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 </object>
 <hr>
-<div class="titulosecao">&nbsp;&nbsp;<img align="absmiddle" src="imagens/bola.gif">&nbsp;<a class="menuesquerdo" href="<?=$agenda?>">Agenda</a></div><br>
+<div class="titulosecao">&nbsp;&nbsp;<img align="absmiddle" src="imagens/bullet_blue3.gif">&nbsp;<a class="menuesquerdo" href="<?=$agenda?>">Agenda</a></div><br>
 <? constroi_destaque_agenda(3, 3); ?>
 <br>
 <hr>
-<div class="titulosecao">&nbsp;&nbsp;<img align="absmiddle" src="imagens/bola.gif">&nbsp;<a class="menuesquerdo" href="<?=$eventos?>">Eventos</a></div><br>
+<div class="titulosecao">&nbsp;&nbsp;<img align="absmiddle" src="imagens/bullet_blue3.gif">&nbsp;<a class="menuesquerdo" href="<?=$eventos?>">Eventos</a></div><br>
 <? constroi_destaque_eventos(3, 3); ?>
 <br>
 <? constroi_fim_pagina();

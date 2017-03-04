@@ -9,10 +9,10 @@
 	border-bottom-color: #999999;
 }
 .tabelacalendario {
-	border-top: 1px solid #808080;
-	border-right: 1px solid #808080;
-	border-bottom: 1px solid #808080;
-	border-left: 1px solid #808080;
+	border-top: 1px solid #809FE3;
+	border-right: 1px solid #809FE3;
+	border-bottom: 1px solid #809FE3;
+	border-left: 1px solid #809FE3;
 }
 .mes {
 	font-family: Arial, Helvetica, sans-serif;
@@ -39,7 +39,7 @@
 	color: #000000;
 	font-size: 11px;
 	text-align: center;
-	background-color: #999999;
+	background-color: #809FE3;
 	font-weight: bold;
 }
 .outromes {
@@ -47,7 +47,7 @@
 	color: #000000;
 	font-size: 10px;
 	text-align: center;
-	background-color: #BBBBBB;
+	background-color: #CCCCCC;
 	border-top: 1px none #808080;
 	border-right: 1px solid #808080;
 	border-bottom: 1px solid #808080;
@@ -59,7 +59,7 @@
 	font-size: 10px;
 	font-weight: bold;
 	cursor: hand;
-	background-color: #FF9900;
+	background-color: #4F76CE;
 }
 .hoje {
 	font-family: Arial, Helvetica, sans-serif;

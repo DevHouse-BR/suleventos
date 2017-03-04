@@ -1,5 +1,5 @@
-              <?php
-//error_reporting  (E_ERROR | E_PARSE);
+<?php
+error_reporting  (E_ERROR | E_PARSE);
 
 session_start();
 if (!isset($_SESSION['count'])) {
@@ -47,20 +47,23 @@ function constroi_inicio_pagina(){
 			<link href="includes/estilo.css" rel="stylesheet" rev="stylesheet">
 		</head>
 		<body onLoad="efeito_versiculo();">
-			<table width="100%" height="100%" border="1">
+			<table width="100%" height="100%" border="0" bgcolor="#98B4EE">
 				<tr>
 					<td align="center" valign="top">
-						<table width="776" border="0" cellpadding="0" cellspacing="6">
+						<table width="776" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="border:outset thin;">
 							<tr>
-								<td colspan="3" height="139">
+								<td colspan="3" height="131" background="imagens/cabec.jpg" valign="top">
 									<? constroi_menu_cabecalho(); ?>
 								</td>
 							</tr>
 							<tr>
-								<td width="157" align="left" valign="top" height="100%">
+								<td colspan="3" height="131" background="imagens/cabec2.jpg">&nbsp;</td>
+							</td>
+							<tr>
+								<td width="157" align="left" valign="top" height="100%" bgcolor="#E8EEFC"><br>
 									<? constroi_tabela_esq(-1); ?>
 								</td>
-								<td align="left" valign="top" bgcolor="#F0F0F0" class="conteudo2" width="440">
+								<td align="left" valign="top" bgcolor="#E8EEFC" class="conteudo2" width="440">
 	<?
 	 constroi_form_busca();
 }
@@ -68,14 +71,11 @@ function constroi_inicio_pagina(){
 function constroi_fim_pagina(){
 ?>
 </td>
-							<td width="167" align="right" valign="top">
+							<td width="170" align="right" valign="top">
 								<table width="167" cellpadding="0" cellspacing="0">
 									<tr>
-										<td><img src="imagens/bc.gif"></td>
-									</tr>
-									<tr>
-										<td bgcolor="#FF9900" align="center">
-										<div style="text-align: center; background-color: #FF9900; height: 150px; width: 160px;">
+										<td bgcolor="#FFFFFF" align="center">
+										<div style="text-align: center; background-color: #FFFFFF; height: 272px; width: 160px;">
 											<? banners_direita(); ?>
 										</div>
 										<hr>
@@ -86,15 +86,11 @@ function constroi_fim_pagina(){
 										<? constroi_outros_eventos(); ?>
 										</td>
 									</tr>
-									<tr>
-										<td><img src="imagens/bf.gif"></td>
-									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="3" height="70" valign="bottom">
-								<?php constroi_rodape(); ?>
+							<td colspan="3" height="40" valign="bottom" background="imagens/rodape.jpg">&nbsp;</td>
 							</td>
 						</tr>
 					</table>
@@ -110,19 +106,19 @@ function constroi_fim_pagina(){
 
 function constroi_menu_cabecalho(){
 	//global $pagina_inicial, $eventos, $quem_somos, $parceiros, $fale_conosco, $dicas, $cartorios, $igrejas, $anunciantes; ?>
-	<table width="100%" cellpadding="2" cellspacing="2">
+	<table width="100%" cellpadding="0" cellspacing="0" border="0">
 		<tr>
-			<td width="330">
-				<img src="imagens/logo.gif" width="330" height="130">
+			<td width="367">&nbsp;</td>
+			<td width="130">
+				<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="130" height="80" id="cartao_fidelidade" align="middle">
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="movie" value="imagens/cartao_fidelidade.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />
+<embed src="imagens/cartao_fidelidade.swf" quality="high" bgcolor="#ffffff" width="130" height="80" name="cartao_fidelidade" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
+			
 			</td>
-			<td width="200">
-				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="200" height="130">
-					<param name="movie" value="imagens/yuh.swf">
-					<param name="quality" value="high">
-					<embed src="imagens/yuh.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="200" height="125"></embed>
-				</object>
-			</td>
-			<td bgcolor="#FF9900" id="versiculo" style="text-align: center; font-family:Arial, Helvetica, sans-serif; font-size: <?=retorna_config("tamanho_fonte_versiculo")?>px;"></td>
+			<td>&nbsp;</td>
+			<td width="279" id="versiculo" style="text-align: center; font-family:Arial, Helvetica, sans-serif; font-size: <?=retorna_config("tamanho_fonte_versiculo")?>px;"></td>
 		</tr>
 	</table>
 	<script language="javascript">
@@ -130,9 +126,9 @@ function constroi_menu_cabecalho(){
 			//parceirojava.innerHTML = '<img src="' + imagens[i] + '">';Blur(Add = 1, Direction = 225, Strength = 10)">"
 			//document.all["versiculo"].style.filter='progid:DXImageTransform.Microsoft.Pixelate(MaxSquare="25")';
 			document.all["versiculo"].style.filter='progid:DXImageTransform.Microsoft.RandomDissolve()';
-			document.all["versiculo"].filters[0].apply();
-			document.all["versiculo"].filters[0].play();
-			document.all["versiculo"].bgColor = "#FFFFFF";
+			//document.all["versiculo"].filters[0].apply();
+			//document.all["versiculo"].filters[0].play();
+			//document.all["versiculo"].bgColor = "#FFFFFF";
 			document.all["versiculo"].innerHTML = '<b><?=retorna_config("versiculo")?></b>';
 
 			//alert("lixo");
@@ -189,7 +185,7 @@ function constroi_tabela_esq($codigo){
 			<td style="font-size: 5px;">&nbsp;</td>
 		</tr>
 		<tr>
-			<td valign="top" bgcolor="#F0F0F0">
+			<td valign="top" bgcolor="#E8EEFC">
 				<table width="157" cellpadding="0" cellspacing="2" border="0" class="conteudo">
 					<tr>
 						<td class="menuesquerdo" align="center"><b>Procure Eventos por Data</b>
@@ -216,7 +212,7 @@ function constroi_tabela_esq($codigo){
 			</td>
 		</tr>
 		<tr>
-			<td bgcolor="#F0F0F0" height="100%">&nbsp;</td>
+			<td bgcolor="#E8EEFC" height="100%">&nbsp;</td>
 		</tr>
 	</table>
 <?
@@ -261,7 +257,7 @@ function monta_contador(){
 				break;
 		}
 	}
-	echo('<div class="menuesquerdo" style="width: 100%; text-align:center; vertical-align: middle;">Visitante n&deg;<table cellpadding="0"><tr><td style="border-top: 5px solid #FF6600; border-left: 5px solid #FF6600; border-bottom: 5px solid #FF9900; border-right: 5px solid #FF9900;">' . $contador . '</td></tr></table></div>');
+	echo('<div class="menuesquerdo" style="width: 100%; padding-left: 20px;">Visitante n&deg;<table cellpadding="0"><tr><td style="border-top: 5px solid #0000AA; border-left: 5px solid #0000AA; border-bottom: 5px solid #5C73AC; border-right: 5px solid #5C73AC;">' . $contador . '</td></tr></table></div>');
 }
 
 
@@ -270,7 +266,7 @@ function monta_contador(){
 function constroi_form_busca(){ ?>
 <table width="100%" cellpadding="0" cellspacing="0">
 	<tr>
-		<td bgcolor="#FF9900">
+		<td bgcolor="#E8EEFC">
 			<form method="post" name="busca" action="eventos.php?busca=chave">
 				<div class="menuesquerdo" style="vertical-align:middle; width: 100%; text-align:center;">Busca:&nbsp;<input type="text" name="chave">&nbsp;
 					<select name="tipo">
@@ -280,9 +276,6 @@ function constroi_form_busca(){ ?>
 				</div>
 			</form>
 		</td>
-	</tr>
-	<tr>
-		<td><img src="imagens/bar.gif"></td>
 	</tr>
 </table>
 	 <?
@@ -322,7 +315,10 @@ function constroi_tabela_igrejas(){
 
 function constroi_rodape(){
 	global $pagina_inicial, $eventos, $quem_somos, $parceiros, $fale_conosco, $dicas, $cartorios, $igrejas, $anunciantes; ?>
-	<table width="100%" height="65" bgcolor="#E6E6E6" border="0">
+	<table width="100%" height="40" bgcolor="#E6E6E6" border="0">
+		<tr>
+			
+		</tr>
 		<tr>
 			<td align="center" valign="middle"><font class="menurodape"><!--<a class="menurodape" href="<?=$pagina_inicial?>">Pagina Inicial</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$eventos?>">Eventos</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$quem_somos?>">Quem Somos</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$parceiros?>">Profissionais</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$anunciantes?>">Serviços Especiais</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$fale_conosco?>">Fale Conosco</a><br><a class="menurodape" href="<?=$dicas?>">Dicas e Curiosidades</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$cartorios?>">Cartórios</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$igrejas?>">Igrejas</a>
 				<br><br>-->
@@ -419,7 +415,7 @@ function constroi_destaque_agenda($numerodedestaques, $colunas){
 					</tr>
 					<tr>
 						<td class="celula" valign="top">
-							<span style="font-weight: bold; color: #FF6600;"><?=date("d/m/Y", $evento["data"])?></span><br>
+							<span style="font-weight: bold; color: #000000;"><?=date("d/m/Y", $evento["data"])?></span><br>
 							<?
 							if(strlen($evento["pginicial"] == 0)) echo(substr($evento["descricao"], 0, 150) . "...");
 							else echo(substr($evento["pginicial"], 0, 150) . "...");
@@ -737,9 +733,12 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$pagina_inicial?>">Pagina Inicial</a></td>
-						<td width="10">&nbsp;</td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$pagina_inicial?>">Pagina Inicial</a></td>
+						<td width="22"><img src="imagens/menu1.gif" /></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -748,9 +747,12 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$agenda?>">Agenda</a></td>
-						<td width="10">&nbsp;</td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$agenda?>">Agenda</a></td>
+						<td width="22"><img src="imagens/menu1.gif" /></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -759,9 +761,40 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$eventos?>">Eventos</a></td>
-						<td width="10">&nbsp;</td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$eventos?>">Eventos</a></td>
+						<td width="22"><img src="imagens/menu1.gif" /></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<!--<tr>
+			<td width="100%">
+				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+					<tr>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$cartao_fidelidade?>">Cartão Fidelidade</a></td>
+						<td width="22"><img src="imagens/menu1.gif" /></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>-->
+		<tr>
+			<td width="100%">
+				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+					<tr>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$quem_somos?>">Quem Somos</a></td>
+						<td width="22"><img src="imagens/menu1.gif" /></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -770,9 +803,12 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$cartao_fidelidade?>">Cartão Fidelidade</a></td>
-						<td width="10">&nbsp;</td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="mostramenu1();"><a class="menuesquerdo" href="<?=$parceiros?>">Profissionais</a></td>
+						<td width="22" background="imagens/menu1.gif" /><div id="menu_1" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -781,9 +817,12 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$quem_somos?>">Quem Somos</a></td>
-						<td width="10">&nbsp;</td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="mostramenu3();"><a class="menuesquerdo" href="<?=$anunciantes?>">Servi&ccedil;os Especiais</a></td>
+						<td width="22" background="imagens/menu1.gif" /><div id="menu_3" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -792,9 +831,12 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="mostramenu1();"><a class="menuesquerdo" href="<?=$parceiros?>">Profissionais</a></td>
-						<td width="10"><div id="menu_1" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$fale_conosco?>">Fale Conosco</a></td>
+						<td width="22"><img src="imagens/menu1.gif" /></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -803,9 +845,12 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="mostramenu3();"><a class="menuesquerdo" href="<?=$anunciantes?>">Servi&ccedil;os Especiais</a></td>
-						<td width="10"><div id="menu_3" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="mostramenu2();"><a class="menuesquerdo" href="<?=$dicas?>">Dicas/Curiosidades</a></td>
+						<td width="22" background="imagens/menu1.gif" /><div id="menu_2" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -814,9 +859,12 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$fale_conosco?>">Fale Conosco</a></td>
-						<td width="10">&nbsp;</td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="mostramenu5();"><a class="menuesquerdo" href="<?=$cartorios?>">Cartórios</a></td>
+						<td width="22" background="imagens/menu1.gif" /><div id="menu_5" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -825,9 +873,12 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="mostramenu2();"><a class="menuesquerdo" href="<?=$dicas?>">Dicas/Curiosidades</a></td>
-						<td width="10"><div id="menu_2" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="mostramenu4();"><a class="menuesquerdo" href="<?=$igrejas?>">Igrejas</a></td>
+						<td width="22" background="imagens/menu1.gif" /><div id="menu_4" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -836,9 +887,12 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="mostramenu5();"><a class="menuesquerdo" href="<?=$cartorios?>">Cartórios</a></td>
-						<td width="10"><div id="menu_5" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="escondemenu();"><a class="menuesquerdo" href="sites_parceiros.php">Sites de Parceiros</a></td>
+						<td width="22"><img src="imagens/menu1.gif" /></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
@@ -847,30 +901,8 @@ function constroi_menu_esq(){
 			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="mostramenu4();"><a class="menuesquerdo" href="<?=$igrejas?>">Igrejas</a></td>
-						<td width="10"><div id="menu_4" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td width="100%">
-				<table cellpadding="0" cellspacing="0" border="0" width="100%">
-					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="sites_parceiros.php">Sites de Parceiros</a></td>
-						<td width="10"></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td width="100%">
-				<table cellpadding="0" cellspacing="0" border="0" width="100%">
-					<tr>
-						<td width="30" height="20"><img src="imagens/icone.gif"></td>
-						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="http://www.suleventos.com.br/chat">Chat&nbsp;
+						<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+						<td height="20" background="imagens/menu2.gif" onMouseOver="escondemenu();"><a class="menuesquerdo" href="http://www.suleventos.com.br/chat">Chat&nbsp;
 							<?
 							require("includes/conectar_mysql.php");
 							$result = mysql_query("SELECT COUNT(*) FROM blte_online");
@@ -878,13 +910,16 @@ function constroi_menu_esq(){
 							echo("(" . $registro[0] . ")");
 							require("includes/desconectar_mysql.php");
 							?>
-							</a>
-						</td>
-						<td width="10">&nbsp;</td>
+							</a></td>
+						<td width="22" background="imagens/menu1.gif" /></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="2"></td>
 					</tr>
 				</table>
 			</td>
 		</tr>
+		
 		<?
 		$counter = 6;
 		require("includes/conectar_mysql.php");
@@ -895,21 +930,21 @@ function constroi_menu_esq(){
 				<td width="100%">
 					<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						<tr>
-							<td width="30" height="20"><img src="imagens/icone.gif"></td>
-							<td onMouseOver="mostramenu<?=$counter?>();">
-								<?
+							<td background="imagens/menu2.gif" width="5">&nbsp;</td>
+							<td height="20" background="imagens/menu2.gif" onMouseOver="mostramenu<?=$counter?>();"><?
 								if($secao["pgseparadas"] == "n"){?>
 									<a class="menuesquerdo" href="secao.php?secao=<?=$secao["cd"]?>"><?=$secao["nome"]?></a>
 								<? }
 								else echo('<span class="menuesquerdo">' . $secao["nome"] . '</span>');
-								?>
-							</td>
-							<td width="10"><div id="menu_<?=$counter?>" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+								?></td>
+							<td width="22" background="imagens/menu1.gif" /><div id="menu_<?=$counter?>" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
+						</tr>
+						<tr>
+							<td colspan="3" height="2"></td>
 						</tr>
 					</table>
 				</td>
 			</tr>
-
 			<?
 			$counter++;
 		}
@@ -1760,7 +1795,7 @@ function constroi_pagina_parceiro($codigo, $colunas){
 		if (strlen($pagina["endereco"]) > 0) echo('Endereço: ' . $pagina["endereco"] . "<br>");
 		if (strlen($pagina["telefone"]) > 0) echo('Telefone: ' . $pagina["telefone"] . "<br>");
 		if (strlen($pagina["email"]) > 0) echo('Email: <a href="mailto: ' . $pagina["email"] . '">' . $pagina["email"] . '</a><br>');
-		if (strlen($pagina["site"]) > 0) echo('Site: <a href="' . $pagina["site"] . '">' . $pagina["site"] . '</a><br>');
+		if (strlen($pagina["site"]) > 0) echo('Site: <a href="http://' . $pagina["site"] . '">' . $pagina["site"] . '</a><br>');
 		?>
 	</div>
 	<br>
@@ -1931,7 +1966,13 @@ function constroi_tabela_secao($secao, $subsecao){
 function banners_direita(){
 	?>
 	<center>
-		<span class="menuesquerdo">Parceiros:</span><br><br>
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td width="10" height="29"></td>
+				<td width="15"><img src="imagens/menu3.gif"></td>
+				<td background="imagens/menu4.gif" class="menuesquerdo" valign="top">Parceiros</td>
+		</table>
+		<br>
 		<?
 		require("includes/conectar_mysql.php");
 		$query = "SELECT * FROM banners order by ordem, imagem";

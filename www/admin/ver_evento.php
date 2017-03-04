@@ -14,6 +14,9 @@ $cd_evento = $_GET["cd"];
 					void window.open('delete.php?oque=eventos&cd=' + codigo, 'CONFIG', 'width=100,height=50,toolbar=no,status=no,resizable=no,top=20,left=100,dependent=yes,alwaysRaised=yes');
 				}
 			}
+			function caixa(){
+				if(window.confirm("Deseja adicionar todas as fotos na caixa de entrada neste evento?")) window.open("caixa.php?evento=<?=$cd_evento?>");
+			}
 		</script>
 	</head>
 	<body>
@@ -45,6 +48,7 @@ $cd_evento = $_GET["cd"];
 								<a href="javascript: void window.open('wizard_novo_evento.php?modo=altera_destaque&passo=1&codigo_evento=<?=$cd_evento?>', 'EVENTO', 'width=420,height=160,status=no,resizable=no,top=20,left=100,dependent=yes,alwaysRaised=yes');">[Foto de Destaque]</a>&nbsp;&nbsp;
 								<a href="javascript: void window.open('wizard_novo_evento.php?modo=adiciona_imagem&passo=3&codigo_evento=<?=$cd_evento?>', 'EVENTO', 'width=420,height=160,status=no,resizable=no,top=20,left=100,dependent=yes,alwaysRaised=yes');">[Adicionar Foto]</a>&nbsp;&nbsp;
 								<a href="javascript: void window.open('wizard_novo_evento.php?modo=edita_parceiro&passo=4&codigo_evento=<?=$cd_evento?>', 'EVENTO', 'width=420,height=400,status=no,resizable=no,top=20,left=100,dependent=yes,alwaysRaised=yes');">[Editar Parceiros]</a>&nbsp;&nbsp;
+								<a href="javascript: caixa();">[Caixa de Entrada]</a>&nbsp;&nbsp;
 								<a href="javascript: apagar_evento(<?=$cd_evento?>);">[Apagar Evento]</a>
 								<? constroi_ficha_tecnica($cd_evento); ?>
 								<hr>

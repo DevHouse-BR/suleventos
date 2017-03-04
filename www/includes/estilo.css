@@ -49,35 +49,35 @@ body {
 .menu {
 	font-family: "Lucida Sans Unicode", Verdana, Arial;
 	font-size: 12px;
-	color: #FFFFFF;
+	color: #5C73AC;
 	text-decoration: none;
 	font-weight:bold;
 }
 .menu:link {
 	font-family: "Lucida Sans Unicode", Verdana, Arial;
 	font-size: 12px;
-	color: #FFFFFF;
+	color: #5C73AC;
 	text-decoration: none;
 	font-weight:bold;
 }
 .menu:visited {
 	font-family: "Lucida Sans Unicode", Verdana, Arial;
 	font-size: 12px;
-	color: #FFFFFF;
+	color: #5C73AC;
 	text-decoration: none;
 	font-weight:bold;
 }
 .menu:hover {
 	font-family: "Lucida Sans Unicode", Verdana, Arial;
 	font-size: 12px;
-	color: #FFFFFF;
+	color: #5C73AC;
 	text-decoration: underline;
 	font-weight:bold;
 }
 .menu:active {
 	font-family: "Lucida Sans Unicode", Verdana, Arial;
 	font-size: 12px;
-	color: #CCCCCC;
+	color: #5C73AC;
 	text-decoration: none;
 	font-weight:bold;
 }
@@ -160,7 +160,6 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	color: #000000;
-	border: solid 1px #808080;
 }
 .celula{
 	padding: 5px 5px 5px 5px;

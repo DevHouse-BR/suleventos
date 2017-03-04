@@ -9,7 +9,7 @@ include("includes/funcoes.php");
 		<meta http-equiv="pragma" content="no-cache" />
 		<meta name="robots" content="index,follow" />
 		<meta name="keywords" content="eventos,Joinville,Santa Catarina,noivas,noiva,evento,bodas,carros antigos,casamento,aniversário,15 anos,bodas,lua de mel,nupcias,matrimonio,festa,noivado" /> 
-		<meta name="author" content="Leonardo llv@brturbo.com" /> 
+		<meta name="author" content="Leonardo leonardo@udesc.br" /> 
 		<meta name="description" content="Página de Eventos de Joinville Santa Catarina" /> 
 		<link href="includes/estilo.css" rel="stylesheet" rev="stylesheet">
 		<script language="javascript">
@@ -42,13 +42,50 @@ include("includes/funcoes.php");
 				var i = 0;
 				function muda_parceiro(){
 					//parceirojava.innerHTML = '<img src="' + imagens[i] + '">';
-					document.getElementById("parceirojava").style.filter='progid:DXImageTransform.Microsoft.Pixelate(MaxSquare="25")';
-					//document.getElementById("parceirojava").filters[0].apply();
-					//document.getElementById("parceirojava").filters[0].play();
-					document.getElementById("parceirojava").src = imagens[i];
-					document.getElementById("parceirojava").innerHTML = '<a class="menurodape" href="http://www.suleventos.com.br/ver_pagina_parceiro.php?cd=' + codigo[i] + '">' + parceiros[i] + '</a>';
+					document.all["parceirojava"].style.filter='progid:DXImageTransform.Microsoft.Pixelate(MaxSquare="25")';
+					document.all["parceirojava"].filters[0].apply();
+					document.all["parceirojava"].filters[0].play();
+					document.all["parceirojava"].src = imagens[i];
+					document.all["nm_parceiro"].innerHTML = '<a class="menurodape" href="http://www.suleventos.com.br/ver_pagina_parceiro.php?cd=' + codigo[i] + '">' + parceiros[i] + '</a>';
 					i++;
 					if (imagens.length == i) i = 0;
+				}
+				<?
+				require("includes/conectar_mysql.php");
+				$query = "SELECT cd, nome, path_thumb FROM anunciantes";
+				$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+				$parceiro = mysql_fetch_assoc($result);
+				echo("var imagens2 = ['" . $parceiro["path_thumb"] . "'");
+				while($parceiro = mysql_fetch_assoc($result)){
+					echo(",'" . $parceiro["path_thumb"] . "'");
+				}
+				echo("];\n");
+				$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+				$parceiro = mysql_fetch_assoc($result);
+				echo("var anunciantes = ['" . $parceiro["nome"] . "'");
+				while($parceiro = mysql_fetch_assoc($result)){
+					echo(",'" . $parceiro["nome"] . "'");
+				}
+				echo("];\n");
+				$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+				$parceiro = mysql_fetch_assoc($result);
+				echo("var codigo2 = ['" . $parceiro["cd"] . "'");
+				while($parceiro = mysql_fetch_assoc($result)){
+					echo(",'" . $parceiro["cd"] . "'");
+				}
+				echo("];\n");
+				require("includes/desconectar_mysql.php");
+				?>
+				var j = 0;
+				function muda_anunciante(){
+					//parceirojava.innerHTML = '<img src="' + imagens[i] + '">';
+					document.all["anunciantejava"].style.filter='progid:DXImageTransform.Microsoft.Pixelate(MaxSquare="25")';
+					document.all["anunciantejava"].filters[0].apply();
+					document.all["anunciantejava"].filters[0].play();
+					document.all["anunciantejava"].src = imagens2[j];
+					document.all["nm_anunciante"].innerHTML = '<a class="menurodape" href="http://www.suleventos.com.br/ver_pagina_anunciante.php?cd=' + codigo[j] + '">' + anunciantes[j] + '</a>';
+					j++;
+					if (imagens2.length == j) j = 0;
 				}
 		</script>
 	</head>
@@ -112,7 +149,11 @@ include("includes/funcoes.php");
 									<span id="nm_parceiro" class="menurodape"></span><br>
 									<span><img  id="parceirojava" src="imagens/bullet_red.gif"></span>
 								</div>
-								<? constroi_parceiro_em_destaque(); ?>
+								<div style="text-align: center; background-color: #E6E6E6; height: 150px; width: 130px; border: inset;">
+									<span id="nm_anunciante" class="menurodape"></span><br>
+									<span><img  id="anunciantejava" src="imagens/bullet_red.gif"></span>
+								</div>
+								<? constroi_destaque_cestas(); ?>
 							  <font style="font-size:2px;"><br></font>
 							  <? constroi_destaque_cadastro_casamento(); ?>
 							   <font style="font-size:2px;"><br></font>
@@ -134,5 +175,6 @@ include("includes/funcoes.php");
 	</body>
 	<script language="javascript">
 		setInterval('muda_parceiro()', 5000);
+		setInterval('muda_anunciante()', 5000);
 	</script>
 </html>

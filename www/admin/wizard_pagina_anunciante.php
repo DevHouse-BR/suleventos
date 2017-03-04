@@ -134,7 +134,12 @@ function constroi_passo1(){
 				<form action="wizard_pagina_anunciante.php" encType="multipart/form-data" method="post" name="sendform">
 				<input name="MAX_FILE_SIZE" type="hidden" value="10000000">
 				<tr>
-					<td width="80%"><input name="image" type="file" accept="image/jpeg, image/jpg" style="width: 100%;"></td>
+					<td>Foto:</td>
+					<td colspan="2"><input name="image" type="file" accept="image/jpeg, image/jpg" style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td width="20%">Descrição:</td>
+					<td width="60%"><input name="descricao" type="text" style="width: 100%;" maxlength="20"></td>
 					<td width="20%"><input name="Submit" type="submit" value="Enviar" style="width: 100%;"></td>
 				</tr>
 				<input type="hidden" name="numero_imagem" value="1">
@@ -153,6 +158,7 @@ function constroi_passo1(){
 function constroi_passo2(){
 	$modo = $_REQUEST["modo"];
 	$cd_pagina = $_REQUEST["cd_pagina"];
+	$desc = $_REQUEST["descricao"];
 	
 	require("../includes/conectar_mysql.php");
 	
@@ -162,10 +168,11 @@ function constroi_passo2(){
 	$nome_arquivo = $_POST["cd_pagina"] . "_" . $_POST["numero_imagem"] . ".jpg";
 	$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 640, 480, 120, 90, true);
 	
-	$query = "INSERT INTO pagina_anunciante_fotos (cd_pagina, path, path_thumb) VALUES (";
+	$query = "INSERT INTO pagina_anunciante_fotos (cd_pagina, path, path_thumb, descricao) VALUES (";
 	$query .= $cd_pagina . ", '";
 	$query .= $info_imagem[0] ."','";
-	$query .= $info_imagem[1] . "')";
+	$query .= $info_imagem[1] ."','";
+	$query .= $desc . "')";
 	
 	if (!mysql_query($query)){
 		unlink("../" . $info_imagem[0]);
@@ -238,7 +245,12 @@ function constroi_passo3(){
 				<form action="wizard_pagina_anunciante.php" encType="multipart/form-data" method="post" name="sendform">
 				<input name="MAX_FILE_SIZE" type="hidden" value="10000000">
 				<tr>
-					<td width="80%"><input name="image" type="file" accept="image/jpeg, image/jpg" style="width: 100%;"></td>
+					<td>Foto:</td>
+					<td colspan="2"><input name="image" type="file" accept="image/jpeg, image/jpg" style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td width="20%">Descrição:</td>
+					<td width="60%"><input name="descricao" type="text" style="width: 100%;" maxlength="20"></td>
 					<td width="20%"><input name="Submit" type="submit" value="Enviar" style="width: 100%;"></td>
 				</tr>
 				<input type="hidden" name="numero_imagem" value="<?=$numero_imagem?>">

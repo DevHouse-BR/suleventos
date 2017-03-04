@@ -17,6 +17,10 @@ switch($passo){
 			break;
 	case 5: constroi_passo5();
 			break;
+	case 6: constroi_passo6();
+		break;
+	case 7: constroi_passo7();
+		break;
 }
 
 
@@ -98,11 +102,11 @@ function constroi_passo0(){
 				</tr>
 				<tr>
 					<td class="label">Descricao:</td>
-					<td><textarea name="descricao" rows="3" cols="30" onKeyUp="contador.innerHTML = 'Quantidade de Caracteres: ' + this.value.length;" onKeyDown="if ((this.value.length > 254) && (event.keyCode != 8) && (event.keyCode != 46)  && (event.keyCode != 37)  && (event.keyCode != 38)  && (event.keyCode != 39)  && (event.keyCode != 40)) return false;"><? if($update) echo($evento["descricao"]);?></textarea><div class="label" id="contador">Quantidade de Caracteres: 0</div></td>
+					<td><textarea name="descricao" rows="3" cols="30" onKeyUp="contador1.innerHTML = 'Quantidade de Caracteres: ' + this.value.length;" onKeyDown="if ((this.value.length > 254) && (event.keyCode != 8) && (event.keyCode != 46)  && (event.keyCode != 37)  && (event.keyCode != 38)  && (event.keyCode != 39)  && (event.keyCode != 40)) return false;"><? if($update) echo($evento["descricao"]);?></textarea><div class="label" id="contador1">Quantidade de Caracteres: 0</div></td>
 				</tr>
 				<tr>
 					<td class="label">Pagina Inicial:</td>
-					<td><textarea name="pginicial" rows="3" cols="30" onKeyUp="contador.innerHTML = 'Quantidade de Caracteres: ' + this.value.length;" onKeyDown="if ((this.value.length > 254) && (event.keyCode != 8) && (event.keyCode != 46)  && (event.keyCode != 37)  && (event.keyCode != 38)  && (event.keyCode != 39)  && (event.keyCode != 40)) return false;"><? if($update) echo($evento["pginicial"]);?></textarea><div class="label" id="contador">Quantidade de Caracteres: 0</div></td>
+					<td><textarea name="pginicial" rows="3" cols="30" onKeyUp="contador2.innerHTML = 'Quantidade de Caracteres: ' + this.value.length;" onKeyDown="if ((this.value.length > 254) && (event.keyCode != 8) && (event.keyCode != 46)  && (event.keyCode != 37)  && (event.keyCode != 38)  && (event.keyCode != 39)  && (event.keyCode != 40)) return false;"><? if($update) echo($evento["pginicial"]);?></textarea><div class="label" id="contador2">Quantidade de Caracteres: 0</div></td>
 				</tr>
 				<tr>
 					<td class="label">Requer Senha?</td>
@@ -231,6 +235,10 @@ function constroi_passo1(){
 					<td width="80%"><input name="image" type="file" accept="image/jpeg, image/jpg" style="width: 100%;"></td>
 					<td width="20%"><input name="Submit" type="submit" value="Enviar" style="width: 100%;"></td>
 				</tr>
+				<tr>
+					<td width="80%">Marca D'agua&nbsp;<input name="watermark" type="checkbox" checked></td>
+					<td width="20%"></td>
+				</tr>
 				<input type="hidden" name="numero_imagem" value="1">
 				<input type="hidden" name="passo" value="2">
 				<input type="hidden" name="destaque" value="sim">
@@ -259,11 +267,15 @@ function constroi_passo2(){
 		$query = "DELETE FROM fotos WHERE cd=" . $codigo_foto[0];
 		$result = mysql_query($query);
 	}
-	include("img_uploader.php");
+	include("img_uploader_watermark.php");
 	$pasta = "../fotos";
 	$arquivo = $_FILES["image"];
 	$nome_arquivo = $_POST["codigo_evento"] . "_" . $_POST["numero_imagem"] . ".jpg";
-	$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 320, 240, 120, 90, true);
+	
+	if($_POST["watermark"] == "on") $watermark = true;
+	else $watermark = false;
+	
+	$info_imagem = upload_imagem($pasta, $arquivo, $nome_arquivo, 320, 240, 120, 90, true, $watermark);
 	
 	$query = "INSERT INTO fotos (path, path_thumb, cd_evento, bytes, largura, altura) VALUES ('";
 	$query .= $info_imagem[0] ."','";
@@ -364,6 +376,10 @@ function constroi_passo3(){
 					<td width="80%"><input name="image" type="file" accept="image/jpeg, image/jpg" style="width: 100%;"></td>
 					<td width="20%"><input name="Submit" type="submit" value="Enviar" style="width: 100%;"></td>
 				</tr>
+				<tr>
+					<td width="80%">Marca D'agua&nbsp;<input name="watermark" type="checkbox" checked></td>
+					<td width="20%"></td>
+				</tr>
 				<input type="hidden" name="numero_imagem" value="<?=$numero_imagem?>">
 				<input type="hidden" name="passo" value="2">
 				<input type="hidden" name="destaque" value="nao">
@@ -456,7 +472,11 @@ function constroi_passo4(){ ?>
 				</form>
 			</table>
 			<hr>
-			<input type="button" value="Concluir" onClick="javascript: self.close(); opener.location = opener.location;">
+      <form method="post" action="wizard_novo_evento.php">
+      	<input type="hidden" name="passo" value="6">
+      	<input type="hidden" name="codigo_evento" value="<?=$_REQUEST["codigo_evento"]?>">
+		<input type="submit" value="Próximo >>">
+      </form>
 		</body>
 	</html>
 <?
@@ -492,6 +512,117 @@ function constroi_passo5(){
 	}
 }
 
+##############################################################################################
+
+function constroi_passo6(){?>
+	<html>
+		<head>
+			<title>Cadastro de Eventos: Quarto Passo</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+			<style type="text/css">
+				.label{
+					font-family:Verdana, Arial, Helvetica, sans-serif;
+					font-size:12px;
+					text-align:right;
+					vertical-align:top;				
+				}
+			</style>
+			<script language="javascript" type="text/javascript">
+				function remove_parceiro(codigo){
+					if (window.showModalDialog('confirmacao.html',['Confirme!','Deseja apagar os tipos de parceiros selecionados deste evento?','Sim','Não'],'dialogWidth:320px;dialogHeight:100px;status:no;') == "1"){
+						passo4.modo.value = "remove";
+						passo4.tipodeparceiro.value = codigo;
+						passo4.submit();
+					}
+				}
+			</script>
+		</head>
+		<body>
+			<table border="1" width="100%">
+				<tr>
+					<td colspan="2" align="center"><b>Tipo de Parceiros</b></td>
+				</tr>
+				<?php
+					require("../includes/conectar_mysql.php");
+					$query = "SELECT tipodeparceiro FROM tipodeparceiro_evento WHERE evento='" . $_REQUEST["codigo_evento"] . "'";
+					$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
+					if(mysql_num_rows($result) == 0){
+						echo("<tr><td>Nenhum Tipo de Parceiro Cadastrado</td></tr>");
+					}
+					while($registros = mysql_fetch_row($result)){
+						$query = "SELECT cd, tipo FROM tipodeparceiro WHERE cd=" . $registros[0];
+						$result2 = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
+						$parceiro = mysql_fetch_assoc($result2);
+							?>
+							<tr>
+								<td><a href="javascript: remove_parceiro('<?=$parceiro["cd"]?>');">[Remove]</a></td>
+								<td><?=$parceiro["tipo"]?></td>
+							</tr>
+							<?
+					}
+					require("../includes/desconectar_mysql.php");
+				?>
+			</table>
+			<hr>
+			<table>
+				<form name="passo4" action="wizard_novo_evento.php" method="post">
+				<tr>
+					<td width="110" class="label">Tipo de Parceiro:</td>
+					<td>
+						<select name="tipodeparceiro">
+						<?php
+							$query = "SELECT cd, tipo FROM tipodeparceiro ORDER BY tipo";
+							require("../includes/conectar_mysql.php");
+							$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
+							while($tipo = mysql_fetch_array($result, MYSQL_ASSOC)) echo('<option value="' . $tipo["cd"] . '">' . $tipo["tipo"] . '</option>');
+							require("../includes/desconectar_mysql.php");
+						?>
+						</select>
+						<input type="Submit" value="Adicionar">
+					</td>
+				</tr>
+				<input type="hidden" name="codigo_evento" value="<?=$_REQUEST["codigo_evento"]?>">
+				<input type="hidden" name="passo" value="7">
+				<input type="hidden" name="modo" value="add">
+				</form>
+			</table>
+			<hr>
+			<input type="button" value="Concluir" onClick="javascript: self.close(); opener.location = opener.location;">
+		</body>
+	</html>
+<?
+}
+
+##############################################################################################
+
+function constroi_passo7(){
+	$tipodeparceiro = $_POST["tipodeparceiro"];
+	$codigo_evento = $_POST["codigo_evento"];
+	$modo = $_POST["modo"];
+	
+	if ($modo == "add")	{
+		if (verifica_tipodeparceiro_existente($codigo_evento, $tipodeparceiro)){
+			$query = "INSERT INTO tipodeparceiro_evento (tipodeparceiro, evento) VALUES (";
+			$query .= $tipodeparceiro .",";
+			$query .= $codigo_evento .")";
+			require("../includes/conectar_mysql.php");
+			$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
+			require("../includes/desconectar_mysql.php");
+			constroi_passo6();
+		}
+		else {
+			?> <html><body><h3>Tipo de Parceiro Já Cadastrado</h3><form action="wizard_novo_evento.php" method="post"><input type="hidden" name="codigo_evento" value="<?=$_POST["codigo_evento"]?>"><input type="hidden" name="passo" value="6"><input type="submit" value="Voltar"></form></body></html> <?
+		}
+	}
+	if ($modo == "remove") {
+		require("../includes/conectar_mysql.php");
+		$query = "DELETE FROM tipodeparceiro_evento WHERE (tipodeparceiro=" . $_POST["tipodeparceiro"] . ") AND (evento=" . $_POST["codigo_evento"] . ") LIMIT 1";
+		$result = mysql_query($query) or die("Erro ao remover registros do Banco de dados: " . mysql_error());	
+		require("../includes/conectar_mysql.php");
+		constroi_passo6();
+	}
+}
+
 function verifica_parceiro_existente($codigo_evento, $codigo_parceiro){
 	require("../includes/conectar_mysql.php");
 	$query = "SELECT parceiro FROM parceiro_evento WHERE evento=$codigo_evento AND parceiro=$codigo_parceiro";
@@ -501,4 +632,15 @@ function verifica_parceiro_existente($codigo_evento, $codigo_parceiro){
 	if(strlen($registro[0]) == 0) return true;
 	else return false;
 }
+
+function verifica_tipodeparceiro_existente($codigo_evento, $codigo_parceiro){
+	require("../includes/conectar_mysql.php");
+	$query = "SELECT tipodeparceiro FROM tipodeparceiro_evento WHERE evento=$codigo_evento AND tipodeparceiro=$codigo_parceiro";
+	$result = mysql_query($query) or die("Erro ao atualizar registros no Banco de dados: " . $query . mysql_error());
+	$registro = mysql_fetch_row($result);
+	require("../includes/desconectar_mysql.php");
+	if(strlen($registro[0]) == 0) return true;
+	else return false;
+}
+
 ?>

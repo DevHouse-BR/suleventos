@@ -1,5 +1,5 @@
 <?php
-error_reporting  (E_ERROR | E_PARSE);
+//error_reporting  (E_ERROR | E_PARSE);
 
 session_start();
 if (!isset($_SESSION['count'])) {
@@ -217,7 +217,7 @@ function constroi_rodape(){
 			<td align="center" valign="middle"><font class="menurodape"><a class="menurodape" href="<?=$pagina_inicial?>">Pagina Inicial</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$eventos?>">Eventos</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$quem_somos?>">Quem Somos</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$parceiros?>">Profissionais</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$anunciantes?>">Serviços Especiais</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$fale_conosco?>">Fale Conosco</a><br><a class="menurodape" href="<?=$dicas?>">Dicas e Curiosidades</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$cartorios?>">Cartórios</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$igrejas?>">Igrejas</a>
 				<br><br>
 				<font style="font-size:9px; font-weight:normal">Copyright&copy; Sul Eventos Ltda. - Todos os direitos reservados</font></font><br>
-				<a class="menurodape" style="font-size:9px; font-weight:normal" href="mailto: llv@brturbo.com">Webmaster: Leonardo Vasconcellos</a>
+				<a class="menurodape" style="font-size:9px; font-weight:normal" href="mailto: leonardo@udesc.br">Webmaster: Leonardo Vasconcellos</a>
 			</td>
 		</tr>
 	</table>
@@ -371,7 +371,7 @@ function constroi_fotos_evento($codigo_evento, $colunas){
 		<td align="center" valign="top">
 		<?
 			if($evento["data"] > mktime(0,0,0,5,18,2004)){  ?>
-				<img style="cursor:pointer;" onClick="javascript: void window.open('ver_fotos.php?foto=<?=$foto["cd"]?>&evento=<?=$codigo_evento?>', 'Fotografia', 'width=500,height=400,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="<?=$foto["path_thumb"]?>">
+				<img style="cursor:pointer;" onClick="javascript: void window.open('ver_fotos.php?foto=<?=$foto["cd"]?>&evento=<?=$codigo_evento?>', 'Fotografia', 'width=500,height=420,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="<?=$foto["path_thumb"]?>">
 			<? }
 			else { ?>
 				<img style="cursor:pointer;" onClick="javascript: void window.open('<?=$foto["path"]?>', 'Fotografia', 'width=512,height=384,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="<?=$foto["path_thumb"]?>">
@@ -511,11 +511,20 @@ function constroi_menu_esq(){
 		}
 		function mostramenu1(){
 			escondemenu();		
-			var html = 	'<table border="0" width="190" bgcolor="#E5E5E5">'
+			var html = 	'<table border="0" width="380" bgcolor="#E5E5E5">'
 			<?
 			require("includes/conectar_mysql.php");
 			$result = mysql_query("SELECT DISTINCT parceiros.tipo as tipo1, tipodeparceiro.tipo as tipo2 FROM parceiros, tipodeparceiro WHERE parceiros.tipo=tipodeparceiro.cd ORDER BY tipodeparceiro.tipo");
-			while($tipos = mysql_fetch_assoc($result)) echo("+ '<tr><td width=\"5\">&nbsp;</td><td><li><a class=\"menuesquerdo\" href=\"parceiros.php?tipo=" . $tipos["tipo1"] . "\">" . $tipos["tipo2"] . "</a></li></td></tr>'" . chr(10));
+			$i = 0;
+			while($tipos = mysql_fetch_assoc($result)){
+				if($i == 0)	echo("+ '<tr>'");
+				echo("+ '<td width=\"5\">&nbsp;</td><td><li><a class=\"menuesquerdo\" href=\"parceiros.php?tipo=" . $tipos["tipo1"] . "\">" . $tipos["tipo2"] . "</a></li></td>'" . chr(10));
+				if($i == 1){
+					echo("+ '</tr>'" . chr(10));
+					$i = 0;
+				}
+				else $i = 1;
+			}
 			require("includes/desconectar_mysql.php");
 			?>
 				+ '</table>';
@@ -782,9 +791,12 @@ function constroi_ficha_tecnica($codigo_evento){
 	$evento = mysql_fetch_array($result, MYSQL_ASSOC);
 	?>
 	<center>
-	<table width="80%" style="border: thin solid #43577C; background-color: #001238; color:#FFFFFF; text-align:center;" class="menu">
+	<table width="100%" style="color:#FFFFFF; text-align:center;" class="menu">
 		<tr>
-			<td>Ficha Técnica</td>
+			<td><img align="left" src="imagens/prancheta.gif"><span style="font-size:24px; text-align: left;">Ficha Técnica</span></td>
+		</tr>
+		<tr>
+			<td><hr></td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
@@ -793,7 +805,7 @@ function constroi_ficha_tecnica($codigo_evento){
 			<td>Nomes</td>
 		</tr>
 		<tr>
-			<td style="color:#999999;"><?=$evento["nomes"]?></td>
+			<td style="color:#DDDDDD;"><?=$evento["nomes"]?></td>
 		</tr>
 		<tr>
 			<td><hr></td>
@@ -802,7 +814,7 @@ function constroi_ficha_tecnica($codigo_evento){
 			<td>Data</td>
 		</tr>
 		<tr>
-			<td style="color:#999999;"><?=date("d/m/Y", $evento["data"])?></td>
+			<td style="color:#DDDDDD;"><?=date("d/m/Y", $evento["data"])?></td>
 		</tr>
 		<tr>
 			<td><hr></td>
@@ -811,7 +823,7 @@ function constroi_ficha_tecnica($codigo_evento){
 			<td>Local</td>
 		</tr>
 		<tr>
-			<td style="color:#999999;"><?=$evento["local"]?></td>
+			<td style="color:#DDDDDD;"><?=$evento["local"]?></td>
 		</tr>
 	<?
 	$query = "SELECT parceiros.cd, parceiros.nome, tipodeparceiro.cd as tipo2, tipodeparceiro.tipo from parceiro_evento, parceiros, tipodeparceiro where tipodeparceiro.cd=parceiros.tipo and parceiro_evento.parceiro=parceiros.cd and parceiro_evento.evento=" . $codigo_evento;
@@ -826,11 +838,27 @@ function constroi_ficha_tecnica($codigo_evento){
 		<tr>
 			<td><?=$evento["tipo"]?></td>
 		</tr>
-		<? /*<tr>
-			<td><a class="fichaparceiro" href="parceiros.php?tipo=<?=$evento["tipo2"]?>#<?=$evento["cd"]?>"><?=$evento["nome"]?></a></td>
-		</tr>*/ ?>
 		<tr>
 			<td><a class="fichaparceiro" href="http://www.suleventos.com.br/ver_pagina_parceiro.php?cd=<?=$evento["cd"]?>"><?=$evento["nome"]?></a></td>
+		</tr>
+		<?
+		$contador++;
+		//if($contador == $qtd) echo('<tr><td>&nbsp;</td></tr>');
+	}
+	$query = "SELECT tipodeparceiro.cd, tipodeparceiro.tipo from tipodeparceiro, tipodeparceiro_evento where tipodeparceiro.cd=tipodeparceiro_evento.tipodeparceiro and tipodeparceiro_evento.evento=" . $codigo_evento;
+	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+	$qtd = mysql_num_rows($result);
+	$contador = 0;
+	while($evento = mysql_fetch_array($result, MYSQL_ASSOC)){
+		?>
+		<tr>
+			<td><hr></td>
+		</tr>
+		<tr>
+			<td><?=$evento["tipo"]?></td>
+		</tr>
+		<tr>
+			<td><a class="fichaparceiro" href="http://www.suleventos.com.br/parceiros.php?tipo=<?=$evento["cd"]?>">Clique aqui e conheça nossas opções nesta área</a></td>
 		</tr>
 		<?
 		$contador++;
@@ -846,16 +874,18 @@ function constroi_ficha_tecnica($codigo_evento){
 #################################################################################################################
 
 function constroi_parceiro_em_destaque(){
+	$ultimo_parceiro = retorna_config("ultimoparceiro");
 	require("includes/conectar_mysql.php");
 	
 	$result = mysql_query("SELECT COUNT(*) FROM parceiros") or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$total = mysql_fetch_row($result);
-	$ultimo_parceiro = retorna_config("ultimoparceiro");
+	
 	if ($ultimo_parceiro >= $total[0] - 1) $proximo_parceiro = 0;
 	else $proximo_parceiro = $ultimo_parceiro + 1;
 	
 	altera_valor("ultimoparceiro", $proximo_parceiro);
 	
+	require("includes/conectar_mysql.php");
 	$query = "SELECT cd, nome, tipo, path_thumb from parceiros order by cd LIMIT " . $proximo_parceiro . ",1";
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	if(mysql_num_rows($result) == 0) echo('<table width="100%" bgcolor="#E6E6E6" border="0" class="menurodape" height="100"><tr><td valign="top"><img src="imagens/bullet_red.gif">Não Há Profissionais Cadastrados</td></tr></table>');
@@ -880,6 +910,54 @@ function constroi_parceiro_em_destaque(){
 							<td colspan="2" align="center" valign="top"><a href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><img src="imagens/veja.gif" border="0"></a></td>
 						</tr>
 					</table>
+				</td>
+			</tr>
+		</table>
+		<?
+	}
+	require("includes/desconectar_mysql.php");
+}
+
+#################################################################################################################
+
+function constroi_destaque_cestas(){
+	$ultimo_parceiro = retorna_config("ultimacesta");
+	require("includes/conectar_mysql.php");
+	
+	$result = mysql_query("SELECT COUNT(*) FROM parceiros where tipo=31") or die("Erro de conexão ao banco de dados: " . mysql_error());
+	$total = mysql_fetch_row($result);
+	
+	if ($ultimo_parceiro >= $total[0] - 1) $proximo_parceiro = 0;
+	else $proximo_parceiro = $ultimo_parceiro + 1;
+	
+	altera_valor("ultimacesta", $proximo_parceiro);
+	require("includes/conectar_mysql.php");
+	$query = "SELECT cd, nome, tipo, path_thumb from parceiros where tipo=31 order by cd LIMIT " . $proximo_parceiro . ",1";
+	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+	if(mysql_num_rows($result) == 0) echo('<table width="100%" bgcolor="#E6E6E6" border="0" class="menurodape" height="100"><tr><td valign="top"><img src="imagens/bullet_red.gif">Não Há Profissionais Cadastrados</td></tr></table>');
+	else {
+		$parceiro = mysql_fetch_array($result, MYSQL_ASSOC);
+		?>
+		<table width="100%" bgcolor="#E6E6E6" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td valign="top" align="center">
+					<table width="100%" border="0">
+						<tr>
+							<td width="5%" align="left" valign="top"><a href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><img border="0" src="imagens/bullet_red.gif"></a></td>
+							<td width="95%"><a href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><marquee direction="left" class="menurodape"  truespeed><?=$parceiro["nome"]?> - Cestas de Caf&eacute; da Manh&atilde; - Clique Aqui!</marquee></a></td>
+						</tr>
+						<tr>
+							<td colspan="2" height="105" align="center" valign="middle"><a href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><img border="0" id="img_cesta" width="100" src="<?=$parceiro["path_thumb"]?>"></a></td>
+						</tr>
+					</table>
+					<script language="javascript">
+						var cesta = document.getElementById("img_cesta");
+						var tempo = window.setInterval('muda_cesta()',2000);
+						function muda_cesta(){
+							if(cesta.src == "<? echo("http://" . $_SERVER['HTTP_HOST']) ?>/imagens/cesta_cafe_manha.jpg") cesta.src = "<?=$parceiro["path_thumb"]?>";
+							else cesta.src = "<? echo("http://" . $_SERVER['HTTP_HOST']) ?>/imagens/cesta_cafe_manha.jpg";
+						}
+					</script>
 				</td>
 			</tr>
 		</table>
@@ -968,6 +1046,7 @@ function constroi_tabela_eventos($numerodedestaques, $colunas, $pagina){
 	$limite = ($numerodedestaques * ($pagina -1));
 	$query_limit = " LIMIT " . $limite . "," . $numerodedestaques;
 	
+		
 	if($_GET["busca"] == "data") {
 		$data = $_GET["data"];
 		$filtro = "AND eventos.data=" . $data;
@@ -975,9 +1054,11 @@ function constroi_tabela_eventos($numerodedestaques, $colunas, $pagina){
 	elseif($_GET["busca"] == "chave"){
 		$chave = $_REQUEST["chave"];
 		$filtro = "AND eventos.nomes LIKE '%" . $chave . "%'";
+		$query = "SELECT eventos.cd, eventos.nomes, eventos.data, eventos.imagem_destaque, tipodeevento.tipo FROM eventos, tipodeevento WHERE (eventos.tipo=tipodeevento.cd) " . $filtro . " ORDER BY data DESC" . $query_limit;
 	}
+	else $query = "SELECT eventos.cd, eventos.nomes, eventos.data, eventos.imagem_destaque, tipodeevento.tipo FROM eventos, tipodeevento WHERE (eventos.tipo=tipodeevento.cd) AND (eventos.data < " . mktime() . ") AND (eventos.status = 0) " . $filtro . " ORDER BY data DESC" . $query_limit;
 
-	$query = "SELECT eventos.cd, eventos.nomes, eventos.data, eventos.imagem_destaque, tipodeevento.tipo FROM eventos, tipodeevento WHERE (eventos.tipo=tipodeevento.cd) AND (eventos.data < " . mktime() . ") AND (eventos.status = 0) " . $filtro . " ORDER BY data DESC" . $query_limit;
+	
 	require("includes/conectar_mysql.php");
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	if(mysql_num_rows($result) == 0){ 
@@ -1143,7 +1224,7 @@ function constroi_tabela_parceiros($tipo){
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	if(mysql_num_rows($result) == 0) echo('<div width="100%" class="conteudo">Não há Profissionais cadastrados.</div>');
 	?> 
-	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$parceiros?>">[PROFISSIONAIS]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape">[<?=strtoupper($tipodeparceiro[0])?>]</a>
+	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$parceiros?>">[PROFISSIONAIS]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape">[<?=$tipodeparceiro[0]?>]</a>
 	<hr>
 	<table width="100%" class="conteudo"> <?
 	while($parceiro = mysql_fetch_array($result, MYSQL_ASSOC)){
@@ -1187,7 +1268,7 @@ function constroi_tabela_anunciantes($tipo){
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	if(mysql_num_rows($result) == 0) echo('<div width="100%" class="conteudo">Não há serviços cadastrados.</div>');
 	?> 
-	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$anunciantes?>">[SERVI&Ccedil;OS ESPECIAIS]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape">[<?=strtoupper($tipodeanunciante[0])?>]</a>
+	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$anunciantes?>">[SERVI&Ccedil;OS ESPECIAIS]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape">[<?=$tipodeanunciante[0]?>]</a>
 	<hr>
 	<table width="100%" class="conteudo"> <?
 	while($anunciante = mysql_fetch_array($result, MYSQL_ASSOC)){
@@ -1330,39 +1411,21 @@ function envia_mensagem(){
 
 #################################################################################################################
 
-function carrega_config(){
-	global $CONFIG;
-	$handle = fopen ("./admin/config.csv","r");
-	while ($data = fgetcsv ($handle, 1000, ";")) {
-		$CONFIG[$data[0]] = $data[1];
-	}
-	fclose($handle);
+function altera_valor($chave, $valor){
+	$banco = mysql_connect("localhost", "root", "vertrigo") or die("Erro de conexão com o banco: " . mysql_error());
+	mysql_select_db("suleventos");
+	$query = "UPDATE config SET valor='" . $valor . "' WHERE chave='" . $chave . "'";
+	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+	mysql_close($banco);
 }
 function retorna_config($chave){
-	global $CONFIG;
-	carrega_config();
-	$teste = array_flip($CONFIG);
-	return array_search($chave, $teste);
-}
-function salva_config(){
-	global $CONFIG;
-	if (!$handle = fopen("./admin/config.csv", 'w')) {
-         print "Erro abrindo arquivo (admin/config.csv)";
-         exit;
-    }
-	foreach ($CONFIG as $key => $value) {
-		if (!fwrite($handle, $key . ";" . $value . "\r\n")) {
-			print "Erro escrevendo no arquivo (config)";
-			exit;
-		}
-	}
-	fclose($handle);
-}
-function altera_valor($chave, $valor){
-	global $CONFIG;
-	carrega_config();
-	$CONFIG[$chave] = $valor;
-	salva_config();
+	$banco = mysql_connect("localhost", "root", "vertrigo") or die("Erro de conexão com o banco: " . mysql_error());
+	mysql_select_db("suleventos");
+	$query = "SELECT valor FROM config WHERE chave='" . $chave . "'";
+	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+	$valor = mysql_fetch_assoc($result);
+	return $valor["valor"];
+	mysql_close($banco);
 }
 
 #################################################################################################################
@@ -1532,14 +1595,14 @@ function constroi_pagina_parceiro($codigo, $colunas){
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$pagina = mysql_fetch_array($result, MYSQL_ASSOC);
 	?>
-	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$parceiros?>">[PROFISSIONAIS]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;" href="parceiros.php?tipo=<?=$pagina["codigotipo"]?>">[<?=strtoupper($pagina["tipo"])?>]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;">[<?=strtoupper($pagina["nome"])?>]</a>
+	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$parceiros?>">[PROFISSIONAIS]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;" href="parceiros.php?tipo=<?=$pagina["codigotipo"]?>">[<?=$pagina["tipo"]?>]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;">[<?=$pagina["nome"]?>]</a>
 	<hr color="#001238" size="1">
-	<div class="titulosecao"><img align="bottom" src="imagens/bullet_blue3.gif">&nbsp;<?=strtoupper($pagina["nome"])?></div><br><br>
+	<div class="titulosecao"><img align="bottom" src="imagens/bullet_blue3.gif">&nbsp;<?=$pagina["nome"]?></div><br><br>
 	<table width="100%" class="conteudo">
 		<tr>
 			<td><?=$pagina["texto"]?></td>
 		</tr>
-</table>
+	</table>
 	 <?
 	$contador_de_colunas = 0;
 	?>
@@ -1559,12 +1622,13 @@ function constroi_pagina_parceiro($codigo, $colunas){
 	<div class="titulosecao"><img align="bottom" src="imagens/bullet_silver.gif">&nbsp;Clique na foto para ampliar</div><br>
 	<table width="100%" cellspacing="5" cellpadding="0" border="0"><tr>
 	<?
-	$query = "SELECT path, path_thumb FROM pagina_parceiro_fotos WHERE cd_pagina=" . $pagina["cd"] . " ORDER BY cd";
+	$query = "SELECT path, path_thumb, descricao FROM pagina_parceiro_fotos WHERE cd_pagina=" . $pagina["cd"] . " ORDER BY cd";
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	while($foto = mysql_fetch_array($result, MYSQL_ASSOC)){
 		?>
-		<td align="center" valign="top">
-			<img style="cursor:pointer;" onClick="javascript: void window.open('ver_imagem.php?imagem=<?=urlencode($foto["path"])?>', 'Fotografia', 'width=640,height=480,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="<?=$foto["path_thumb"]?>">
+		<td align="center" valign="top" class="label" style="text-align: center;">
+			<img style="cursor:pointer;" onClick="javascript: void window.open('ver_imagem.php?imagem=<?=urlencode($foto["path"])?>', 'Fotografia', 'width=640,height=480,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="<?=$foto["path_thumb"]?>"><br>
+			<?=$foto["descricao"]?>
 		</td>
 		<?
 		$contador_de_colunas++;
@@ -1586,9 +1650,9 @@ function constroi_pagina_anunciante($codigo, $colunas){
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$pagina = mysql_fetch_array($result, MYSQL_ASSOC);
 	?>
-	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$anunciantes?>">[SERVI&Ccedil;OS ESPECIAIS]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;" href="parceiros.php?tipo=<?=$pagina["codigotipo"]?>">[<?=strtoupper($pagina["tipo"])?>]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;">[<?=strtoupper($pagina["nome"])?>]</a>
+	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$anunciantes?>">[SERVI&Ccedil;OS ESPECIAIS]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;" href="parceiros.php?tipo=<?=$pagina["codigotipo"]?>">[<?=$pagina["tipo"]?>]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;">[<?=$pagina["nome"]?>]</a>
 	<hr color="#001238" size="1">
-	<div class="titulosecao"><img align="bottom" src="imagens/bullet_blue3.gif">&nbsp;<?=strtoupper($pagina["nome"])?></div><br><br>
+	<div class="titulosecao"><img align="bottom" src="imagens/bullet_blue3.gif">&nbsp;<?=$pagina["nome"]?></div><br><br>
 	<table width="100%" class="conteudo">
 		<tr>
 			<td><?=$pagina["texto"]?></td>
@@ -1613,12 +1677,13 @@ function constroi_pagina_anunciante($codigo, $colunas){
 	<div class="titulosecao"><img align="bottom" src="imagens/bullet_silver.gif">&nbsp;Clique na foto para ampliar</div><br>
 	<table width="100%" cellspacing="5" cellpadding="0" border="0"><tr>
 	<?
-	$query = "SELECT path, path_thumb FROM pagina_anunciante_fotos WHERE cd_pagina=" . $pagina["cd"];
+	$query = "SELECT path, path_thumb, descricao FROM pagina_anunciante_fotos WHERE cd_pagina=" . $pagina["cd"];
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	while($foto = mysql_fetch_array($result, MYSQL_ASSOC)){
 		?>
-		<td align="center" valign="top">
-			<img style="cursor:pointer;" onClick="javascript: void window.open('ver_imagem.php?imagem=<?=urlencode($foto["path"])?>', 'Fotografia', 'width=640,height=480,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="<?=$foto["path_thumb"]?>">
+		<td align="center" valign="top" class="label" style="text-align: center;">
+			<img style="cursor:pointer;" onClick="javascript: void window.open('ver_imagem.php?imagem=<?=urlencode($foto["path"])?>', 'Fotografia', 'width=640,height=480,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="<?=$foto["path_thumb"]?>"><br>
+			<?=$foto["descricao"]?>
 		</td>
 		<?
 		$contador_de_colunas++;

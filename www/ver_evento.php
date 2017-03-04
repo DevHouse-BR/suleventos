@@ -38,12 +38,58 @@ $restrito = checa_permissoes_evento($cd_evento);
 							<td width="460" align="left" valign="top" bgcolor="#E6E6E6" class="conteudo" width="470">
 								<? 
 								if(!$restrito) {
-									constroi_fotos_evento($cd_evento, 3);
-									echo("<br><br><hr><br><br>");
-									constroi_ficha_tecnica($cd_evento);
+									require("includes/conectar_mysql.php");
+									$query = "SELECT * FROM eventos, tipodeevento WHERE eventos.tipo=tipodeevento.cd AND eventos.cd=" . $cd_evento;
+									$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+									$evento = mysql_fetch_array($result, MYSQL_ASSOC);
+									?>
+									<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<? if($evento["status"] == "1") echo($agenda); else echo($eventos); ?>">[<? if($evento["status"] == "1") echo("AGENDA"); else echo("EVENTOS"); ?>]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;">[<?=$evento["tipo"]?>&nbsp;de&nbsp;<?=$evento["nomes"]?>]</a>
+									<hr color="#001238" size="1">
+									<div><?=$evento["descricao"]?></div>
+									<?
+									if(($evento["status"] == 1) && (strlen($evento["listadecasamento"]) != 0)){
+										?>
+										<div class="titulosecao">Lista de Presentes:<br><a href="<?=$evento["listadecasamento"]?>"><?=$evento["listadecasamento"]?></a></div><br>
+										<?
+									}
+									require("includes/desconectar_mysql.php");
+									?>
+									<hr color="#001238" size="1">
+									<table width="100%">
+										<tr>
+											<td width="100%" valign="top" align="center">
+												<?=constroi_foto_evento($cd_evento, 3);?>
+											</td>
+										</tr>
+										<tr>
+											<td width="100%" align="center">
+												<table width="80%" cellpadding="0" cellspacing="0" border="0">
+													<tr>
+														<td width="17" height="17" background="imagens/canto_sup_esq.gif"></td>
+														<td height="17" background="imagens/lateral_sup.gif"></td>
+														<td width="17" height="17" background="imagens/canto_sup_dir.gif"></td>
+													</tr>
+													<tr>
+														<td width="17" background="imagens/lateral_esq.gif"></td>
+														<td bgcolor="#5F7DEE" valign="middle" align="center">
+															<?=constroi_ficha_tecnica($cd_evento);?>
+														</td>
+														<td width="17" background="imagens/lateral_dir.gif"></td>
+													</tr>
+													<tr>
+														<td width="17" height="17" background="imagens/canto_inf_esq.gif"></td>
+														<td height="17" background="imagens/lateral_inf.gif"></td>
+														<td width="17" height="17" background="imagens/canto_inf_dir.gif"></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+									<?
 									constroi_banner();
 								}
 								else decisao2($cd_evento, $restrito);
+								//echo("<br><br><hr><br><br>");
 								?>
 							</td>
 							<td width="140" align="right" valign="top" bgcolor="#001238">
@@ -93,5 +139,21 @@ function decisao2($cd_evento, $restrito){
 			}
 		}
 	} 
+}
+
+#################################################################################################################
+
+function constroi_foto_evento($codigo_evento, $colunas){
+	global $pagina_inicial, $eventos, $agenda;
+	$contador_de_colunas = 0;
+		
+	require("includes/conectar_mysql.php");
+	$query = "SELECT fotos.cd, fotos.path, fotos.path_thumb FROM fotos, eventos WHERE fotos.cd=eventos.imagem_destaque AND eventos.cd=" . $codigo_evento . " ORDER BY cd";
+	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+	$foto = mysql_fetch_array($result, MYSQL_ASSOC);
+	 ?>
+	<img style="cursor:pointer; position: absolute; margin-top: 46px; margin-left: 32px; z-index:0;" onClick="javascript: void window.open('ver_fotos.php?foto=<?=$foto["cd"]?>&evento=<?=$codigo_evento?>', 'Fotografia', 'width=500,height=420,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="<?=$foto["path_thumb"]?>"><img style="cursor:pointer;" onClick="javascript: void window.open('ver_fotos.php?foto=<?=$foto["cd"]?>&evento=<?=$codigo_evento?>', 'Fotografia', 'width=500,height=420,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="imagens/cam.gif">
+	<?
+	require("includes/desconectar_mysql.php");
 }
 ?>

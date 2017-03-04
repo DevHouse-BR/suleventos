@@ -4,6 +4,7 @@
 		<link href="includes/estilo.css" rel="stylesheet" rev="stylesheet">
 		<script language="javascript1.2" type="text/javascript">
 			function muda_foto(img){
+				parent.document.getElementById("moldura").src = 'imagens/loading.gif';
 				parent.document.getElementById("moldura").src = img;
 			}
 		</script>

@@ -13,7 +13,7 @@ if(strlen($pagina) == 0) $pagina = 1;
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="../includes/estilo.css" rel="stylesheet" rev="stylesheet">
 	</head>
-	<body onLoad="squirrelmail_loginpage_onload();">
+	<body onLoad="document.forms[0].senha.focus();">
 		<table width="100%" height="100%" border="0">
 			<tr>
 				<td align="center" valign="top">
@@ -40,7 +40,7 @@ if(strlen($pagina) == 0) $pagina = 1;
 									<form name="login" action="valida_usuario.php" method="post">
 									<tr>
 										<td width="20%" style="text-align: right; font:Arial, Helvetica, sans-serif; font-size:12px;">Senha:</td>
-										<td width="60%"><input type="password" name="senha" style="width: 100%;" maxlength="255" onChange="this.focus();"></td>
+										<td width="60%"><input type="password" name="senha" style="width: 100%;" maxlength="255"></td>
 										<td width="10%"><input type="submit" value="OK"></td>
 									</tr>
 									</form>

@@ -1184,39 +1184,19 @@ function envia_mensagem(){
 
 #################################################################################################################
 
-function carrega_config(){
-	global $CONFIG;
-	$handle = fopen ("config.csv","r");
-	while ($data = fgetcsv ($handle, 1000, ";")) {
-		$CONFIG[$data[0]] = $data[1];
-	}
-	fclose($handle);
-}
-function salva_config(){
-	global $CONFIG;
-	if (!$handle = fopen("config.csv", 'w')) {
-         print "Erro abrindo arquivo ($filename)";
-         exit;
-    }
-	foreach ($CONFIG as $key => $value) {
-		if (!fwrite($handle, $key . ";" . $value . "\r\n")) {
-			print "Erro escrevendo no arquivo (config.csv)";
-			exit;
-		}
-	}
-	fclose($handle);
-}
 function altera_valor($chave, $valor){
-	global $CONFIG;
-	carrega_config();
-	$CONFIG[$chave] = $valor;
-	salva_config();
+	require("../includes/conectar_mysql.php");
+	$query = "UPDATE config SET valor='" . $valor . "' WHERE chave='" . $chave . "'";
+	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+	require("../includes/desconectar_mysql.php");
 }
 function retorna_config($chave){
-	global $CONFIG;
-	carrega_config();
-	$teste = array_flip($CONFIG);
-	return array_search($chave, $teste);
+	require("../includes/conectar_mysql.php");
+	$query = "SELECT valor FROM config WHERE chave='" . $chave . "'";
+	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+	$valor = mysql_fetch_assoc($result);
+	return $valor["valor"];
+	require("../includes/desconectar_mysql.php");
 }
 
 #################################################################################################################
@@ -1404,9 +1384,9 @@ function constroi_pagina_parceiro($codigo, $colunas){
 			}
 		}
 	</script>
-	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$parceiros?>">[PARCEIROS]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;" href="parceiros.php?tipo=<?=$pagina["codigotipo"]?>">[<?=strtoupper($pagina["tipo"])?>]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;">[<?=strtoupper($pagina["nome"])?>]</a>
+	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$parceiros?>">[PARCEIROS]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;" href="parceiros.php?tipo=<?=$pagina["codigotipo"]?>">[<?=$pagina["tipo"]?>]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;">[<?=$pagina["nome"]?>]</a>
 	<hr color="#001238" size="1">
-	<div class="titulosecao"><img align="bottom" src="../imagens/bullet_blue3.gif">&nbsp;<?=strtoupper($pagina["nome"])?></div><br><br>
+	<div class="titulosecao"><img align="bottom" src="../imagens/bullet_blue3.gif">&nbsp;<?=$pagina["nome"]?></div><br><br>
 	<table width="100%" class="conteudo">
 		<tr>
 			<td><?=$pagina["texto"]?></td>
@@ -1431,12 +1411,13 @@ function constroi_pagina_parceiro($codigo, $colunas){
 	<div class="titulosecao"><img align="bottom" src="../imagens/bullet_silver.gif">&nbsp;Clique na foto para ampliar</div><br>
 	<table width="100%" cellspacing="5" cellpadding="0" border="0"><tr>
 	<?
-	$query = "SELECT cd, path, path_thumb FROM pagina_parceiro_fotos WHERE cd_pagina=" . $pagina["cd"];
+	$query = "SELECT cd, path, path_thumb, descricao FROM pagina_parceiro_fotos WHERE cd_pagina=" . $pagina["cd"];
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	while($foto = mysql_fetch_array($result, MYSQL_ASSOC)){
 		?>
 		<td align="center" valign="top" class="conteudo">
 			<img style="cursor:pointer;" onClick="javascript: void window.open('../<?=$foto["path"]?>', 'Fotografia', 'width=640,height=480,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="../<?=$foto["path_thumb"]?>"><br>
+			<?=$foto["descricao"]?><br>
 			<a href="javascript: apagar(<?=$foto["cd"]?>);">[Apagar Foto]</a>
 		</td>
 		<?
@@ -1466,9 +1447,9 @@ function constroi_pagina_anunciante($codigo, $colunas){
 			}
 		}
 	</script>
-	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$anunciantes?>">[ANUNCIANTES]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;" href="parceiros.php?tipo=<?=$pagina["codigotipo"]?>">[<?=strtoupper($pagina["tipo"])?>]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;">[<?=strtoupper($pagina["nome"])?>]</a>
+	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$anunciantes?>">[ANUNCIANTES]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;" href="parceiros.php?tipo=<?=$pagina["codigotipo"]?>">[<?=$pagina["tipo"]?>]</a>&nbsp;-&nbsp;<a class="menurodape" style="font-weight: normal; font-size: 11px;">[<?=$pagina["nome"]?>]</a>
 	<hr color="#001238" size="1">
-	<div class="titulosecao"><img align="bottom" src="../imagens/bullet_blue3.gif">&nbsp;<?=strtoupper($pagina["nome"])?></div><br><br>
+	<div class="titulosecao"><img align="bottom" src="../imagens/bullet_blue3.gif">&nbsp;<?=$pagina["nome"]?></div><br><br>
 	<table width="100%" class="conteudo">
 		<tr>
 			<td><?=$pagina["texto"]?></td>
@@ -1493,12 +1474,13 @@ function constroi_pagina_anunciante($codigo, $colunas){
 	<div class="titulosecao"><img align="bottom" src="../imagens/bullet_silver.gif">&nbsp;Clique na foto para ampliar</div><br>
 	<table width="100%" cellspacing="5" cellpadding="0" border="0"><tr>
 	<?
-	$query = "SELECT cd, path, path_thumb FROM pagina_anunciante_fotos WHERE cd_pagina=" . $pagina["cd"];
+	$query = "SELECT cd, path, path_thumb, descricao FROM pagina_anunciante_fotos WHERE cd_pagina=" . $pagina["cd"];
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	while($foto = mysql_fetch_array($result, MYSQL_ASSOC)){
 		?>
 		<td align="center" valign="top" class="conteudo">
 			<img style="cursor:pointer;" onClick="javascript: void window.open('../<?=$foto["path"]?>', 'Fotografia', 'width=640,height=480,status=no,resizable=yes,top=30,left=100,dependent=yes,alwaysRaised=yes');" src="../<?=$foto["path_thumb"]?>"><br>
+			<?=$foto["descricao"]?><br>
 			<a href="javascript: apagar(<?=$foto["cd"]?>);">[Apagar Foto]</a>
 		</td>
 		<?

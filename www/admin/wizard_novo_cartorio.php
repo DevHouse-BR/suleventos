@@ -53,7 +53,6 @@ function constroi_passo0(){
 					}
 					cartorio.submit();
 				}
-				var txt = '<?=addslashes(str_replace(chr(13), "", str_replace(chr(10), "", $cartorio["descricao"])))?>';
 			</script>
 		</head>
 		<body>
@@ -78,9 +77,10 @@ function constroi_passo0(){
 			</table>
 		</body>
 	</html>
-	<script language="javascript" type="text/javascript">
-		document.forms[0].descricao.value = txt;
-	</script>
+		<script language="javascript" type="text/javascript">
+			var txt = '<?=addslashes(str_replace(chr(13), "", str_replace(chr(10), "", $cartorio["descricao"])))?>';
+			document.forms[0].descricao.value = txt;
+		</script>
 	<? 
 }
 

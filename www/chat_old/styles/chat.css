@@ -1,0 +1,97 @@
+.textogeral {
+	font-family: Verdana;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000000;
+	line-height: 12px;
+}
+.mensagemgeral {
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #000000;
+	line-height: 20px;
+}
+.mensagempessoa {
+	font-family: Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000000;
+	line-height: 20px;
+	background-color: #FFECD9; 
+	width:100%
+}
+.mensagempessoareservado {
+	font-family: Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000000;
+	line-height: 20px;
+	background-color: #DDDDDD;
+	width:100%
+}
+.textomenu {
+	font-family: Verdana;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000000;
+	line-height: 12px;
+}
+
+.link {
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: none;
+	text-decoration: none;
+	color: #000000;
+	line-height: 14px;
+}
+
+.link2 {
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: none;
+	text-decoration: none;
+	color: #000000;
+	line-height: 12px;
+}
+
+.textopadrao {
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000000;
+	line-height: 13px;
+}
+.botao
+{  
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px; 
+	color: #FFFFFF; 
+	font-weight: bold;
+	background-color: #079f39; 
+	border: 1px #666666 solid
+}
+.textbox2
+{ 
+	font-size: 12px; 
+	line-height: 13px;
+	font-style: normal; 
+	font-weight: normal; 
+	font-variant: normal; 
+	font-family: Verdana, Arial, Helvetica;
+	text-decoration: none; 
+	color: #000000; 
+	padding-top: 1px; 
+	padding-left: 3px; 
+	LINE-HEIGHT: normal; 
+	border: 1px #000000 solid; 
+	background-color: #FFFFFF
+}
+

@@ -1,0 +1,126 @@
+<?php 
+
+/* Croatian */
+
+$lang=array();
+
+$lang['ok']           = '- OK -';
+$lang['reset']        = ' Reset ';
+$lang['on']           = 'Uklj.';
+$lang['off']          = 'Isklj.';
+$lang['yes']          = 'Da';
+$lang['no']           = 'Ne';
+$lang['all']          = 'Sve';
+$lang['login']        = 'Prijava';
+$lang['exitt']        = 'Odjava';
+$lang['edit']         = 'Uredi';
+$lang['delete']       = 'Obrisi';
+$lang['desc']         = 'Opis';
+$lang['name']         = 'Ime';
+$lang['password']     = 'Zaporka';
+$lang['old_pass']     = 'Stara zaporka';
+$lang['new_pass']     = 'Nova zaporka';
+$lang['forgot_pass']  = 'Zaboravio zaporku';
+$lang['register']     = 'Registracija';
+$lang['ban']          = 'Ban';
+$lang['profile']      = 'Profil';
+$lang['mail']         = 'E-mail';
+$lang['room']         = 'Soba';
+$lang['rooms']        = 'Sobe';
+$lang['online']       = 'Online';
+$lang['sound']        = 'Zvuk';
+$lang['smilies']      = 'Smajliji';
+$lang['color']        = 'Boje';
+$lang['turing']       = 'Br. racuna';
+$lang['verification'] = 'Provjera';
+$lang['code']         = 'Kod';
+$lang['suffix']       = 'Sufiks';
+$lang['timezone']     = 'Vremenska zona';
+$lang['time_format']  = 'Format vremena';
+$lang['age']          = 'Godina';
+$lang['fun']          = 'Zabava';
+$lang['sex']          = 'Spol';
+$lang['male']         = 'Musko';
+$lang['female']       = 'Zensko';
+$lang['location']     = 'Lokacija';
+$lang['website']      = 'Web stranice';
+$lang['info']         = 'Info';
+$lang['choose']       = 'Odabir';
+$lang['upload']       = 'Upload';
+$lang['lang']         = 'Jezik';
+$lang['user']         = 'Korisnik';
+$lang['users']        = 'Korisnici';
+$lang['activation']   = 'Aktivacija';
+$lang['header']       = 'Zaglavlje';
+$lang['footer']       = 'Podnozje';
+$lang['title']        = 'Naslov';
+$lang['join']         = 'Pristupio';
+$lang['status']       = 'Status';
+$lang['active']       = 'Aktivan';
+$lang['inactive']     = 'Neaktivan';
+$lang['unverified']   = 'Neprovjeren';
+$lang['order']        = 'Naruci';
+$lang['no_results']   = 'Nema rezultata...';
+$lang['integration']  = 'Integracija';
+$lang['history']      = 'Povijest';
+$lang['badwords']     = 'Lose rijeci';
+$lang['mail_tmpl']    = 'Mail predlosci';
+$lang['backup']       = 'Backup [Korisnika]';
+$lang['admin']        = 'Admin';
+$lang['moderator']    = 'Moderator';
+$lang['settings']     = 'Postavke';
+$lang['inf_pmssg']    = 'Info / Saptanje';
+$lang['guest']        = 'Gost';
+$lang['remember']     = 'Upamti';
+$lang['6_hours']      = '6 sati';
+$lang['a_day']        = '1 dan';
+$lang['a_week']       = '1 tjedan';
+$lang['a_month']      = '1 mjesec';
+$lang['a_year']       = '1 godina';
+$lang['mass']         = 'Odaberi grupne radnje ovdje...';
+$lang['clear_ban']    = 'Obrisi listu baniranih IP adresa';
+$lang['ban_ip']       = 'Baniraj ovaj IP za';
+$lang['suspend_acc']  = 'Suspendiraj ovaj racun';
+$lang['max_users']    = 'Previse je ljudi na chatu... Pricekaj nekoliko minuta i ucitaj ponovo ovu stranicu.';
+$lang['open_new']     = 'Otvori ovu sliku u novom prozoru...';
+$lang['confirm']      = 'Molim potvrdi ovu akciju...';
+$lang['wrong']        = 'Krivi unos.';
+$lang['account_ok']   = 'Tvoj korisnicki racun je uspjesno aktiviran.';
+$lang['check_inbox']  = 'Provjeri inbox.';
+$lang['wait_app']     = 'Tvoj korisnicki racun je uspjesno kreiran, ali je neaktivan. Potrebno je odobrenje administratora...';
+$lang['all_req']      = 'Potrebno je ispuniti sva polja!';
+$lang['you_banned']   = 'Baniran si!';
+$lang['headers_sent'] = 'Zaglavlje je vec poslano.';
+$lang['wrong_turing'] = 'Netocan broj korisnickog racuna.';
+$lang['mail_error']   = 'Greska mail servera.';
+$lang['action_ok']    = 'Trazena akcija je uspjesno obavljena.';
+$lang['continue']     = 'Tu klikni za nastavak...';
+$lang['revalidate']   = 'E-mail mora biti provjeren!';
+$lang['bwordsedit']   = 'Da bi editirao ovu listu <i>badwords.txt</i> mora biti CHMOD 666.';
+$lang['upload_err']   = 'Greska prilikom uploada. Najvjerojatnije se radi o prekoracenju velicine fajla...';
+$lang['error_ip']     = 'Korisnik nije online, to je tvoja IP adresa ili je doticna vec banirana.';
+$lang['error_usr']    = 'Nema takvog korisnika, to je tvoj korisnicki racun ili je to <i>Gost</i> korisnicki racun.';
+$lang['error_bro']    = 'Tvoj browser nije podrzan! <br /><br /> Potreban je upgrade na Operu 8.5, FireFox 1.0 ili MSIE 5.0.<br /> Posljednje verzije Safarija i Konquerora su takodjer podrzane.';
+$lang['error_nop']    = 'Nemas dozvolu za ucitavanje te stranice...';
+$lang['error_lnk']    = 'Nije dozvoljeno otvarati link u novom prozoru.';
+$lang['error_unk']    = '<b>Greska nepoznatog porijekla!</b><br /><br />';
+$lang['sett1']        = 'Ispisi \'guest\' korisnicko ime i zaporku na login ekranu. Promijeni zaporku i iskljuci ovu funkciju da bi zabranio pristup gostima.';
+$lang['sett2']        = 'Activation by mail required. [A] means that new users cannot enter until their accounts are approved manually.';
+$lang['sett3']        = 'Compression enabled for all browsers that support this feature. [A] means all browsers except MSIE.';
+$lang['sett4']        = 'Users per room [MAX].';
+$lang['sett5']        = 'Maximum filesize when uploading photos in kB. OFF means no photos allowed.';
+$lang['sett6']        = 'Acc. number protection against automated attacks.';
+$lang['sett7']        = 'Acc. number expires in ** minutes.';
+
+/* 3.1 update */
+
+$lang['disconnect']   = 'You have been disconnected. [Reason: no response from the server, request sent 30 seconds ago.]';
+$lang['error_nan']    = 'You have been disconnected. [Reason: the latest server response was lost or broken (0 bytes).]';
+
+/* 3.2 update */
+
+$lang['retype']       = 'Zaporka';
+$lang['suspend']      = 'Suspendiraj';
+$lang['empty']        = 'Ocisti';
+$lang['empty_all']    = 'Ocisti sva sobe';
+?>

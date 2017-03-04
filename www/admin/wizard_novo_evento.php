@@ -192,6 +192,7 @@ function constroi_passo1(){
 	if ($modo == "update") {
 		$query = "UPDATE eventos SET ";
 		$query .= "nomes='" . $nomes ."', ";
+		$query .= "tipo='" . $tipo ."', ";
 		$query .= "data='" . $data ."', ";
 		$query .= "local='" . $local ."', ";
 		$query .= "descricao='" . $descricao ."', ";

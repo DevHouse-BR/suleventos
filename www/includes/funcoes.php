@@ -1,4 +1,4 @@
-<?php
+              <?php
 //error_reporting  (E_ERROR | E_PARSE);
 
 session_start();
@@ -32,15 +32,121 @@ $LOCAL = "http://" . $_SERVER['HTTP_HOST'] . $localizacao;*/
 
 #################################################################################################################
 
+function constroi_inicio_pagina(){
+	?>
+	<html>
+		<head>
+			<title>:: Sul Eventos :: O Portal de Eventos de Joinville Santa Catarina</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+			<meta http-equiv="content-language" content="pt-BR" />
+			<meta http-equiv="pragma" content="no-cache" />
+			<meta name="robots" content="index,follow" />
+			<meta name="keywords" content="eventos,Joinville,Santa Catarina,noivas,noiva,evento,bodas,carros antigos,casamento,aniversário,15 anos,bodas,lua de mel,nupcias,matrimonio,festa,noivado" />
+			<meta name="author" content="Leonardo leonardo@udesc.br" />
+			<meta name="description" content="Página de Eventos de Joinville Santa Catarina" />
+			<link href="includes/estilo.css" rel="stylesheet" rev="stylesheet">
+		</head>
+		<body onLoad="efeito_versiculo();">
+			<table width="100%" height="100%" border="1">
+				<tr>
+					<td align="center" valign="top">
+						<table width="776" border="0" cellpadding="0" cellspacing="6">
+							<tr>
+								<td colspan="3" height="139">
+									<? constroi_menu_cabecalho(); ?>
+								</td>
+							</tr>
+							<tr>
+								<td width="157" align="left" valign="top" height="100%">
+									<? constroi_tabela_esq(-1); ?>
+								</td>
+								<td align="left" valign="top" bgcolor="#F0F0F0" class="conteudo2" width="440">
+	<?
+	 constroi_form_busca();
+}
+
+function constroi_fim_pagina(){
+?>
+</td>
+							<td width="167" align="right" valign="top">
+								<table width="167" cellpadding="0" cellspacing="0">
+									<tr>
+										<td><img src="imagens/bc.gif"></td>
+									</tr>
+									<tr>
+										<td bgcolor="#FF9900" align="center">
+										<div style="text-align: center; background-color: #FF9900; height: 150px; width: 160px;">
+											<? banners_direita(); ?>
+										</div>
+										<hr>
+									  <font style="font-size:2px;"><br></font>
+									  <? constroi_destaque_cadastro_casamento(); ?>
+									   <font style="font-size:2px;"><br></font>
+									   <hr>
+										<? constroi_outros_eventos(); ?>
+										</td>
+									</tr>
+									<tr>
+										<td><img src="imagens/bf.gif"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" height="70" valign="bottom">
+								<?php constroi_rodape(); ?>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<?
+}
+
+################################################################################################################
+
 function constroi_menu_cabecalho(){
 	//global $pagina_inicial, $eventos, $quem_somos, $parceiros, $fale_conosco, $dicas, $cartorios, $igrejas, $anunciantes; ?>
-	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="601" height="139" id="Novo Cabecalho" align="middle">
-		<param name="allowScriptAccess" value="sameDomain" />
-		<param name="movie" value="imagens/cabecalho.swf" />
-		<param name="quality" value="high" />
-		<param name="bgcolor" value="#000000" />
-		<embed src="imagens/cabecalho.swf" quality="high" bgcolor="#000000" width="601" height="139" name="Novo Cabecalho" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-	</object>
+	<table width="100%" cellpadding="2" cellspacing="2">
+		<tr>
+			<td width="330">
+				<img src="imagens/logo.gif" width="330" height="130">
+			</td>
+			<td width="200">
+				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="200" height="130">
+					<param name="movie" value="imagens/yuh.swf">
+					<param name="quality" value="high">
+					<embed src="imagens/yuh.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="200" height="125"></embed>
+				</object>
+			</td>
+			<td bgcolor="#FF9900" id="versiculo" style="text-align: center; font-family:Arial, Helvetica, sans-serif; font-size: <?=retorna_config("tamanho_fonte_versiculo")?>px;"></td>
+		</tr>
+	</table>
+	<script language="javascript">
+		function efeito_versiculo(){
+			//parceirojava.innerHTML = '<img src="' + imagens[i] + '">';Blur(Add = 1, Direction = 225, Strength = 10)">"
+			//document.all["versiculo"].style.filter='progid:DXImageTransform.Microsoft.Pixelate(MaxSquare="25")';
+			document.all["versiculo"].style.filter='progid:DXImageTransform.Microsoft.RandomDissolve()';
+			document.all["versiculo"].filters[0].apply();
+			document.all["versiculo"].filters[0].play();
+			document.all["versiculo"].bgColor = "#FFFFFF";
+			document.all["versiculo"].innerHTML = '<b><?=retorna_config("versiculo")?></b>';
+
+			//alert("lixo");
+			/*document.all["parceirojava"].src = imagens[i];
+			document.all["nm_parceiro"].innerHTML = '<a class="menurodape" href="http://www.suleventos.com.br/ver_pagina_parceiro.php?cd=' + codigo[i] + '">' + parceiros[i] + '</a>';
+			i++;
+			if (imagens.length == i) i = 0;*/
+		}
+	</script>
+	<!--<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="200" height="130">
+		<param name="movie" value="imagens/1.swf">
+		<param name="quality" value="high">
+		<embed src="imagens/1.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="200" height="130"></embed>
+	</object>-->
 	<? /*<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
 		<tr>
 			<td align="right" valign="top">
@@ -70,7 +176,7 @@ function constroi_menu_cabecalho(){
 #################################################################################################################
 
 function constroi_tabela_esq($codigo){
-	global $pagina_inicial, $eventos, $quem_somos, $parceiros, $fale_conosco, $dicas; 
+	global $pagina_inicial, $eventos, $quem_somos, $parceiros, $fale_conosco, $dicas;
 	$qtd = retorna_config("tam_enquete");
 	?>
 	<table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
@@ -83,42 +189,36 @@ function constroi_tabela_esq($codigo){
 			<td style="font-size: 5px;">&nbsp;</td>
 		</tr>
 		<tr>
-			<td valign="top" bgcolor="666666">
-				<table width="157" cellpadding="0" cellspacing="2" border="0">
+			<td valign="top" bgcolor="#F0F0F0">
+				<table width="157" cellpadding="0" cellspacing="2" border="0" class="conteudo">
 					<tr>
-						<td class="textonoazul" align="center"><b>Procure Eventos por Data</b>
+						<td class="menuesquerdo" align="center"><b>Procure Eventos por Data</b>
 							<iframe frameborder="0" src="calendario.php" width="152" height="180" scrolling="no"></iframe>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<hr color="#001238" size="1">
+							<hr size="1">
 						</td>
 					</tr>
 					<tr>
-						<td class="textonoazul" align="center"><b>Enquete</b>
+						<td class="menuesquerdo" align="center"><b>Enquete</b>
 							<iframe frameborder="0" src="enquete.php" width="152" height="<?=$qtd?>" scrolling="no"></iframe>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<hr color="#001238" size="1">
-							<? monta_contador(); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<hr color="#001238" size="1">
+							<hr size="1">
+							<? monta_contador(); ?><br><br>
 						</td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 		<tr>
-			<td bgcolor="666666" height="100%">&nbsp;</td>
+			<td bgcolor="#F0F0F0" height="100%">&nbsp;</td>
 		</tr>
 	</table>
-
 <?
 }
 
@@ -131,51 +231,61 @@ function monta_contador(){
     	switch($qtd{$i}){
 			case "0":
 				$contador .= '<img width="17" height="20" src="imagens/0.gif">';
-				break; 
+				break;
 			case "1":
 				$contador .= '<img width="17" height="20" src="imagens/1.gif">';
-				break; 
+				break;
 			case "2":
 				$contador .= '<img width="17" height="20" src="imagens/2.gif">';
-				break; 
+				break;
 			case "3":
 				$contador .= '<img width="17" height="20" src="imagens/3.gif">';
-				break; 
+				break;
 			case "4":
 				$contador .= '<img width="17" height="20" src="imagens/4.gif">';
-				break; 
+				break;
 			case "5":
 				$contador .= '<img width="17" height="20" src="imagens/5.gif">';
-				break; 
+				break;
 			case "6":
 				$contador .= '<img width="17" height="20" src="imagens/6.gif">';
-				break; 
+				break;
 			case "7":
 				$contador .= '<img width="17" height="20" src="imagens/7.gif">';
-				break; 
+				break;
 			case "8":
 				$contador .= '<img width="17" height="20" src="imagens/8.gif">';
-				break; 
+				break;
 			case "9":
 				$contador .= '<img width="17" height="20" src="imagens/9.gif">';
-				break; 
+				break;
 		}
 	}
-	echo('<div class="menu" style="width: 100%; text-align:center; vertical-align: middle;">Visitante n&deg;<table cellpadding="0"><tr><td style="border-top: 5px solid #38667A; border-left: 5px solid #38667A; border-bottom: 5px solid #AAC7DB; border-right: 5px solid #AAC7DB;">' . $contador . '</td></tr></table></div>');
+	echo('<div class="menuesquerdo" style="width: 100%; text-align:center; vertical-align: middle;">Visitante n&deg;<table cellpadding="0"><tr><td style="border-top: 5px solid #FF6600; border-left: 5px solid #FF6600; border-bottom: 5px solid #FF9900; border-right: 5px solid #FF9900;">' . $contador . '</td></tr></table></div>');
 }
 
 
 #################################################################################################################
 
 function constroi_form_busca(){ ?>
-	<form method="post" name="busca" action="eventos.php?busca=chave">
-		<div style="vertical-align:middle; width: 100%; text-align:center;">Busca:&nbsp;<input type="text" name="chave">&nbsp;
-			<select name="tipo">
-				<option value="pessoas">Eventos por Pessoas</option>
-			</select>&nbsp;
-			<img src="imagens/busca.gif" onClick="document.forms['busca'].submit();" style="cursor: pointer;">
-		</div>
-	</form> <?
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td bgcolor="#FF9900">
+			<form method="post" name="busca" action="eventos.php?busca=chave">
+				<div class="menuesquerdo" style="vertical-align:middle; width: 100%; text-align:center;">Busca:&nbsp;<input type="text" name="chave">&nbsp;
+					<select name="tipo">
+						<option value="pessoas">Eventos por Pessoas</option>
+					</select>&nbsp;
+					<img src="imagens/busca.gif" onClick="document.forms['busca'].submit();" style="cursor: pointer;">
+				</div>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="imagens/bar.gif"></td>
+	</tr>
+</table>
+	 <?
 }
 
 #################################################################################################################
@@ -191,13 +301,13 @@ function constroi_tabela_igrejas(){
 	while($igreja = mysql_fetch_array($result, MYSQL_ASSOC)){
 		?>
 			<tr>
-				<td align="left" valign="bottom"><a name="<?=$igreja["cd"]?>"><span class="menurodape"><?=$igreja["nome"]?></a></td>
+				<td align="left" valign="bottom"><a name="<?=$igreja["cd"]?>" class="menuesquerdo"><?=$igreja["nome"]?></a></td>
 			</tr>
 			<tr>
 				<td colspan="2"><?=$igreja["descricao"]?></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="right"><font size="-2"><? if(strlen($igreja["telefone"]) != 0) echo($igreja["telefone"]); if(strlen($igreja["email"]) != 0) echo('&nbsp;-&nbsp;<a href="mailto: ' . $igreja["email"] . '">' . $igreja["email"] . '</a>'); if(strlen($igreja["endereco"]) != 0) echo("&nbsp;-&nbsp;" . $igreja["endereco"]); ?></font></td>
+				<td colspan="2"><font size="-2"><? if(strlen($igreja["telefone"]) != 0) echo($igreja["telefone"]); if(strlen($igreja["endereco"]) != 0) echo("<br>" . $igreja["endereco"]); if(strlen($igreja["email"]) != 0) echo('<br><a class="linkred" href="mailto: ' . $igreja["email"] . '">' . $igreja["email"] . '</a>'); ?></font></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">&nbsp;</td>
@@ -214,10 +324,10 @@ function constroi_rodape(){
 	global $pagina_inicial, $eventos, $quem_somos, $parceiros, $fale_conosco, $dicas, $cartorios, $igrejas, $anunciantes; ?>
 	<table width="100%" height="65" bgcolor="#E6E6E6" border="0">
 		<tr>
-			<td align="center" valign="middle"><font class="menurodape"><a class="menurodape" href="<?=$pagina_inicial?>">Pagina Inicial</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$eventos?>">Eventos</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$quem_somos?>">Quem Somos</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$parceiros?>">Profissionais</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$anunciantes?>">Serviços Especiais</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$fale_conosco?>">Fale Conosco</a><br><a class="menurodape" href="<?=$dicas?>">Dicas e Curiosidades</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$cartorios?>">Cartórios</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$igrejas?>">Igrejas</a>
-				<br><br>
+			<td align="center" valign="middle"><font class="menurodape"><!--<a class="menurodape" href="<?=$pagina_inicial?>">Pagina Inicial</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$eventos?>">Eventos</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$quem_somos?>">Quem Somos</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$parceiros?>">Profissionais</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$anunciantes?>">Serviços Especiais</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$fale_conosco?>">Fale Conosco</a><br><a class="menurodape" href="<?=$dicas?>">Dicas e Curiosidades</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$cartorios?>">Cartórios</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="menurodape" href="<?=$igrejas?>">Igrejas</a>
+				<br><br>-->
 				<font style="font-size:9px; font-weight:normal">Copyright&copy; Sul Eventos Ltda. - Todos os direitos reservados</font></font><br>
-				<a class="menurodape" style="font-size:9px; font-weight:normal" href="mailto: leonardo@udesc.br">Webmaster: Leonardo Vasconcellos</a>
+				<a class="menurodape" style="font-size:9px; font-weight:normal" href="mailto: leonardo.vasconcellos@gmail.com">Webmaster: Leonardo Vasconcellos</a>
 			</td>
 		</tr>
 	</table>
@@ -232,7 +342,7 @@ function constroi_destaque_eventos($numerodedestaques, $colunas){
 	$query = "SELECT * FROM eventos WHERE (DATA < " . mktime() . ") AND (status = 0) ORDER BY data DESC LIMIT " . $numerodedestaques;
 	require("includes/conectar_mysql.php");
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
-	if(mysql_num_rows($result) == 0){ 
+	if(mysql_num_rows($result) == 0){
 		?>
 		<table width="100%" cellspacing="5">
 			<tr>
@@ -247,12 +357,9 @@ function constroi_destaque_eventos($numerodedestaques, $colunas){
 			$query = "SELECT path_thumb FROM fotos WHERE cd=" . $evento["imagem_destaque"];
 			$result2 = mysql_query($query);
 			$imagem = mysql_fetch_row($result2);
-			if($contador_de_colunas == $colunas-1) $style = "";
-			elseif (mysql_num_rows($result) == 1) $style = "";
-			else $style = 'style="border-right: 1px solid #001238;"';
 			?>
-			<td width="33%" align="center" valign="top" <?=$style?>>
-				<table width="100%" border="0" height="240">
+			<td width="33%" align="center" valign="top">
+				<table width="100%" border="0" height="240" style="border: solid 1px #808080;" bgcolor="#FFFFFF">
 					<tr>
 						<td height="93" align="center" valign="top"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" src="<?=$imagem[0]?>"></a></td>
 					</tr>
@@ -265,7 +372,7 @@ function constroi_destaque_eventos($numerodedestaques, $colunas){
 						</td>
 					</tr>
 					<tr>
-						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="imagens/veja.gif"></a></td>
+						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="imagens/mais.gif"></a></td>
 					</tr>
 				</table>
 			</td>
@@ -289,7 +396,7 @@ function constroi_destaque_agenda($numerodedestaques, $colunas){
 	$query = "SELECT * FROM eventos WHERE (data > " . mktime() . ") AND (status = 1) ORDER BY data ASC LIMIT " . $numerodedestaques;
 	require("includes/conectar_mysql.php");
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
-	if(mysql_num_rows($result) == 0){ 
+	if(mysql_num_rows($result) == 0){
 		?>
 		<table width="100%" cellspacing="5">
 			<tr>
@@ -304,18 +411,15 @@ function constroi_destaque_agenda($numerodedestaques, $colunas){
 			$query = "SELECT path_thumb FROM fotos WHERE cd=" . $evento["imagem_destaque"];
 			$result2 = mysql_query($query);
 			$imagem = mysql_fetch_row($result2);
-			if($contador_de_colunas == $colunas-1) $style = "";
-			elseif (mysql_num_rows($result) == 1) $style = "";
-			else $style = 'style="border-right: 1px solid #001238;"';
 			?>
 			<td width="33%" align="center" valign="top" <?=$style?>>
-				<table width="100%" border="0" height="240">
+				<table width="100%" border="0" height="240" style="border: solid 1px #808080;" bgcolor="#FFFFFF">
 					<tr>
 						<td height="93" align="center" valign="top"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" src="<?=$imagem[0]?>"></a></td>
 					</tr>
 					<tr>
 						<td class="celula" valign="top">
-							<b><?=date("d/m/Y", $evento["data"])?></b><br>
+							<span style="font-weight: bold; color: #FF6600;"><?=date("d/m/Y", $evento["data"])?></span><br>
 							<?
 							if(strlen($evento["pginicial"] == 0)) echo(substr($evento["descricao"], 0, 150) . "...");
 							else echo(substr($evento["pginicial"], 0, 150) . "...");
@@ -323,7 +427,7 @@ function constroi_destaque_agenda($numerodedestaques, $colunas){
 						</td>
 					</tr>
 					<tr>
-						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="imagens/veja.gif"></a></td>
+						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="imagens/mais.gif"></a></td>
 					</tr>
 				</table>
 			</td>
@@ -344,7 +448,7 @@ function constroi_destaque_agenda($numerodedestaques, $colunas){
 function constroi_fotos_evento($codigo_evento, $colunas){
 	global $pagina_inicial, $eventos, $agenda;
 	$contador_de_colunas = 0;
-		
+
 	require("includes/conectar_mysql.php");
 	$query = "SELECT * FROM eventos, tipodeevento WHERE eventos.tipo=tipodeevento.cd AND eventos.cd=" . $codigo_evento;
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
@@ -471,7 +575,7 @@ function constroi_menu_esq(){
 		var intervalo;
 		var count = 0;
 		var intervalofade;
-		
+
 		function start(){
 			count = 0;
 			saiu = 0;
@@ -510,7 +614,7 @@ function constroi_menu_esq(){
 			?>
 		}
 		function mostramenu1(){
-			escondemenu();		
+			escondemenu();
 			var html = 	'<table border="0" width="380" bgcolor="#E5E5E5">'
 			<?
 			require("includes/conectar_mysql.php");
@@ -535,7 +639,7 @@ function constroi_menu_esq(){
 			document.all["menu_1"].style.filter = "progid:DXImageTransform.Microsoft.Shadow(color=#333333, Direction=135, Strength=5), filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=88)";
 		}
 		function mostramenu2(){
-			escondemenu();		
+			escondemenu();
 			var html = 	'<table border="0" width="190" bgcolor="#E5E5E5">'
 			<?
 			require("includes/conectar_mysql.php");
@@ -551,7 +655,7 @@ function constroi_menu_esq(){
 			document.all["menu_2"].style.filter = "progid:DXImageTransform.Microsoft.Shadow(color=#333333, Direction=135, Strength=5), filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=88)";
 		}
 		function mostramenu3(){
-			escondemenu();		
+			escondemenu();
 			var html = 	'<table border="0" width="190" bgcolor="#E5E5E5">'
 			<?
 			require("includes/conectar_mysql.php");
@@ -567,7 +671,7 @@ function constroi_menu_esq(){
 			document.all["menu_3"].style.filter = "progid:DXImageTransform.Microsoft.Shadow(color=#333333, Direction=135, Strength=5), filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=88)";
 		}
 		function mostramenu4(){
-			escondemenu();		
+			escondemenu();
 			var html = 	'<table border="0" width="190" bgcolor="#E5E5E5">'
 			<?
 			require("includes/conectar_mysql.php");
@@ -583,7 +687,7 @@ function constroi_menu_esq(){
 			document.all["menu_4"].style.filter = "progid:DXImageTransform.Microsoft.Shadow(color=#333333, Direction=135, Strength=5), filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=88)";
 		}
 		function mostramenu5(){
-			escondemenu();		
+			escondemenu();
 			var html = 	'<table border="0" width="190" bgcolor="#E5E5E5">'
 			<?
 			require("includes/conectar_mysql.php");
@@ -598,14 +702,14 @@ function constroi_menu_esq(){
 			document.all["menu_5"].style.visibility = "visible";
 			document.all["menu_5"].style.filter = "progid:DXImageTransform.Microsoft.Shadow(color=#333333, Direction=135, Strength=5), filter: progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=88)";
 		}
-		<?	
+		<?
 		$counter = 6;
 		require("includes/conectar_mysql.php");
 		$result = mysql_query("SELECT * FROM nomedesecao ORDER BY nome");
 		while($secao = mysql_fetch_assoc($result)){
 			?>
 			function mostramenu<?=$counter?>(){
-				escondemenu();		
+				escondemenu();
 				var html = 	'<table border="0" width="190" bgcolor="#E5E5E5">'
 				<?
 				require("includes/conectar_mysql.php");
@@ -628,12 +732,12 @@ function constroi_menu_esq(){
 		require("includes/desconectar_mysql.php");
 	?>
 	</script>
-	<table width="159" cellpadding="0" cellspacing="0" border="1">
+	<table width="159" cellpadding="0" cellspacing="0" border="0">
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$pagina_inicial?>">Pagina Inicial</a></td>
 						<td width="10">&nbsp;</td>
 					</tr>
@@ -641,10 +745,10 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$agenda?>">Agenda</a></td>
 						<td width="10">&nbsp;</td>
 					</tr>
@@ -652,10 +756,10 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$eventos?>">Eventos</a></td>
 						<td width="10">&nbsp;</td>
 					</tr>
@@ -663,10 +767,10 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$cartao_fidelidade?>">Cartão Fidelidade</a></td>
 						<td width="10">&nbsp;</td>
 					</tr>
@@ -674,10 +778,10 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$quem_somos?>">Quem Somos</a></td>
 						<td width="10">&nbsp;</td>
 					</tr>
@@ -685,10 +789,10 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="mostramenu1();"><a class="menuesquerdo" href="<?=$parceiros?>">Profissionais</a></td>
 						<td width="10"><div id="menu_1" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
 					</tr>
@@ -696,10 +800,10 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="mostramenu3();"><a class="menuesquerdo" href="<?=$anunciantes?>">Servi&ccedil;os Especiais</a></td>
 						<td width="10"><div id="menu_3" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
 					</tr>
@@ -707,10 +811,10 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="<?=$fale_conosco?>">Fale Conosco</a></td>
 						<td width="10">&nbsp;</td>
 					</tr>
@@ -718,10 +822,10 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="mostramenu2();"><a class="menuesquerdo" href="<?=$dicas?>">Dicas/Curiosidades</a></td>
 						<td width="10"><div id="menu_2" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
 					</tr>
@@ -729,10 +833,10 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="mostramenu5();"><a class="menuesquerdo" href="<?=$cartorios?>">Cartórios</a></td>
 						<td width="10"><div id="menu_5" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
 					</tr>
@@ -740,27 +844,58 @@ function constroi_menu_esq(){
 			</td>
 		</tr>
 		<tr>
-			<td width="100%" background="imagens/menu.jpg">
+			<td width="100%">
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr>
-						<td width="30">&nbsp;</td>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
 						<td onMouseOver="mostramenu4();"><a class="menuesquerdo" href="<?=$igrejas?>">Igrejas</a></td>
 						<td width="10"><div id="menu_4" onMouseOver="start();" onMouseOut="saiu = 1;"></div></td>
 					</tr>
 				</table>
 			</td>
 		</tr>
-		<?	
+		<tr>
+			<td width="100%">
+				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+					<tr>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
+						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="sites_parceiros.php">Sites de Parceiros</a></td>
+						<td width="10"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td width="100%">
+				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+					<tr>
+						<td width="30" height="20"><img src="imagens/icone.gif"></td>
+						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="http://www.suleventos.com.br/chat">Chat&nbsp;
+							<?
+							require("includes/conectar_mysql.php");
+							$result = mysql_query("SELECT COUNT(*) FROM blte_online");
+							$registro = mysql_fetch_row($result);
+							echo("(" . $registro[0] . ")");
+							require("includes/desconectar_mysql.php");
+							?>
+							</a>
+						</td>
+						<td width="10">&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<?
 		$counter = 6;
 		require("includes/conectar_mysql.php");
 		$result = mysql_query("SELECT * FROM nomedesecao ORDER BY nome");
 		while($secao = mysql_fetch_assoc($result)){
 			?>
 			<tr>
-				<td width="100%" background="imagens/menu.jpg">
+				<td width="100%">
 					<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						<tr>
-							<td width="30">&nbsp;</td>
+							<td width="30" height="20"><img src="imagens/icone.gif"></td>
 							<td onMouseOver="mostramenu<?=$counter?>();">
 								<?
 								if($secao["pgseparadas"] == "n"){?>
@@ -774,7 +909,7 @@ function constroi_menu_esq(){
 					</table>
 				</td>
 			</tr>
-			
+
 			<?
 			$counter++;
 		}
@@ -791,7 +926,7 @@ function constroi_ficha_tecnica($codigo_evento){
 	$evento = mysql_fetch_array($result, MYSQL_ASSOC);
 	?>
 	<center>
-	<table width="100%" style="color:#FFFFFF; text-align:center;" class="menu">
+	<table width="100%" style="color:#000000; text-align:center;" class="menuesquerdo">
 		<tr>
 			<td><img align="left" src="imagens/prancheta.gif"><span style="font-size:24px; text-align: left;">Ficha Técnica</span></td>
 		</tr>
@@ -805,7 +940,7 @@ function constroi_ficha_tecnica($codigo_evento){
 			<td>Nomes</td>
 		</tr>
 		<tr>
-			<td style="color:#DDDDDD;"><?=$evento["nomes"]?></td>
+			<td style="color:#ffffff;"><?=$evento["nomes"]?></td>
 		</tr>
 		<tr>
 			<td><hr></td>
@@ -814,7 +949,7 @@ function constroi_ficha_tecnica($codigo_evento){
 			<td>Data</td>
 		</tr>
 		<tr>
-			<td style="color:#DDDDDD;"><?=date("d/m/Y", $evento["data"])?></td>
+			<td style="color:#ffffff;"><?=date("d/m/Y", $evento["data"])?></td>
 		</tr>
 		<tr>
 			<td><hr></td>
@@ -823,7 +958,7 @@ function constroi_ficha_tecnica($codigo_evento){
 			<td>Local</td>
 		</tr>
 		<tr>
-			<td style="color:#DDDDDD;"><?=$evento["local"]?></td>
+			<td style="color:#ffffff;"><?=$evento["local"]?></td>
 		</tr>
 	<?
 	$query = "SELECT parceiros.cd, parceiros.nome, tipodeparceiro.cd as tipo2, tipodeparceiro.tipo from parceiro_evento, parceiros, tipodeparceiro where tipodeparceiro.cd=parceiros.tipo and parceiro_evento.parceiro=parceiros.cd and parceiro_evento.evento=" . $codigo_evento;
@@ -876,15 +1011,15 @@ function constroi_ficha_tecnica($codigo_evento){
 function constroi_parceiro_em_destaque(){
 	$ultimo_parceiro = retorna_config("ultimoparceiro");
 	require("includes/conectar_mysql.php");
-	
+
 	$result = mysql_query("SELECT COUNT(*) FROM parceiros") or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$total = mysql_fetch_row($result);
-	
+
 	if ($ultimo_parceiro >= $total[0] - 1) $proximo_parceiro = 0;
 	else $proximo_parceiro = $ultimo_parceiro + 1;
-	
+
 	altera_valor("ultimoparceiro", $proximo_parceiro);
-	
+
 	require("includes/conectar_mysql.php");
 	$query = "SELECT cd, nome, tipo, path_thumb from parceiros order by cd LIMIT " . $proximo_parceiro . ",1";
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
@@ -892,22 +1027,22 @@ function constroi_parceiro_em_destaque(){
 	else {
 		$parceiro = mysql_fetch_array($result, MYSQL_ASSOC);
 		?>
-		<table width="100%" bgcolor="#E6E6E6" border="0" cellpadding="0" cellspacing="0">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td valign="top" align="center">
 					<table width="100%">
 						<tr>
-							<td align="left" valign="top"><img src="imagens/bullet_red.gif"></td>
-							<td style="font-size:11px; font-family:'Lucida Sans Unicode', Verdana, Arial; vertical-align:top; text-align: left; font-weight:bold;">Profissional em Destaque</td>
+							<td align="left" valign="top"><img src="imagens/bullet_orange.gif"></td>
+							<td style="font-size:11px; font-family:'Lucida Sans Unicode', Verdana, Arial; vertical-align:top; text-align: left; font-weight:bold; color:#FFFFFF;">Profissional em Destaque</td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center" valign="top"><img width="100" src="<?=$parceiro["path_thumb"]?>"></td>
 						</tr>
 						<tr>
-							<td colspan="2" align="center"><a class="menurodape" href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><?=$parceiro["nome"]?></a></td>
+							<td colspan="2" align="center"><a class="menu" href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><?=$parceiro["nome"]?></a></td>
 						</tr>
 						<tr>
-							<td colspan="2" align="center" valign="top"><a href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><img src="imagens/veja.gif" border="0"></a></td>
+							<td colspan="2" align="center" valign="top"><a href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><img src="imagens/mais.gif" border="0"></a></td>
 						</tr>
 					</table>
 				</td>
@@ -923,13 +1058,13 @@ function constroi_parceiro_em_destaque(){
 function constroi_destaque_cestas(){
 	$ultimo_parceiro = retorna_config("ultimacesta");
 	require("includes/conectar_mysql.php");
-	
+
 	$result = mysql_query("SELECT COUNT(*) FROM parceiros where tipo=31") or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$total = mysql_fetch_row($result);
-	
+
 	if ($ultimo_parceiro >= $total[0] - 1) $proximo_parceiro = 0;
 	else $proximo_parceiro = $ultimo_parceiro + 1;
-	
+
 	altera_valor("ultimacesta", $proximo_parceiro);
 	require("includes/conectar_mysql.php");
 	$query = "SELECT cd, nome, tipo, path_thumb from parceiros where tipo=31 order by cd LIMIT " . $proximo_parceiro . ",1";
@@ -938,12 +1073,12 @@ function constroi_destaque_cestas(){
 	else {
 		$parceiro = mysql_fetch_array($result, MYSQL_ASSOC);
 		?>
-		<table width="100%" bgcolor="#E6E6E6" border="0" cellpadding="0" cellspacing="0">
+		<table width="100%" bgcolor="#FF9900" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td valign="top" align="center">
 					<table width="100%" border="0">
 						<tr>
-							<td width="5%" align="left" valign="top"><a href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><img border="0" src="imagens/bullet_red.gif"></a></td>
+							<td width="5%" align="left" valign="top"></td>
 							<td width="95%"><a href="parceiros.php?tipo=<?=$parceiro["tipo"]?>#<?=$parceiro["cd"]?>"><marquee direction="left" class="menurodape"  truespeed><?=$parceiro["nome"]?> - Cestas de Caf&eacute; da Manh&atilde; - Clique Aqui!</marquee></a></td>
 						</tr>
 						<tr>
@@ -970,7 +1105,7 @@ function constroi_destaque_cestas(){
 
 function constroi_destaque_cadastro_casamento(){
 	?>
-	<table width="100%" style="border: 1px solid #8A91A1;" cellpadding="0" cellspacing="0">
+	<table width="100%" cellpadding="0" cellspacing="0">
 		<tr>
 			<td valign="top" align="center">
 				<table width="100%">
@@ -995,7 +1130,7 @@ function constroi_outros_eventos(){
 	$qtd = retorna_config("qtd_outros_eventos");
 	if (strlen($qtd ) == 0) $qtd = "6";
 	?>
-	<table width="100%" style="border: 1px solid #8A91A1;" cellpadding="0" cellspacing="0">
+	<table width="100%" cellpadding="0" cellspacing="0">
 		<tr>
 			<td align="center">
 				<table width="100%" cellpadding="2" cellspacing="0" border="0" style="width: 100%;">
@@ -1042,14 +1177,14 @@ function constroi_outros_eventos(){
 
 function constroi_tabela_eventos($numerodedestaques, $colunas, $pagina){
 	$contador_de_colunas = 0;
-	
+
 	$limite = ($numerodedestaques * ($pagina -1));
 	$query_limit = " LIMIT " . $limite . "," . $numerodedestaques;
-	
-		
+
 	if($_GET["busca"] == "data") {
 		$data = $_GET["data"];
 		$filtro = "AND eventos.data=" . $data;
+				$query = "SELECT eventos.cd, eventos.nomes, eventos.data, eventos.imagem_destaque, tipodeevento.tipo FROM eventos, tipodeevento WHERE (eventos.tipo=tipodeevento.cd) " . $filtro . " ORDER BY data DESC" . $query_limit;
 	}
 	elseif($_GET["busca"] == "chave"){
 		$chave = $_REQUEST["chave"];
@@ -1058,10 +1193,14 @@ function constroi_tabela_eventos($numerodedestaques, $colunas, $pagina){
 	}
 	else $query = "SELECT eventos.cd, eventos.nomes, eventos.data, eventos.imagem_destaque, tipodeevento.tipo FROM eventos, tipodeevento WHERE (eventos.tipo=tipodeevento.cd) AND (eventos.data < " . mktime() . ") AND (eventos.status = 0) " . $filtro . " ORDER BY data DESC" . $query_limit;
 
-	
 	require("includes/conectar_mysql.php");
-	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
-	if(mysql_num_rows($result) == 0){ 
+	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error() . $query);
+	?>
+	<center><font id="fp"><strong>Eventos<br>
+			<font color="#CCCCCC">-----------------------------------
+			</font> </center>
+	<?
+	if(mysql_num_rows($result) == 0){
 		?>
 		<table width="100%" cellspacing="5">
 			<tr>
@@ -1083,7 +1222,7 @@ function constroi_tabela_eventos($numerodedestaques, $colunas, $pagina){
 		$query = "SELECT COUNT(*) FROM eventos, tipodeevento WHERE (eventos.tipo=tipodeevento.cd) AND (eventos.data < " . mktime() . ") AND (eventos.status = 0) " . $filtro;
 		$tmp = mysql_fetch_row(mysql_query($query));
 		$eof = $tmp[0];
-		
+
 		while($evento = mysql_fetch_array($result, MYSQL_ASSOC)){
 			$query = "SELECT path_thumb FROM fotos WHERE cd=" . $evento["imagem_destaque"];
 			$result2 = mysql_query($query);
@@ -1092,10 +1231,13 @@ function constroi_tabela_eventos($numerodedestaques, $colunas, $pagina){
 			<td width="33%" align="center" valign="top">
 				<table width="100%" height="200" border="0">
 					<tr>
+						<td class="menu" height="12" style="text-align: center; font-size:11px; color: #FF3300;">[<?=date("d/m/Y", $evento["data"])?>]</td>
+					</tr>
+					<tr>
 						<td align="center" valign="top" height="50%"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" src="<?=$imagem[0]?>"></a></td>
 					</tr>
 					<tr>
-						<td class="celula" valign="top"><center><?=$evento["tipo"]?>&nbsp;de&nbsp;<b><?=$evento["nomes"]?></b><br><?=date("d/m/Y", $evento["data"])?></center></td>
+						<td class="celula" valign="top"><center><?=$evento["tipo"]?>&nbsp;de&nbsp;<b><?=$evento["nomes"]?></b></center></td>
 					</tr>
 				</table>
 			</td>
@@ -1109,7 +1251,7 @@ function constroi_tabela_eventos($numerodedestaques, $colunas, $pagina){
 		?></tr>
 		<tr>
 			<td align="left">
-				<? 
+				<?
 				if($_GET["busca"] == "data") $busca = "&busca=data&data=" . $data;
 				if($_GET["busca"] == "chave") $busca = "&busca=chave&chave=" . $_REQUEST["chave"];
 				else $busca="";
@@ -1129,10 +1271,10 @@ function constroi_tabela_eventos($numerodedestaques, $colunas, $pagina){
 
 function constroi_tabela_agenda($numerodedestaques, $colunas, $pagina){
 	$contador_de_colunas = 0;
-	
+
 	$limite = ($numerodedestaques * ($pagina -1));
 	$query_limit = " LIMIT " . $limite . "," . $numerodedestaques;
-	
+
 	if($_GET["busca"] == "data") {
 		$data = $_GET["data"];
 		$filtro = "AND eventos.data=" . $data;
@@ -1145,7 +1287,12 @@ function constroi_tabela_agenda($numerodedestaques, $colunas, $pagina){
 	$query = "SELECT eventos.cd, eventos.nomes, eventos.data, eventos.imagem_destaque, tipodeevento.tipo FROM eventos, tipodeevento WHERE (eventos.tipo=tipodeevento.cd) AND (eventos.data > " . mktime() . ") AND (eventos.status = 1)" . $filtro . " ORDER BY data ASC" . $query_limit;
 	require("includes/conectar_mysql.php");
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
-	if(mysql_num_rows($result) == 0){ 
+	?>
+	<center><font id="fp"><strong>Agenda<br>
+			<font color="#CCCCCC">-----------------------------------
+			</font> </center>
+	<?
+	if(mysql_num_rows($result) == 0){
 		?>
 		<table width="100%" cellspacing="5">
 			<tr>
@@ -1155,7 +1302,7 @@ function constroi_tabela_agenda($numerodedestaques, $colunas, $pagina){
 		<?
 	}
 	else{
-		?><table width="100%" cellspacing="5"><tr><?
+		?><table width="100%" cellspacing="0"><tr><?
 		if($_GET["busca"] == "data") {
 			$data = $_GET["data"];
 			$filtro = "WHERE data=" . $data;
@@ -1167,7 +1314,7 @@ function constroi_tabela_agenda($numerodedestaques, $colunas, $pagina){
 		$query = "SELECT COUNT(*) FROM eventos, tipodeevento WHERE (eventos.tipo=tipodeevento.cd) AND (eventos.data > " . mktime() . ") AND (eventos.status = 1)" . $filtro;
 		$tmp = mysql_fetch_row(mysql_query($query));
 		$eof = $tmp[0];
-		
+
 		while($evento = mysql_fetch_array($result, MYSQL_ASSOC)){
 			$query = "SELECT path_thumb FROM fotos WHERE cd=" . $evento["imagem_destaque"];
 			$result2 = mysql_query($query);
@@ -1176,7 +1323,7 @@ function constroi_tabela_agenda($numerodedestaques, $colunas, $pagina){
 			<td width="33%" align="center" valign="top">
 				<table width="100%" height="200" border="0">
 					<tr>
-						<td bgcolor="#999999" class="menu" height="12" style="font-size:10px;"><img src="imagens/bullet_blue.gif">&nbsp;&nbsp;<?=date("d/m/Y", $evento["data"])?></td>
+						<td class="menu" height="12" style="text-align: center; font-size:11px; color: #FF3300;">[<?=date("d/m/Y", $evento["data"])?>]</td>
 					</tr>
 					<tr>
 						<td align="center" valign="top" height="50%"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" src="<?=$imagem[0]?>"></a></td>
@@ -1196,7 +1343,7 @@ function constroi_tabela_agenda($numerodedestaques, $colunas, $pagina){
 		?></tr>
 		<tr>
 			<td align="left">
-				<? 
+				<?
 				if($_GET["busca"] == "data") $busca = "&busca=data&data=" . $data;
 				if($_GET["busca"] == "chave") $busca = "&busca=chave&chave=" . $_REQUEST["chave"];
 				else $busca="";
@@ -1223,10 +1370,10 @@ function constroi_tabela_parceiros($tipo){
 	$query = "SELECT parceiros.cd, parceiros.path, parceiros.path_thumb, parceiros.largura, parceiros.altura, parceiros.nome, parceiros.descricao, parceiros.site, parceiros.email, parceiros.telefone, parceiros.endereco, tipodeparceiro.tipo FROM parceiros, tipodeparceiro WHERE parceiros.tipo=tipodeparceiro.cd AND parceiros.tipo=" . $tipo;
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	if(mysql_num_rows($result) == 0) echo('<div width="100%" class="conteudo">Não há Profissionais cadastrados.</div>');
-	?> 
+	?>
 	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$parceiros?>">[PROFISSIONAIS]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape">[<?=$tipodeparceiro[0]?>]</a>
 	<hr>
-	<table width="100%" class="conteudo"> <?
+	<table width="100%"> <?
 	while($parceiro = mysql_fetch_array($result, MYSQL_ASSOC)){
 		?>
 			<tr>
@@ -1267,7 +1414,7 @@ function constroi_tabela_anunciantes($tipo){
 	$query = "SELECT anunciantes.cd, anunciantes.path, anunciantes.path_thumb, anunciantes.largura, anunciantes.altura, anunciantes.nome, anunciantes.descricao, anunciantes.site, anunciantes.email, anunciantes.telefone, anunciantes.endereco, tipodeanunciante.tipo FROM anunciantes, tipodeanunciante WHERE anunciantes.tipo=tipodeanunciante.cd AND anunciantes.tipo=" . $tipo;
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	if(mysql_num_rows($result) == 0) echo('<div width="100%" class="conteudo">Não há serviços cadastrados.</div>');
-	?> 
+	?>
 	<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$pagina_inicial?>">[HOME]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape" href="<?=$anunciantes?>">[SERVI&Ccedil;OS ESPECIAIS]</a>&nbsp;-&nbsp;<a style="font-weight: normal; font-size: 11px;" class="menurodape">[<?=$tipodeanunciante[0]?>]</a>
 	<hr>
 	<table width="100%" class="conteudo"> <?
@@ -1349,7 +1496,7 @@ function constroi_dicas_destaque(){
 
 function constroi_faleconosco(){
 	?>
-	<div class="titulosecao"><img align="bottom" src="imagens/bullet_red.gif">&nbsp;Fale Conosco!</div><br>
+	<div class="titulosecao">&nbsp;Fale Conosco</div><br>
 	<table width="100%" class="conteudo">
 		<form action="fale_conosco.php?modo=enviar" method="post">
 		<tr>
@@ -1489,6 +1636,7 @@ function constroi_login_errado($codigo){
 
 function constroi_banner(){
 	?>
+	<!--
 	<br>
 	<hr color="#001238" size="1"><br>
 	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="440" height="87" id="Untitled-1" align="middle">
@@ -1498,7 +1646,7 @@ function constroi_banner(){
 		<param name="bgcolor" value="#ffffff" />
 		<param name="wmode" value="transparent">
 		<embed src="imagens/banner.swf" width="440" height="87" align="middle" quality="high" bgcolor="#ffffff" wmode="transparent" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-</object>
+</object>-->
 	<?
 }
 
@@ -1524,14 +1672,12 @@ function constroi_tabela_tipo_parceiros(){
 			$resposta = mysql_fetch_row($result3);
 			$imagem = $resposta[0];
 			?>
-			<div style="vertical-align:bottom; border-top: solid 1px #E6E6E6; border-left: solid 1px #E6E6E6; border-bottom: solid 1px #666666; border-right: solid 1px #666666; height: 50px; filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#E6E6E6,endColorStr=#999999);">
-				<table>
-					<tr>
-						<td width="65"><a href="parceiros.php?tipo=<?=$parceiro["tipo1"]?>"><img border="0" width="56" height="41" src="<? if(strlen($parceiro["path"]) != 0) echo($parceiro["path"]); else echo($imagem); ?>"></a></td>
-						<td><a class="menuparceiros" href="parceiros.php?tipo=<?=$parceiro["tipo1"]?>"><?=$parceiro["tipo2"]?>&nbsp;(<?=$qtd?>)</a></td>
-					</tr>
-				</table>
-			</div>
+			<table>
+				<tr>
+					<td width="65">&nbsp;</td>
+					<td><a class="menuesquerdo" href="parceiros.php?tipo=<?=$parceiro["tipo1"]?>"><?=$parceiro["tipo2"]?>&nbsp;(<?=$qtd?>)</a></td>
+				</tr>
+			</table>
 			<?
 		}
 	require("includes/desconectar_mysql.php");
@@ -1705,7 +1851,7 @@ function verifica_pagina_parceiro($codigo){
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$qtd = mysql_num_rows($result);
 	require("includes/desconectar_mysql.php");
-	
+
 	if ($qtd > 0) return true;
 	else return false;
 }
@@ -1718,7 +1864,7 @@ function verifica_pagina_anunciante($codigo){
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
 	$qtd = mysql_num_rows($result);
 	require("includes/desconectar_mysql.php");
-	
+
 	if ($qtd > 0) return true;
 	else return false;
 }
@@ -1737,8 +1883,8 @@ function constroi_tabela_cartorios(){
 				<td>Não há itens cadastrados.</td>
 			</tr>
 		</table>
-	
-	<? } ?> 
+
+	<? } ?>
 	<table width="100%" class="conteudo"> <?
 	while($cartorio = mysql_fetch_array($result, MYSQL_ASSOC)){
 		?>
@@ -1761,7 +1907,7 @@ function constroi_tabela_secao($secao, $subsecao){
 	if($subsecao == 0) $query = "SELECT * FROM secoes WHERE nomedesecao=" . $secao . " ORDER BY titulo";
 	else $query = "SELECT * FROM secoes WHERE cd=" . $subsecao;
 	$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
-	?> 
+	?>
 	<table width="100%" class="conteudo"> <?
 	while($texto = mysql_fetch_array($result, MYSQL_ASSOC)){
 		?>
@@ -1781,4 +1927,23 @@ function constroi_tabela_secao($secao, $subsecao){
 }
 
 #################################################################################################################
+
+function banners_direita(){
+	?>
+	<center>
+		<span class="menuesquerdo">Parceiros:</span><br><br>
+		<?
+		require("includes/conectar_mysql.php");
+		$query = "SELECT * FROM banners order by ordem, imagem";
+		$result = mysql_query($query) or die("Erro de conexão ao banco de dados: " . mysql_error());
+		while($registro = mysql_fetch_assoc($result)){ ?>
+			<a target="_blank" href="<?=$registro["link"]?>"><img border="0" src="<?=$registro["imagem"]?>" width="160" height="51"></a><br><br>
+		<? } ?>
+	</center>
+	<? 
+	require("includes/desconectar_mysql.php");
+	?><span class="menu">Anuncie aqui!</span><?	
+}
 ?>
+
+

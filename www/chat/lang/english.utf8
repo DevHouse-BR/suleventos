@@ -1,0 +1,127 @@
+<?php 
+
+/* English */
+
+$lang=array();
+
+$lang['ok']           = '- OK -';
+$lang['reset']        = ' Reset ';
+$lang['on']           = 'On';
+$lang['off']          = 'Off';
+$lang['yes']          = 'Yes';
+$lang['no']           = 'No';
+$lang['all']          = 'All';
+$lang['login']        = 'Login';
+$lang['exitt']        = 'LogOut';
+$lang['edit']         = 'Edit';
+$lang['delete']       = 'Delete';
+$lang['desc']         = 'Description';
+$lang['name']         = 'Name';
+$lang['password']     = 'Password';
+$lang['old_pass']     = 'Old password';
+$lang['new_pass']     = 'New password';
+$lang['forgot_pass']  = 'Forgot password';
+$lang['register']     = 'Register';
+$lang['ban']          = 'Ban';
+$lang['profile']      = 'Profile';
+$lang['mail']         = 'E-mail';
+$lang['room']         = 'Room';
+$lang['rooms']        = 'Rooms';
+$lang['online']       = 'Online';
+$lang['sound']        = 'Sound';
+$lang['smilies']      = 'Smilies';
+$lang['color']        = 'Colors';
+$lang['turing']       = 'Acc. number';
+$lang['verification'] = 'Verification';
+$lang['code']         = 'Code';
+$lang['suffix']       = 'Suffix';
+$lang['timezone']     = 'Timezone';
+$lang['time_format']  = 'Format';
+$lang['age']          = 'Age';
+$lang['fun']          = 'Fun';
+$lang['sex']          = 'Sex';
+$lang['male']         = 'Male';
+$lang['female']       = 'Female';
+$lang['location']     = 'Location';
+$lang['website']      = 'Website';
+$lang['info']         = 'Info';
+$lang['choose']       = 'Choose';
+$lang['upload']       = 'Upload';
+$lang['lang']         = 'Language';
+$lang['user']         = 'User';
+$lang['users']        = 'Users';
+$lang['activation']   = 'Activation';
+$lang['header']       = 'Header';
+$lang['footer']       = 'Footer';
+$lang['title']        = 'Title';
+$lang['join']         = 'Joined';
+$lang['status']       = 'Status';
+$lang['active']       = 'Normal';
+$lang['inactive']     = 'Suspended';
+$lang['unverified']   = 'Unverified';
+$lang['order']        = 'Order';
+$lang['no_results']   = 'No matches...';
+$lang['integration']  = 'Integration';
+$lang['history']      = 'History';
+$lang['badwords']     = 'Bad words';
+$lang['mail_tmpl']    = 'Mail templates';
+$lang['backup']       = 'Backup [Users]';
+$lang['admin']        = 'Admin';
+$lang['moderator']    = 'Moderator';
+$lang['settings']     = 'Settings';
+$lang['inf_pmssg']    = 'Info / Whisper';
+$lang['guest']        = 'Guest';
+$lang['remember']     = 'Remember';
+$lang['6_hours']      = '6 hours';
+$lang['a_day']        = '1 day';
+$lang['a_week']       = '1 week';
+$lang['a_month']      = '1 month';
+$lang['a_year']       = '1 year';
+$lang['mass']         = 'Select mass actions here...';
+$lang['clear_ban']    = 'Clear banned IP list';
+$lang['ban_ip']       = 'Ban this IP for';
+$lang['suspend_acc']  = 'Suspend this account';
+$lang['max_users']    = 'Too many people are chatting... Please wait for a few minutes and reload the page.';
+$lang['open_new']     = 'Open this image in a new window...';
+$lang['confirm']      = 'Please confirm this action...';
+$lang['wrong']        = 'Wrong input.';
+$lang['account_ok']   = 'Your account has been activated successfully.';
+$lang['check_inbox']  = 'Check your inbox.';
+$lang['wait_app']     = 'Your account has been created successfully but it is still inactive. Approval by administrator is required...';
+$lang['all_req']      = 'All fields required!';
+$lang['you_banned']   = 'You have been banned!';
+$lang['headers_sent'] = 'Headers already sent.';
+$lang['wrong_turing'] = 'Incorrect acc. number.';
+$lang['mail_error']   = 'Mail server error.';
+$lang['action_ok']    = 'The requested operation has been completed successfully.';
+$lang['continue']     = 'Click here to continue...';
+$lang['revalidate']   = 'E-mail must be validated!';
+$lang['bwordsedit']   = 'In order to edit this list <i>badwords.txt</i> must be CHMODed to 666.';
+$lang['upload_err']   = 'Upload error. Probably max filesize exceeded...';
+$lang['error_ip']     = 'The user is not online, it is your own IP or an already banned IP address.';
+$lang['error_usr']    = 'No such user, it is your own account or a guest account.';
+$lang['error_bro']    = 'Your browser is not supported! <br /><br /> Please upgrade to MSIE 5.0, Opera 8.5 or Mozilla 1.0.<br /> The latest versions of Safari and Konqueror are supported as well.';
+$lang['error_nop']    = 'You have no permission to load the requested page...';
+$lang['error_lnk']    = 'It seems you have tried to open a link in a new window which is not allowed.';
+$lang['error_unk']    = '<b>Unknown error!</b><br /><br />';
+$lang['sett1']        = 'Print \'guest\' username/password on login. Change the password and turn this feature off to disallow guests.';
+$lang['sett2']        = 'Activation by mail required. [A] means that new users cannot enter until their accounts are approved manually.';
+$lang['sett3']        = 'Compression enabled for all browsers that support this feature. [A] means all browsers except MSIE.';
+$lang['sett4']        = 'Users per room [MAX].';
+$lang['sett5']        = 'Maximum filesize when uploading photos in kB. OFF means no photos allowed.';
+$lang['sett6']        = 'Acc. number protection against automated attacks.';
+$lang['sett7']        = 'Acc. number expires in ** minutes.';
+
+/* 3.1 update */
+
+$lang['disconnect']   = 'You have been disconnected. [Reason: no response from the server, request sent 30 seconds ago.]';
+$lang['error_nan']    = 'You have been disconnected. [Reason: the latest server response was lost or broken (0 bytes).]';
+
+/* 3.2 update */
+
+$lang['retype']       = 'Retype';
+$lang['suspend']      = 'Suspend';
+$lang['empty']        = 'Empty';
+$lang['empty_all']    = 'Empty all rooms';
+
+?>

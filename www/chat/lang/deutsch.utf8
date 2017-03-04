@@ -1,0 +1,126 @@
+<?php 
+
+/* German */
+
+$lang=array();
+
+$lang['ok']           = '- OK -';
+$lang['reset']        = ' Reset ';
+$lang['on']           = 'On';
+$lang['off']          = 'Off';
+$lang['yes']          = 'Ja';
+$lang['no']           = 'Nein';
+$lang['all']          = 'Alle';
+$lang['login']        = 'Anmelden';
+$lang['exitt']        = 'Abmelden';
+$lang['edit']         = 'Bearbeiten';
+$lang['delete']       = 'Löschen';
+$lang['desc']         = 'Beschreibung';
+$lang['name']         = 'Name';
+$lang['password']     = 'Passwort';
+$lang['old_pass']     = 'Altes Passwort';
+$lang['new_pass']     = 'Neues Passwort';
+$lang['forgot_pass']  = 'Passwort vergessen';
+$lang['register']     = 'Registrieren';
+$lang['ban']          = 'Blockieren';
+$lang['profile']      = 'Profile';
+$lang['mail']         = 'E-mail';
+$lang['room']         = 'Raum';
+$lang['rooms']        = 'Räume';
+$lang['online']       = 'Online';
+$lang['sound']        = 'Laut';
+$lang['smilies']      = 'Emotionen';
+$lang['color']        = 'Farben';
+$lang['turing']       = 'Zugangs-Nr';
+$lang['verification'] = 'Überprüfung';
+$lang['code']         = 'Code';
+$lang['suffix']       = 'Suffix';
+$lang['timezone']     = 'Zeitzone';
+$lang['time_format']  = 'Format';
+$lang['age']          = 'Alter';
+$lang['fun']          = 'Vergnügung';
+$lang['sex']          = 'Geschlecht';
+$lang['male']         = 'Mann';
+$lang['female']       = 'Frau';
+$lang['location']     = 'Ort';
+$lang['website']      = 'Website';
+$lang['info']         = 'Info';
+$lang['choose']       = 'Auswählen';
+$lang['upload']       = 'Hochladen';
+$lang['lang']         = 'Sprache';
+$lang['user']         = 'Benutzer';
+$lang['users']        = 'Benutzer';
+$lang['activation']   = 'Aktivierung';
+$lang['header']       = 'Überschrift';
+$lang['footer']       = 'Seitenende';
+$lang['title']        = 'Titel';
+$lang['join']         = 'Verbunden';
+$lang['status']       = 'Status';
+$lang['active']       = 'Normal';
+$lang['inactive']     = 'Inaktiv';
+$lang['unverified']   = 'Unverifiziert';
+$lang['order']        = 'Auftrag';
+$lang['no_results']   = 'Kein Resultat...';
+$lang['integration']  = 'Integration';
+$lang['history']      = 'Geschichte';
+$lang['badwords']     = 'Schimpfwörter';
+$lang['mail_tmpl']    = 'Mail Vorlagen';
+$lang['backup']       = 'Backup [Users]';
+$lang['admin']        = 'Admin';
+$lang['moderator']    = 'Moderator';
+$lang['settings']     = 'Einstellungen';
+$lang['inf_pmssg']    = 'Info / Flüstern';
+$lang['guest']        = 'Gast';
+$lang['remember']     = 'Erinnere';
+$lang['6_hours']      = '6 Stunden';
+$lang['a_day']        = '1 Tag';
+$lang['a_week']       = '1 Woche';
+$lang['a_month']      = '1 Monat';
+$lang['a_year']       = '1 Jahr';
+$lang['mass']         = 'Wählen Sie Massenänderungen hier...';
+$lang['clear_ban']    = 'Lösche die Liste der blockierten IP';
+$lang['ban_ip']       = 'Blockiere diese IP für';
+$lang['suspend_acc']  = 'Deaktiviere diesen Account';
+$lang['max_users']    = 'Im Moment zu viele Personen im Chat... Warten Sie bitte ein paar Minuten und laden Sie diese Seiten nochmals.';
+$lang['open_new']     = 'Öffne dieses Bild in ein neues Fenster...';
+$lang['confirm']      = 'Bestätigen Sie bitte diese Aktion...';
+$lang['wrong']        = 'Falsche Eingabe.';
+$lang['account_ok']   = 'Ihr Account wurde erfolgreich aktiviert.';
+$lang['check_inbox']  = 'Überpruefen Sie Ihre Inbox.';
+$lang['wait_app']     = 'Ihr Account wurde erfolgreich erstellt aber ist z.Z. nicht aktiv. Die Freigabe des Administrators wird benötigt....';
+$lang['all_req']      = 'Alle Felder werden benötigt!';
+$lang['you_banned']   = 'Sie wurden blockiert!';
+$lang['headers_sent'] = 'Überschrift bereits gesendet.';
+$lang['wrong_turing'] = 'Falsche Zugangs-Nr.';
+$lang['mail_error']   = 'Mail server Fehler.';
+$lang['action_ok']    = 'Die angeforderte Operation wurde erfolgreich ausgeführt.';
+$lang['continue']     = 'Klicken Sie hier um fortzufahren...';
+$lang['revalidate']   = 'E-mail muss validiert werden!';
+$lang['bwordsedit']   = 'Zwecks diese Liste zu bearbeiten <i>badwords.txt</i> muss der CHMODed auf 666 gesetzt werden.';
+$lang['upload_err']   = 'Upload Fehler. Wahrscheinlich max Filegröße überschritten...';
+$lang['error_ip']     = 'Der Benutzer ist nicht online, es ist Ihre eigene IP oder eine blockierte IP-Adresse.';
+$lang['error_usr']    = 'Kein solcher Benutzer, es ist Ihr eigener Account oder der des Gastes.';
+$lang['error_bro']    = 'Ihr Browser wird nicht unterstützt! <br /><br /> Bitte auf MSIE 5.0 upgrade, Opera 8.5 or Mozilla 1.0.<br /> Die neuesten Versionen der Safari und des Konqueror werden außerdem unterstützt.';
+$lang['error_nop']    = 'Sie haben keine Berechtigung die aufgerufene Seite zu laden...';
+$lang['error_lnk']    = 'Es scheint, dass Sie versucht haben, eine Verbindung in einem neuen Fenster zu öffnen, das nicht erlaubt ist.';
+$lang['error_unk']    = '<b>Unbekannter Fehler!</b><br /><br />';
+$lang['sett1']        = 'Zeige \'Gast\' Benutzer/Passwort beim anmelden. Ändern Sie das Passwort und schalten Sie diese Funktion aus um keine Gäste zu erlauben.';
+$lang['sett2']        = 'Aktivierung durch E-Mail benötigt. [A] bedeutet, dass neue Benutzer nicht eintreten können, bis ihre Konten manuell genehmigt sind.';
+$lang['sett3']        = 'Kompression ermöglicht für alle Datenbanksuchroutinen, die diese Eigenschaft unterstützen. [A] bedeutet alle Datenbanksuchroutinen ausgenommen MSIE.';
+$lang['sett4']        = 'Benutzer pro Raum [MAX].';
+$lang['sett5']        = 'Maximale Filegröße in kB für Bilderupload. OFF bedeutet keine Fotos erlaubt.';
+$lang['sett6']        = 'Zugangs-Nr Schutz gegen automatisierte Angriffe.';
+$lang['sett7']        = 'Zugangs-Nr läuft ab in ** minuten.';
+
+/* 3.1 update */
+
+$lang['disconnect']   = 'Sie sind disconnect worden. [Grund: keine Antwort vom Server. Request sandte vor 30 Sekunden.]';
+$lang['error_nan']    = 'Sie sind disconnect worden. [Grund: die letzte Antwort vom Server (0 bytes).]';
+
+/* 3.2 update */
+
+$lang['retype']       = 'Passwort';
+$lang['suspend']      = 'Deaktiviere';
+$lang['empty']        = 'Leer';
+$lang['empty_all']    = 'Leer alle räume';
+?>

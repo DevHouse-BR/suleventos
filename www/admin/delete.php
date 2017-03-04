@@ -14,8 +14,8 @@ switch ($oque){
 		$query = "SELECT path, path_thumb FROM fotos WHERE cd=" . $cd;
 		$result = mysql_query($query) or die("Erro ao acessar registros do Banco de dados: " . mysql_error());;
 		$arquivo = mysql_fetch_row($result);
-		if(!unlink("../" . $arquivo[0])) die("Erro ao apagar o arquivo!");
-		if(!unlink("../" . $arquivo[1])) die("Erro ao apagar o arquivo!");
+		if(!unlink("../" . $arquivo[0])) echo("Erro ao apagar o arquivo!");
+		if(!unlink("../" . $arquivo[1])) echo("Erro ao apagar o arquivo!");
 		break;
 		
 	case "pagina_parceiro_fotos":
@@ -30,8 +30,8 @@ switch ($oque){
 		$query = "SELECT path, path_thumb FROM pagina_anunciante_fotos WHERE cd=" . $cd;
 		$result = mysql_query($query) or die("Erro ao acessar registros do Banco de dados: " . mysql_error());;
 		$arquivo = mysql_fetch_row($result);
-		if(!unlink("../" . $arquivo[0])) die("Erro ao apagar o arquivo!");
-		if(!unlink("../" . $arquivo[1])) die("Erro ao apagar o arquivo!");
+		if(!unlink("../" . $arquivo[0])) echo("Erro ao apagar o arquivo!");
+		if(!unlink("../" . $arquivo[1])) echo("Erro ao apagar o arquivo!");
 		break;
 	
 	case "parceiros":
@@ -56,9 +56,9 @@ switch ($oque){
 		$query = "SELECT caminho_img, caminho_thumb FROM imagens WHERE cd=" . $cd;
 		$result = mysql_query($query) or die("Erro ao acessar registros do Banco de dados: " . mysql_error());;
 		$arquivo = mysql_fetch_row($result);
-		if(!unlink("../" . $arquivo[0])) die("Erro ao apagar o arquivo!");
+		if(!unlink("../" . $arquivo[0])) echo("Erro ao apagar o arquivo!");
 		if(substr($arquivo[1], -3) != "gif"){
-			if(!unlink("../" . $arquivo[1])) die("Erro ao apagar o arquivo!");
+			if(!unlink("../" . $arquivo[1])) echo("Erro ao apagar o arquivo!");
 		}
 		break;
 		

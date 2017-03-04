@@ -35,6 +35,9 @@ require("permissao_documento.php");
 								<?php constroi_tabela_esq(-1); ?>
 							</td>
 							<td align="left" valign="top" bgcolor="#E6E6E6" class="conteudo" width="470">
+								<div style="font-size:12px; color:#000000; background-color:#FFFFFF;"><h5>Alterar Versículo Bíblico</h5><b>Versículo:</b>&nbsp;<form action="salva_config.php" target="_blank"><textarea name="valor" style="width: 100%; height: 150px;"><?=retorna_config("versiculo")?></textarea><div style="text-align:right;"><input type="submit" value="Salvar"><input type="hidden" name="chave" value="versiculo"></div></form>
+								<form action="salva_config.php" target="_blank"><b>Tamanho da Fonte:</b>&nbsp;&nbsp;<input type="text" name="valor" size="2" value="<?=retorna_config("tamanho_fonte_versiculo")?>">pixels&nbsp;&nbsp;<input type="submit" value="Salvar"><input type="hidden" name="chave" value="tamanho_fonte_versiculo"></form></div>
+								<hr>
 								<div style="font-size:12px; color:#000000; background-color:#FFFFFF;">Alterar Senha Administrador<br>Nova Senha:&nbsp;<input type="password" id="senha"><br>Confirmação:<input type="password" id="confirma">&nbsp;&nbsp;<input type="button" onClick="if((document.all['senha'].value == document.all['confirma'].value) && (document.all['senha'].value != '')) window.open('salva_config.php?chave=senha&valor=' + document.all['senha'].value, 'CONFIG', 'width=100,height=50,toolbar=no,status=no,resizable=no,top=20,left=100,dependent=yes,alwaysRaised=yes'); else { alert('A senha não confere!'); document.all['senha'].value = ''; document.all['confirma'].value = ''; }" value="OK"></div>
 								<hr>
 								<?php constroi_form_busca(); ?>

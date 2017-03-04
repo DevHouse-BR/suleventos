@@ -1,0 +1,17 @@
+<?php
+
+/***************************************************************
+
+USE THIS FILE IF YOU WOULD LIKE TO BE ABLE TO EMPTY THE CHATROOM
+SIMPLY RENAME IT TO 'WHATEVER_U_WISH'.php AND RUN IT BY YOUR BROWSER
+
+****************************************************************/
+
+require_once 'config.php';
+require_once 'incl/main.inc';
+
+$query='DELETE FROM '.$prefix.'_lines';
+neutral_query($query);
+
+print 'done';
+?>

@@ -1,0 +1,126 @@
+<?php 
+
+/* Dutch */
+
+$lang=array();
+
+$lang['ok']           = '- OK -';
+$lang['reset']        = ' Opnieuw ';
+$lang['on']           = 'Aan';
+$lang['off']          = 'Uit';
+$lang['yes']          = 'Ja';
+$lang['no']           = 'Nee';
+$lang['all']          = 'Alles';
+$lang['login']        = 'Login';
+$lang['exitt']        = 'Loguit';
+$lang['edit']         = 'Wijzig';
+$lang['delete']       = 'Verwijder';
+$lang['desc']         = 'Beschrijving';
+$lang['name']         = 'Naam';
+$lang['password']     = 'Wachtwoord';
+$lang['old_pass']     = 'Oude wachtwoord';
+$lang['new_pass']     = 'Nieuwe wachtwoord';
+$lang['forgot_pass']  = 'Vergat wachtwoord';
+$lang['register']     = 'Registreer';
+$lang['ban']          = 'Ban';
+$lang['profile']      = 'Profiel';
+$lang['mail']         = 'E-mail';
+$lang['room']         = 'Kamer';
+$lang['rooms']        = 'Kamers';
+$lang['online']       = 'Online';
+$lang['sound']        = 'Geluid';
+$lang['smilies']      = 'Smilies';
+$lang['color']        = 'Kleuren';
+$lang['turing']       = 'Toeg. nummer';
+$lang['verification'] = 'Verificatie';
+$lang['code']         = 'Code';
+$lang['suffix']       = 'Suffix';
+$lang['timezone']     = 'Tijdzone';
+$lang['time_format']  = 'Formaat';
+$lang['age']          = 'Leeftijd';
+$lang['fun']          = 'Plezier';
+$lang['sex']          = 'Geslacht';
+$lang['male']         = 'Man';
+$lang['female']       = 'Vrouw';
+$lang['location']     = 'Woonplaats';
+$lang['website']      = 'Website';
+$lang['info']         = 'Info';
+$lang['choose']       = 'Kies';
+$lang['upload']       = 'Upload';
+$lang['lang']         = 'Taal';
+$lang['user']         = 'Gebruiker';
+$lang['users']        = 'Gebruikers';
+$lang['activation']   = 'Activatie';
+$lang['header']       = 'Hoofdnoot';
+$lang['footer']       = 'Voetnoot';
+$lang['title']        = 'Titel';
+$lang['join']         = 'Aangemeld';
+$lang['status']       = 'Status';
+$lang['active']       = 'Normaal';
+$lang['inactive']     = 'Opgeschort';
+$lang['unverified']   = 'Ongeverificeerd';
+$lang['order']        = 'Order';
+$lang['no_results']   = 'Geen resultaten...';
+$lang['integration']  = 'Integratie';
+$lang['history']      = 'Geschiedenis';
+$lang['badwords']     = 'Slechte woorden';
+$lang['mail_tmpl']    = 'Emailsjablonen';
+$lang['backup']       = 'Backup [Gebruikers]';
+$lang['admin']        = 'Beheerder';
+$lang['moderator']    = 'Moderator';
+$lang['settings']     = 'Instellingen';
+$lang['inf_pmssg']    = 'Info / Fluister';
+$lang['guest']        = 'Gast';
+$lang['remember']     = 'Onthoud';
+$lang['6_hours']      = '6 uur';
+$lang['a_day']        = '1 dag';
+$lang['a_week']       = '1 week';
+$lang['a_month']      = '1 maand';
+$lang['a_year']       = '1 jaar';
+$lang['mass']         = 'Selecteer grote acties hier...';
+$lang['clear_ban']    = 'Ruim verbande IP\'s lijst op';
+$lang['ban_ip']       = 'Ban deze IP voor';
+$lang['suspend_acc']  = 'Schort dit account op';
+$lang['max_users']    = 'Er zijn te veel mensen aan het chatten... Wacht alstublieft een paar minuten en herlaad deze pagina.';
+$lang['open_new']     = 'Open deze afbeelding in een nieuw venster...';
+$lang['confirm']      = 'Bevestig deze actie alstublieft...';
+$lang['wrong']        = 'Verkeerde invoer.';
+$lang['account_ok']   = 'Uw account is met succes geactiveerd.';
+$lang['check_inbox']  = 'Check uw postvak.';
+$lang['wait_app']     = 'Uw account is met succes aangemaakt maar het is nog inactief. Toestemming van de beheerder is noodzakelijk...';
+$lang['all_req']      = 'Alle velden verplicht!';
+$lang['you_banned']   = 'U bent verbannen!';
+$lang['headers_sent'] = 'Titels al verzonden.';
+$lang['wrong_turing'] = 'Verkeerd toeg. numer.';
+$lang['mail_error']   = 'Mail server fout.';
+$lang['action_ok']    = 'De aangevraagde actie is met succes uitgevoerd.';
+$lang['continue']     = 'Klik hier om door te gaan...';
+$lang['revalidate']   = 'E-mail moet worden gevalideerd!';
+$lang['bwordsedit']   = 'Om deze lijst te bewerken <i>badwords.txt</i> moet het worden geCHMOD naar 666.';
+$lang['upload_err']   = 'Upload fout. Waarschijnlijk max. bestand bereikt...';
+$lang['error_ip']     = 'Deze gebruiker is niet online, het is uw eigen IP of een IP dat al verbannen is.';
+$lang['error_usr']    = 'Deze gebruiker bestaat niet, het is uw eigen account of een gastaccount.';
+$lang['error_bro']    = 'Uw browser wordt niet ondersteund! <br /><br /> Waardeer op naar MSIE 5.0, Opera 8.5 of Mozilla 1.0.<br /> De laatste versies van Safari en Konqueror worden ook ondersteund.';
+$lang['error_nop']    = 'U heeft geen toestemming om de opgevraagde pagina te laden...';
+$lang['error_lnk']    = 'Het lijkt erop dat u een link in een venster wilt openen, wat niet is toegestaan.';
+$lang['error_unk']    = '<b>Onbekende fout!</b><br /><br />';
+$lang['sett1']        = 'Druk \'guest\' username/password af bij aanmelden. Wijzig het wachtwoord en zet deze functie uit om gasten te weigeren.';
+$lang['sett2']        = 'Activatie per email noodzakelijk. [A] betekend dat nieuwe gebruikers geen toegang krijgen totdat hun accounts handmatig worden bevestigd.';
+$lang['sett3']        = 'Compressie aan voor alle browser die deze functie ondersteunen. [A] Betekend alle browsers behalve MSIE.';
+$lang['sett4']        = 'Gebuikers per kamer [MAX].';
+$lang['sett5']        = 'Maximale bestandsgrootte wanneer foto\'s worden geupload in kB. UIT betekend dat foto\'s niet worden toegestaan.';
+$lang['sett6']        = 'Toeg. nummer beveiliging tegen geautomatiseerde aanvallen.';
+$lang['sett7']        = 'Toeg. number verloopt in ** minuten.';
+
+/* 3.1 update */
+
+$lang['disconnect']   = 'You have been disconnected. [Reason: no response from the server, request sent 30 seconds ago.]';
+$lang['error_nan']    = 'You have been disconnected. [Reason: the latest server response was lost or broken (0 bytes).]';
+
+/* 3.2 update */
+
+$lang['retype']       = 'Wachtwoord';
+$lang['suspend']      = 'Schort';
+$lang['empty']        = 'Empty';
+$lang['empty_all']    = 'Empty all rooms';
+?>

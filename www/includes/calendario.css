@@ -1,18 +1,18 @@
 .calendario {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-	color:#FFFFFF;
+	color:#000000;
 	font-size: 9px;
 	text-align: center;
-	background-color: #666666;
+	background-color: #999999;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	border-bottom-color: #999999;
 }
 .tabelacalendario {
-	border-top: 1px solid #BBBBBB;
-	border-right: 1px solid #BBBBBB;
-	border-bottom: 1px solid #BBBBBB;
-	border-left: 1px solid #BBBBBB;
+	border-top: 1px solid #808080;
+	border-right: 1px solid #808080;
+	border-bottom: 1px solid #808080;
+	border-left: 1px solid #808080;
 }
 .mes {
 	font-family: Arial, Helvetica, sans-serif;
@@ -25,18 +25,18 @@
 }
 .interior {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-	color: #FFFFFF;
+	color: #000000;
 	font-size: 10px;
 	text-align: center;
-	background-color: #666666;
-	border-top: 1px none #999999;
-	border-right: 1px solid #999999;
-	border-bottom: 1px solid #999999;
-	border-left: 1px none #999999;
+	background-color: #FFFFFF;
+	border-top: 1px none #808080;
+	border-right: 1px solid #808080;
+	border-bottom: 1px solid #808080;
+	border-left: 1px none #808080;
 }
 .titulo {
 	font-family: "Lucida Sans Unicode", Verdana, Arial;
-	color: #FFFFFF;
+	color: #000000;
 	font-size: 11px;
 	text-align: center;
 	background-color: #999999;
@@ -44,14 +44,14 @@
 }
 .outromes {
 	font-family: Arial, Helvetica, sans-serif;
-	color: #BBBBBB;
+	color: #000000;
 	font-size: 10px;
 	text-align: center;
-	background-color: #666666;
-	border-top: 1px none #999999;
-	border-right: 1px solid #999999;
-	border-bottom: 1px solid #999999;
-	border-left: 1px none #999999;
+	background-color: #BBBBBB;
+	border-top: 1px none #808080;
+	border-right: 1px solid #808080;
+	border-bottom: 1px solid #808080;
+	border-left: 1px none #808080;
 }
 .diaocorrencia {
 	font-family: Arial, Helvetica, sans-serif;
@@ -59,16 +59,16 @@
 	font-size: 10px;
 	font-weight: bold;
 	cursor: hand;
-	background-color: #AAC7DB;
+	background-color: #FF9900;
 }
 .hoje {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	text-align: center;
-	background-color: #0033FF;
+	background-color: #FF0000;
 	border-top: 1px none #FFFFFF;
-	border-right: 1px solid #999999;
-	border-bottom: 1px solid #999999;
+	border-right: 1px solid #808080;
+	border-bottom: 1px solid #808080;
 	border-left: 1px none #FFFFFF;
 	color: #FFFFFF;
 }

@@ -8,45 +8,59 @@ include("includes/funcoes.php");
 ?>
 <html>
 	<head>
-		<title>suleventos.com.br</title>
+		<title>:: Sul Eventos :: O Portal de Eventos de Joinville Santa Catarina</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="content-language" content="pt-BR" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta name="robots" content="index,follow" />
+		<meta name="keywords" content="eventos,Joinville,Santa Catarina,noivas,noiva,evento,bodas,carros antigos,casamento,aniversário,15 anos,bodas,lua de mel,nupcias,matrimonio,festa,noivado" /> 
+		<meta name="author" content="Leonardo leonardo@udesc.br" /> 
+		<meta name="description" content="Página de Eventos de Joinville Santa Catarina" /> 
 		<link href="includes/estilo.css" rel="stylesheet" rev="stylesheet">
 	</head>
 	<body>
 		<table width="100%" height="100%" border="0">
 			<tr>
 				<td align="center" valign="top">
-					<table width="770" border="0" cellpadding="0" cellspacing="5">
+					<table width="776" border="0" cellpadding="0" cellspacing="6">
 						<tr>
-							<td width="157" height="139">
-								<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="157" height="139" id="Untitled-2" align="middle">
-									<param name="allowScriptAccess" value="sameDomain" />
-									<param name="movie" value="imagens/noiva.swf" />
-									<param name="menu" value="false" />
-									<param name="quality" value="high" />
-									<param name="bgcolor" value="#000000" />
-									<embed src="imagens/noiva.swf" menu="false" quality="high" bgcolor="#2d5f90" width="157" height="139" name="Untitled-2" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-								</object>
-							</td>
-							<td colspan="2" align="left" valign="top">
+							<td colspan="3" height="139">
+								<img src="imagens/logo.gif" width="330" height="130">
 								<?php constroi_menu_cabecalho(); ?>
 							</td>
 						</tr>
 						<tr>
-							<td align="left" valign="top" height="100%">
+							<td width="157" align="left" valign="top" height="100%">
 								<?php constroi_tabela_esq(-1); ?>
 							</td>
-							<td align="left" valign="top" bgcolor="#E6E6E6" class="conteudo" width="470">
+							<td align="left" valign="top" bgcolor="#F0F0F0" class="conteudo2" width="440">
+							<? constroi_form_busca(); ?>
 							<?
 							constroi_lista_casamento($cd_evento);
 							?>
 							</td>
-							<td width="140" align="right" valign="top" bgcolor="#001238">
-								<? constroi_parceiro_em_destaque(); ?>
-							  <font style="font-size:2px;"><br></font>
-							  <? constroi_destaque_cadastro_casamento(); ?>
-							   <font style="font-size:2px;"><br></font>
-							  	<? constroi_outros_eventos(); ?>
+							<td width="167" align="right" valign="top">
+								<table width="167" cellpadding="0" cellspacing="0">
+									<tr>
+										<td><img src="imagens/bc.gif"></td>
+									</tr>
+									<tr>
+										<td bgcolor="#FF9900" align="center">
+										<div style="text-align: center; background-color: #FF9900; height: 150px; width: 160px;">
+											<? constroi_parceiro_em_destaque(); ?>
+										</div>
+										<hr>
+									  <font style="font-size:2px;"><br></font>
+									  <? constroi_destaque_cadastro_casamento(); ?>
+									   <font style="font-size:2px;"><br></font>
+									   <hr>
+										<? constroi_outros_eventos(); ?>
+										</td>
+									</tr>
+									<tr>
+										<td><img src="imagens/bf.gif"></td>
+									</tr>
+								</table>
 							</td>
 						</tr>
 						<tr>

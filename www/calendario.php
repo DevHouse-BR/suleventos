@@ -117,7 +117,7 @@ $calendario .=	"</table>";
 		</script>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	</head>
-	<body leftmargin="0" topmargin="0" bottommargin="0" rightmargin="0" marginwidth="0" marginheight="0" bgcolor="#666666">
+	<body leftmargin="0" topmargin="0" bottommargin="0" rightmargin="0" marginwidth="0" marginheight="0" bgcolor="#F0F0F0">
 		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="100%" align="left" valign="top">
@@ -159,9 +159,9 @@ $calendario .=	"</table>";
 						  </table></td>
 					  </tr>
 					</table>
-					<div style=" padding: 5px 5px 5px 5px; font-family:'Lucida Sans Unicode', Verdana, Arial; vertical-align: middle; text-align: left; color: #FFFFFF; font-size:10px;">
-						<BR><span style="width: 10px; font-size: 10px; background-color:#0000FF">&nbsp;</span>&nbsp;HOJE,&nbsp;<?=date("d/m/Y");?><BR>
-						<span style="width: 10px; font-size: 10px; background-color:#AAC7DB">&nbsp;</span>&nbsp;DIA COM EVENTOS
+					<div style=" padding: 5px 5px 5px 5px; font-family:'Lucida Sans Unicode', Verdana, Arial; vertical-align: middle; text-align: left; color: #000000; font-size:10px;">
+						<BR><span style="width: 10px; font-size: 10px; background-color:#FF0000">&nbsp;</span>&nbsp;HOJE,&nbsp;<?=date("d/m/Y");?><BR>
+						<span style="width: 10px; font-size: 10px; background-color:#FF9900">&nbsp;</span>&nbsp;DIA COM EVENTOS
 					</div>
 				</td>
 			</tr>

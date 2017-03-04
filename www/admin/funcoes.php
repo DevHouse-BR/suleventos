@@ -157,7 +157,7 @@ function constroi_destaque_eventos($numerodedestaques, $colunas){
 						</td>
 					</tr>
 					<tr>
-						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="../imagens/veja.gif"></a></td>
+						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="../imagens/mais.gif"></a></td>
 					</tr>
 				</table>
 			</td>
@@ -610,6 +610,17 @@ function constroi_menu_esq(){
 				</table>
 			</td>
 		</tr>
+		<tr>
+			<td width="100%" background="../imagens/menu.jpg">
+				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+					<tr>
+						<td width="30">&nbsp;</td>
+						<td onMouseOver="esconde_menu();"><a class="menuesquerdo" href="sites_parceiros.php">Sites de Parceiros</a></td>
+						<td width="10"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
 		<?	
 		$counter = 6;
 		require("../includes/conectar_mysql.php");
@@ -638,6 +649,17 @@ function constroi_menu_esq(){
 					<tr>
 						<td width="30">&nbsp;</td>
 						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="secoes.php">Gerenciar Seções</a></td>
+						<td width="10">&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td width="100%" background="../imagens/menu.jpg">
+				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+					<tr>
+						<td width="30">&nbsp;</td>
+						<td onMouseOver="escondemenu();"><a class="menuesquerdo" href="banners.php">Gerenciar Banners</a></td>
 						<td width="10">&nbsp;</td>
 					</tr>
 				</table>
@@ -740,7 +762,7 @@ function constroi_parceiro_em_destaque(){
 							<td colspan="2" align="center" class="conteudo"><a class="menurodape" href="parceiros.php#<?=$parceiro["cd"]?>"><?=$parceiro["nome"]?></a></td>
 						</tr>
 						<tr>
-							<td colspan="2" align="center" valign="top"><img src="../imagens/veja.gif"></td>
+							<td colspan="2" align="center" valign="top"><img src="../imagens/mais.gif"></td>
 						</tr>
 					</table>
 				</td>
@@ -1112,7 +1134,7 @@ function constroi_dicas_destaque(){
 		<div class="titulosecao"><img align="bottom" src="../imagens/bullet_red.gif">&nbsp;Dicas</div><br>
 		<p><?=$dica["dica"]?></p>
 		<p><?=$dica["descricao"]?></p>
-		<p align="right"><a href="dicas.php"><img border="0" src="../imagens/veja.gif"></a></p>
+		<p align="right"><a href="dicas.php"><img border="0" src="../imagens/mais.gif"></a></p>
 		<?
 	}
 }
@@ -1691,7 +1713,7 @@ function constroi_destaque_agenda($numerodedestaques, $colunas){
 						</td>
 					</tr>
 					<tr>
-						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="../imagens/veja.gif"></a></td>
+						<td align="center" valign="bottom"><a href="ver_evento.php?cd=<?=$evento["cd"]?>"><img border="0" align="bottom" src="../imagens/mais.gif"></a></td>
 					</tr>
 				</table>
 			</td>

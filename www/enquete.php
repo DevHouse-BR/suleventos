@@ -29,7 +29,7 @@ function constroi_passo0(){
 			<link href="includes/estilo.css" rel="stylesheet">
 			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		</head>
-		<body leftmargin="0" topmargin="0" bottommargin="0" rightmargin="0" marginwidth="0" marginheight="0" style="background: none; background-color: #666666;">
+		<body leftmargin="0" topmargin="0" bottommargin="0" rightmargin="0" marginwidth="0" marginheight="0" style="background: none; background-color: #F0F0F0;">
 			<table width="100%" height="100%" border="0" cellpadding="1" cellspacing="1">
 				<tr>
 					<td width="100%" align="left" valign="top">
@@ -38,14 +38,14 @@ function constroi_passo0(){
 						else { ?>
 							<table border="0">
 								<tr>
-									<td colspan="2" class="menu" style="font-size:10px;"><?=$enquete["pergunta"]?></td>
+									<td colspan="2" class="menuesquerdo" style="font-size:11px; font-weight:normal;" bgcolor="#FFFFFF"><?=$enquete["pergunta"]?></td>
 								</tr>
 								<form action="enquete.php" method="post">
 								<?
-								if (strlen($enquete["opcao1"]) != 0) echo('<tr><td width="10%"><input type="radio" name="opcao" value="1"></td><td class="menu" style="font-weight: normal; font-size:10px;">' . $enquete["opcao1"] . '</td></tr>');
-								if (strlen($enquete["opcao2"]) != 0) echo('<tr><td width="10%"><input type="radio" name="opcao" value="2"></td><td class="menu" style="font-weight: normal; font-size:10px;">' . $enquete["opcao2"] . '</td></tr>');
-								if (strlen($enquete["opcao3"]) != 0) echo('<tr><td width="10%"><input type="radio" name="opcao" value="3"></td><td class="menu" style="font-weight: normal; font-size:10px;">' . $enquete["opcao3"] . '</td></tr>');
-								if (strlen($enquete["opcao4"]) != 0) echo('<tr><td width="10%"><input type="radio" name="opcao" value="4"></td><td class="menu" style="font-weight: normal; font-size:10px;">' . $enquete["opcao4"] . '</td></tr>');
+								if (strlen($enquete["opcao1"]) != 0) echo('<tr><td width="10%"><input type="radio" name="opcao" value="1"></td><td class="menuesquerdo" style="font-weight: normal; font-size:10px;">' . $enquete["opcao1"] . '</td></tr>');
+								if (strlen($enquete["opcao2"]) != 0) echo('<tr><td width="10%"><input type="radio" name="opcao" value="2"></td><td class="menuesquerdo" style="font-weight: normal; font-size:10px;">' . $enquete["opcao2"] . '</td></tr>');
+								if (strlen($enquete["opcao3"]) != 0) echo('<tr><td width="10%"><input type="radio" name="opcao" value="3"></td><td class="menuesquerdo" style="font-weight: normal; font-size:10px;">' . $enquete["opcao3"] . '</td></tr>');
+								if (strlen($enquete["opcao4"]) != 0) echo('<tr><td width="10%"><input type="radio" name="opcao" value="4"></td><td class="menuesquerdo" style="font-weight: normal; font-size:10px;">' . $enquete["opcao4"] . '</td></tr>');
 								?>
 								<tr>
 									<td colspan="2" align="right"><input type="submit" value="Votar"></td>

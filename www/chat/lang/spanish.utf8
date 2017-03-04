@@ -1,0 +1,127 @@
+﻿<?php 
+
+/* Spanish */
+
+$lang=array();
+
+$lang['ok']           = 'Aceptar';
+$lang['reset']        = 'Borrar';
+$lang['on']           = 'Activado';
+$lang['off']          = 'Desactivado';
+$lang['yes']          = 'Sí';
+$lang['no']           = 'No';
+$lang['all']          = 'Todos';
+$lang['login']        = 'Registro de Acceso';
+$lang['exitt']        = 'Salir';
+$lang['edit']         = 'Editar';
+$lang['delete']       = 'Borrar';
+$lang['desc']         = 'Descripción';
+$lang['name']         = 'Nombre';
+$lang['password']     = 'Clave';
+$lang['old_pass']     = 'Clave anterior';
+$lang['new_pass']     = 'Nueva clave';
+$lang['forgot_pass']  = 'Reenvio clave';
+$lang['register']     = 'Registrarse';
+$lang['ban']          = 'Rechazar';
+$lang['profile']      = 'Perfil';
+$lang['mail']         = 'Email';
+$lang['room']         = 'Sala';
+$lang['rooms']        = 'Salas';
+$lang['online']       = 'En linea';
+$lang['sound']        = 'Sonido';
+$lang['smilies']      = 'Caritas';
+$lang['color']        = 'Colores';
+$lang['turing']       = 'Acceso numérico';
+$lang['verification'] = 'Verificación';
+$lang['code']         = 'Código';
+$lang['suffix']       = 'Sufijo';
+$lang['timezone']     = 'Zona Horaria';
+$lang['time_format']  = 'Formato';
+$lang['age']          = 'Edad';
+$lang['fun']          = 'Hobbies';
+$lang['sex']          = 'Sexo';
+$lang['male']         = 'Hombre';
+$lang['female']       = 'Mujer';
+$lang['location']     = 'Lugar';
+$lang['website']      = 'Sitio Web';
+$lang['info']         = 'Info';
+$lang['choose']       = 'Seleccione';
+$lang['upload']       = 'Subir';
+$lang['lang']         = 'Idioma';
+$lang['user']         = 'Usuario';
+$lang['users']        = 'Usuarios';
+$lang['activation']   = 'Activación';
+$lang['header']       = 'Encabezado';
+$lang['footer']       = 'Pie';
+$lang['title']        = 'Título';
+$lang['join']         = 'unido';
+$lang['status']       = 'Estado';
+$lang['active']       = 'Normal';
+$lang['inactive']     = 'Inactivo';
+$lang['unverified']   = 'Sin verificar';
+$lang['order']        = 'Orden';
+$lang['no_results']   = 'Sin resultados...';
+$lang['integration']  = 'Integración';
+$lang['history']      = 'Historial';
+$lang['badwords']     = 'Palabrotas';
+$lang['mail_tmpl']    = 'Plantillas Email';
+$lang['backup']       = 'Backup [Userios]';
+$lang['admin']        = 'Administrador';
+$lang['moderator']    = 'Moderador';
+$lang['settings']     = 'Ajustes';
+$lang['inf_pmssg']    = 'Info / Cotilleo';
+$lang['guest']        = 'Invitado';
+$lang['remember']     = 'Recordarme';
+$lang['6_hours']      = '6 horas';
+$lang['a_day']        = '1 dia';
+$lang['a_week']       = '1 semana';
+$lang['a_month']      = '1 mes';
+$lang['a_year']       = '1 año';
+$lang['mass']         = 'Seleccione acción masiva...';
+$lang['clear_ban']    = 'Borrar IPs Rechazadas';
+$lang['ban_ip']       = 'Rechazada IP por';
+$lang['suspend_acc']  = 'Cuenta suspendida';
+$lang['max_users']    = 'Demasiados usuarios estan chateando... Por favor espere unos minutos y refresque la página.';
+$lang['open_new']     = 'Abrir imagen en una nueva ventana...';
+$lang['confirm']      = 'Por favor, confirme esta acción...';
+$lang['wrong']        = 'Entrada Errónea.';
+$lang['account_ok']   = 'Enhorabuena! Su cuenta ha sido activada correctamente!.';
+$lang['check_inbox']  = 'Compruebe su email.';
+$lang['wait_app']     = 'Su cuenta ha sido creada correctamente pero para dejar de estar inactiva necesita ser aprobada manualmente por el administrador del Chat.';
+$lang['all_req']      = 'Rellene todos los campos correctamente!';
+$lang['you_banned']   = 'Ha sido rechazado!';
+$lang['headers_sent'] = 'Encabezados enviados.';
+$lang['wrong_turing'] = 'Acceso numérico incorrecto.';
+$lang['mail_error']   = 'Error Servidor Email.';
+$lang['action_ok']    = 'La operación solicitada ha sido completada con éxito.';
+$lang['continue']     = 'Pulse aquí para continuar...';
+$lang['revalidate']   = 'Debe validarse el email!';
+$lang['bwordsedit']   = 'Para modificar esta lista <i>badwords.txt</i> debe cambiar permisos CHMOD a 666.';
+$lang['upload_err']   = 'No se ha podido subir su imagen. Probablemente tenga un peso superior a lo permitido.<br>Ayuda: Recorte la imagen o Baje lacalidad';
+$lang['error_ip']     = '1. El usuario no está en line, 2. Ese usuario es usted o 3. Fué rechazado.';
+$lang['error_usr']    = 'Ese usuario o es usted o es un invitado.';
+$lang['error_bro']    = 'Su navegador no soporta esta aplicación! <br /><br /> Por favor actualice su Internet Explorer como mínimo a 5.0, Opera 8.5 o Mozilla 1.0.<br /> Las últimas versiones de Safari y Konqueror la soporta bien.';
+$lang['error_nop']    = 'Lo sentimos, no tiene permiso para cargar la página solicitada...';
+$lang['error_lnk']    = 'Parece que quiere abrir un enlace en una nueva ventana que no está permitida.';
+$lang['error_unk']    = '<b>Error desconocido! Puede ser ocasionados por muchos motivos. Revise su PC! o reinicie!</b><br /><br />';
+$lang['sett1']        = 'Escribe \'invitado\' nombre/clave en el registro. Cambia la clave y vuelve a esa opción. OFF no admite invitados.';
+$lang['sett2']        = 'Activación por email requerida. [A] significa que los nuevos usuarios no pueden entrar hasta que sus cuentas sean aprobadas manualmente por el administrador.';
+$lang['sett3']        = 'Comprensión habilitada para todos los navegadores que soporten esta aplicación. [A] significa: todos menos Microsoft Internet Explorer.';
+$lang['sett4']        = 'Usuarios máximos por sala [MAX].';
+$lang['sett5']        = 'Tamaño Máximo de foto para subir en kB. OFF deshabilita poder subir imágenes.';
+$lang['sett6']        = 'Protección de Acceso numérico para proteger ataques automatizados.';
+$lang['sett7']        = 'Expiración en ** minutos del Acceso Numérico.';
+
+/* 3.1 update */
+
+$lang['disconnect']   = 'Ha sido desconectado.<br /><small>[Razón: No hay respuesta del servidor, respuesta enviada hace 30 segundos]</small>';
+$lang['error_nan']    = 'Ha sido desconectado.<br /><small>[Razón: No hubo respuesta del servidor o parecia caído (0 bytes).]</small>';
+
+/* 3.2 update */
+
+$lang['retype']       = 'Retype';
+$lang['suspend']      = 'Suspend';
+$lang['empty']        = 'Empty';
+$lang['empty_all']    = 'Empty all rooms';
+
+?>

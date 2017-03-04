@@ -1,0 +1,126 @@
+<?php 
+
+/* Russian */
+
+$lang=array();
+
+$lang['ok']           = '- Войти -';
+$lang['reset']        = ' Вернуть ';
+$lang['on']           = 'Вкл.';
+$lang['off']          = 'Выкл.';
+$lang['yes']          = 'да';
+$lang['no']           = 'нет';
+$lang['all']          = 'Все';
+$lang['login']        = 'Войти';
+$lang['exitt']        = 'Выйти';
+$lang['edit']         = 'Редактрировать';
+$lang['delete']       = 'Удалить';
+$lang['desc']         = 'Описание';
+$lang['name']         = 'Имя';
+$lang['password']     = 'Пароль';
+$lang['old_pass']     = 'Старый пароль';
+$lang['new_pass']     = 'Новый пароль';
+$lang['forgot_pass']  = 'Забыли пароль?';
+$lang['register']     = 'Зарегистрироваться';
+$lang['ban']          = 'Бан';
+$lang['profile']      = 'Настройки';
+$lang['mail']         = 'E-mail';
+$lang['room']         = 'Комната';
+$lang['rooms']        = 'Комнаты';
+$lang['online']       = 'В чате';
+$lang['sound']        = 'Звук';
+$lang['smilies']      = 'Улыбки';
+$lang['color']        = 'Цвета';
+$lang['turing']       = 'Код ауторизации';
+$lang['verification'] = 'Проверка';
+$lang['code']         = 'Крд';
+$lang['suffix']       = 'Суфикс';
+$lang['timezone']     = 'Часовой пояс';
+$lang['time_format']  = 'Формат';
+$lang['age']          = 'Год';
+$lang['fun']          = 'Раскраска';
+$lang['sex']          = 'Пол';
+$lang['male']         = 'Мужчина';
+$lang['female']       = 'Женщина';
+$lang['location']     = 'Улица';
+$lang['website']      = 'Сайт';
+$lang['info']         = 'Доп. информация';
+$lang['choose']       = 'Выбирите';
+$lang['upload']       = 'Загрузить';
+$lang['lang']         = 'Язык';
+$lang['user']         = 'Пользователь';
+$lang['users']        = 'Пользователи';
+$lang['activation']   = 'Активизация';
+$lang['header']       = 'Начало';
+$lang['footer']       = 'Конец';
+$lang['title']        = 'Заголовок';
+$lang['join']         = 'Присоединился';
+$lang['status']       = 'Статус';
+$lang['active']       = 'Активный';
+$lang['inactive']     = 'Не активный';
+$lang['unverified']   = 'Не проверен';
+$lang['order']        = 'Заказ';
+$lang['no_results']   = 'Нет совпадений...';
+$lang['integration']  = 'интеграция';
+$lang['history']      = 'История';
+$lang['badwords']     = 'Плохие слова';
+$lang['mail_tmpl']    = 'Шаблон почты';
+$lang['backup']       = 'Сохранить [Пользователи]';
+$lang['admin']        = 'Администратор';
+$lang['moderator']    = 'Модератор';
+$lang['settings']     = 'Настройки';
+$lang['inf_pmssg']    = 'Информация / Приват';
+$lang['guest']        = 'Гость';
+$lang['remember']     = 'Запомнить';
+$lang['6_hours']      = '6 часов';
+$lang['a_day']        = '1 день';
+$lang['a_week']       = '1 неделя';
+$lang['a_month']      = '1 месяц';
+$lang['a_year']       = '1 год';
+$lang['mass']         = 'Select mass actions here...';
+$lang['clear_ban']    = 'Очистить список бан-IP';
+$lang['ban_ip']       = 'Запретить вход с этого IP';
+$lang['suspend_acc']  = 'Suspend this account';
+$lang['max_users']    = 'Слишком много пользователей в чате... Пожалуйста, подождите пару минут и перезагрузите страницу';
+$lang['open_new']     = 'Открыть картинку в новом окне...';
+$lang['confirm']      = 'Пожалуйста, подтвердите...';
+$lang['wrong']        = 'Ошибочный ввод.';
+$lang['account_ok']   = 'Ваш эккаунт зарегистрирован.';
+$lang['check_inbox']  = 'Проверьте Вашу почту.';
+$lang['wait_app']     = 'Ваш эккаунт был благополучно создан, но он будет не активным пока Администратор не активизирует его.';
+$lang['all_req']      = 'Заполните все поля!';
+$lang['you_banned']   = 'Вас забанили!';
+$lang['headers_sent'] = 'Заголовок уже послан';
+$lang['wrong_turing'] = 'Не правильный номер ауторизации.';
+$lang['mail_error']   = 'Ошибка почтового сервера';
+$lang['action_ok']    = 'The requested operation has been completed successfully.';
+$lang['continue']     = 'Нажмите для продолжения...';
+$lang['revalidate']   = 'E-mail должен быть корректным!';
+$lang['bwordsedit']   = 'Для редактирования списка <i>badwords.txt</i> должен быть CHMODed 666.';
+$lang['upload_err']   = 'Ошибка загрузки. Возможно, что привышен максимальный размер...';
+$lang['error_ip']     = 'Пользователь не в чате или Ваш собственный IP уже забанен';
+$lang['error_usr']    = 'Пользователь не найден или Ваш собственный эккаунт или гостевой эккаунт .';
+$lang['error_bro']    = 'Ваш броузер не поддерживатеся! <br /><br /> Пожалуйста используйте MSIE 5.0, Opera 8.5 или Mozilla 1.0.<br />';
+$lang['error_nop']    = 'У Вас нет доступа к этой странице...';
+$lang['error_lnk']    = 'Вы пытаетесь открыть ссылку в новом окне, но это невозможно';
+$lang['error_unk']    = '<b>Неизвестная ошибка</b><br /><br />';
+$lang['sett1']        = 'Print \'guest\' username/password on login. Change the password and turn this feature off to disallow guests.';
+$lang['sett2']        = 'Требуется подтверждение по e-mail. [A] means that new users cannot enter until their accounts are approved manually.';
+$lang['sett3']        = 'Compression enabled for all browsers that support this feature. [A] means all browsers except MSIE.';
+$lang['sett4']        = 'Пользователей в каждой комнате [MAX].';
+$lang['sett5']        = 'Maximum filesize when uploading photos in kB. OFF means no photos allowed.';
+$lang['sett6']        = 'Acc. number protection against automated attacks.';
+$lang['sett7']        = 'Acc. number expires in ** minutes.';
+
+/* 3.1 update */
+
+$lang['disconnect']   = 'Вы были отключены. [Причина: Нет ответа от сервера последние 30 сек..]';
+$lang['error_nan']    = 'Вы были отключены. [Причина: Последний ответ от сервера был не корректен (0 байт).]';
+
+/* 3.2 update */
+
+$lang['retype']       = 'Пароль';
+$lang['suspend']      = 'Запретить';
+$lang['empty']        = 'Зачистить';
+$lang['empty_all']    = 'Зачистить все комнаты';
+?>

@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	</head>
 
-	<body leftmargin="0" bottommargin="0" marginheight="0" marginwidth="0" topmargin="0" rightmargin="0" bgcolor="#000000">
+	<body leftmargin="0" bottommargin="0" marginheight="0" marginwidth="0" topmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 		<center>
 			<table width="356" height="259" cellpadding="0" cellspacing="0" border="0">
 				<tr>
